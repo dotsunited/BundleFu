@@ -1,0 +1,76 @@
+Du_BundleFu
+=============================
+
+Du_BundleFu is PHP5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
+
+It is a port of the [Ruby on Rails](http://rubyonrails.org) plugin [bundle-fu](http://code.google.com/p/bundle-fu/)
+
+In short, it turns this:
+
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery.myplugin.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/app.module.js"></script>
+    <link media="screen" type="text/css" href="/css/reset.css">
+    <link media="screen" type="text/css" href="/css/jquery.myplugin.css">
+    <link media="screen" type="text/css" href="/css/app.css">
+    <link media="screen" type="text/css" href="/css/app.module.css">
+
+Into this:
+
+    <link type="text/css" src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890"></script>
+    <script type="text/javascript" src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890"></script>
+
+
+## Installation ##
+
+You can install Du_BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
+
+    pear channel-discover pear.dotsunited.de
+    pear install dotsunited/Du_BundleFu
+
+The above process will install Du_BundleFu as a PEAR library.
+
+## Usage ##
+
+Configure a BundleFu instance:
+
+    <?php
+    $bundleFu = new \Du\BundleFu\BundleFu();
+
+    $bundleFu
+        // Set the document root
+        ->setDocRoot('/path/to/your/document_root')
+
+        // Set the css cache path (relative to the document root)
+        ->setCssCachePath('css/cache')
+
+        // Set the javascript cache path (relative to the document root)
+        ->setCssCachePath('js/cache');
+    ?>
+
+Use the instance to bundle your files in your templates:
+
+    <?php $bundleFu->start(); ?>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery.myplugin.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/app.module.js"></script>
+    <link media="screen" type="text/css" href="/css/reset.css">
+    <link media="screen" type="text/css" href="/css/jquery.myplugin.css">
+    <link media="screen" type="text/css" href="/css/app.css">
+    <link media="screen" type="text/css" href="/css/app.module.css">
+    <?php $bundleFu->end(); ?>
+
+Output the bundle `<script>` and `<link>` tags wherever you want:
+
+    <?php 
+    // Renders both <script> and <link> tags
+    echo $bundleFu->render();
+
+    // Renders the <link> tag only
+    echo $bundleFu->renderCss();
+
+    // Renders the <script> tag only
+    echo $bundleFu->renderJs();
+    ?>
