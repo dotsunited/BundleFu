@@ -511,7 +511,13 @@ class BundleFu
      */
     public function __toString()
     {
-        return $this->render();
+        try {
+            $return = $this->render();
+            return $return;
+        } catch (\Exception $e) {
+            trigger_error($e->getMessage(), E_USER_WARNING);
+            return '';
+        }
     }
 
     /**
