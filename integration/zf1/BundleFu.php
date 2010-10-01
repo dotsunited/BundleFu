@@ -26,6 +26,10 @@ class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
      */
     public function getBundleFu()
     {
+        if (null === $this->_bundleFu) {
+            $this->_bundleFu = new \Du\BundleFu\BundleFu();
+        }
+
         return $this->_bundleFu;
     }
 
@@ -44,6 +48,56 @@ class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
      */
     public function __call($method, $params)
     {
-        return call_user_func_array(array($this->getBundleFu(), $method), $params);
+        $return = call_user_func_array(array($this->getBundleFu(), $method), $params);
+
+        if (substr($method, 0, 3) == 'set') {
+            return $this;
+        } else {
+            return $return;
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getBundleFu()->render();
+    }
+
+    /**
+     * @param Zend_View_Helper_HeadLink $helper
+     * @return Zend_View_Helper_BundleFu 
+     */
+    public function bundleHeadLink(Zend_View_Helper_HeadLink $helper)
+    {
+        $bundleFu = $this->getBundleFu();
+
+        foreach ($helper->getArrayCopy() as $key => $item) {
+            if (isset($item->href)) {
+                $bundleFu->getCssFileList()->addFile($item->href, $bundleFu->getDocRoot() . $item->href);
+                unset($helper[$key]);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Zend_View_Helper_HeadScript $helper
+     * @return Zend_View_Helper_BundleFu 
+     */
+    public function bundleHeadScript(Zend_View_Helper_HeadScript $helper)
+    {
+        $bundleFu = $this->getBundleFu();
+
+        foreach ($helper->getArrayCopy() as $key => $item) {
+            if (isset($item->attributes['src'])) {
+                $bundleFu->getJsFileList()->addFile($item->attributes['src'], $bundleFu->getDocRoot() . $item->attributes['src']);
+                unset($helper[$key]);
+            }
+        }
+
+        return $this;
     }
 }
