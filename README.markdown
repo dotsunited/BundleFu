@@ -1,5 +1,5 @@
 Du_BundleFu
-=============================
+===========
 
 Du_BundleFu is PHP5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
 
@@ -27,9 +27,19 @@ Into this:
 You can install Du_BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
 
     pear channel-discover pear.dotsunited.de
-    pear install dotsunited/Du_BundleFu
+    pear install dotsunited/Du_BundleFu-beta
 
-The above process will install Du_BundleFu as a PEAR library.
+## Prerequisites ##
+
+Du_BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks
+have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
+
+    spl_autoload_register(function($className) {
+        require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
+        return true;
+    }, true, true);
+
+This requires, that you have installed Du_BundleFu in your `include_path` which is already the case if you have installed Du_BundleFu via PEAR.
 
 ## Usage ##
 
@@ -46,7 +56,7 @@ Configure a BundleFu instance:
         ->setCssCachePath('css/cache')
 
         // Set the javascript cache path (relative to the document root)
-        ->setCssCachePath('js/cache');
+        ->setJsCachePath('js/cache');
     ?>
 
 Use the instance to bundle your files in your templates:
