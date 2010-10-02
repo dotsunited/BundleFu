@@ -1,5 +1,33 @@
 <?php
+/**
+ * Du
+ *
+ * LICENSE
+ *
+ * This source file is subject to the BSD license that is available
+ * through the world-wide-web at this URL:
+ * http://opensource.org/licenses/bsd-license.php
+ *
+ * @category   Du
+ * @package    Du_BundleFu
+ * @subpackage Integration
+ * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
+ * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ */
 
+/** Zend_View_Helper_Abstract.php */
+require_once 'Zend/View/Helper/Abstract.php';
+
+/**
+ * Zend_View_Helper_BundleFu
+ *
+ * @category   Du
+ * @package    Du_BundleFu
+ * @subpackage Integration
+ * @author     Jan Sorgalla
+ * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
+ * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ */
 class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
 {
     /**
@@ -50,10 +78,13 @@ class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
     {
         $return = call_user_func_array(array($this->getBundleFu(), $method), $params);
 
-        if (substr($method, 0, 3) == 'set') {
-            return $this;
-        } else {
-            return $return;
+        switch ($method) {
+            case 'start':
+            case 'end':
+            case substr($method, 0, 3) == 'set':
+                return $this;
+            default:
+                return $return;
         }
     }
 
