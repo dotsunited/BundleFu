@@ -93,7 +93,13 @@ class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
      */
     public function __toString()
     {
-        return $this->getBundleFu()->render();
+        try {
+            $return = $this->getBundleFu()->render();
+            return $return;
+        } catch (\Exception $e) {
+            trigger_error($e->getMessage(), E_USER_WARNING);
+            return '';
+        }
     }
 
     /**
