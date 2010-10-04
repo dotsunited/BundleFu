@@ -16,7 +16,7 @@
  */
 
 /**
- * Zend_View_Helper_BundleFu
+ * BundleFuHelper
  *
  * @category   Du
  * @package    Du_BundleFu
