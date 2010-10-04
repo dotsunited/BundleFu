@@ -7,13 +7,13 @@ bundle_fu.php is CakePHP view helper integrating Du_BundeFu into your CakePHP ap
 
 Place bundle_fu.php in app/views/helpers and load the helper inside your controllers:
 
-   <?php
-   class MyController extends AppController {
-       var $helpers = array('BundleFu');
-   }
-   ?>
+    <?php
+    class MyController extends AppController {
+        var $helpers = array('BundleFu');
+    }
+    ?>
 
-More information about the helpers in the [CakePHP Docs](http://book.cakephp.org/view/99/Using-Helpers).
+For more information about helpers, see the [CakePHP Docs](http://book.cakephp.org/view/99/Using-Helpers).
 
 ## Usage ##
 
