@@ -7,7 +7,7 @@ BundleFu.php is Zend Framework 1.x.x view helper integrating Du_BundeFu into you
 
 Place BundleFu.php somewhere in your application structure and initialize it in your bootstrap class:
 
-<?php
+    <?php
 
     class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
