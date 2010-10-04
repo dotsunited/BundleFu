@@ -40,7 +40,7 @@ have tools to setup autoloading, if you are unsure you can use the following cod
         }
         require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
         return true;
-    }, true, true);
+    });
 
 This requires, that you have installed Du_BundleFu in your `include_path` which is already the case if you have installed Du_BundleFu via PEAR.
 
