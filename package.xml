@@ -30,6 +30,8 @@
       <dir name="Du">
        <dir name="BundleFu">
         <dir name="Filter">
+         <file install-as="Du/BundleFu/Filter/Callback.php" name="Callback.php" role="php" />
+         <file install-as="Du/BundleFu/Filter/ClosureCompilerService.php" name="ClosureCompilerService.php" role="php" />
          <file install-as="Du/BundleFu/Filter/Filter.php" name="Filter.php" role="php" />
          <file install-as="Du/BundleFu/Filter/FilterChain.php" name="FilterChain.php" role="php" />
         </dir>
