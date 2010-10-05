@@ -565,11 +565,13 @@ class BundleFu
 
             $dir = dirname($cacheFile);
 
-            if (!file_exists($dir) || !is_writable($dir)) {
-                throw new \RuntimeException('CSS cache directory "' . $dir . '" does not exist or is not writable');
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777, true);
             }
 
-            file_put_contents($cacheFile, $data);
+            if (false === file_put_contents($cacheFile, $data, LOCK_EX)) {
+                throw new \RuntimeException('Cannot write css cache file to "' . $cacheFile . '"');
+            }
 
             $cacheTime = filemtime($cacheFile);
         }
@@ -615,11 +617,13 @@ class BundleFu
 
             $dir = dirname($cacheFile);
 
-            if (!file_exists($dir) || !is_writable($dir)) {
-                throw new \RuntimeException('Javascript cache directory "' . $dir . '" does not exist or is not writable');
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777, true);
             }
 
-            file_put_contents($cacheFile, $data);
+            if (false === file_put_contents($cacheFile, $data, LOCK_EX)) {
+                throw new \RuntimeException('Cannot write js cache file to "' . $cacheFile . '"');
+            }
 
             $cacheTime = filemtime($cacheFile);
         }

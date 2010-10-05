@@ -85,36 +85,6 @@ class BundleFuTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->_bundleFu->render(), (string) $this->_bundleFu);
     }
 
-    public function testRenderCssWithMissingCacheDirectoryShouldThrowException()
-    {
-        $cachePath = __DIR__ . '/non_existing';
-
-        $this->setExpectedException('\RuntimeException', 'CSS cache directory "' . $cachePath . '" does not exist or is not writable');
-
-        $this->_bundleFu->setCssCachePath($cachePath);
-
-        $this->_bundleFu->start();
-        echo '<link href="/css/css_1.css?1000" media="screen" rel="stylesheet" type="text/css">';
-        $this->_bundleFu->end();
-
-        $this->_bundleFu->renderCss();
-    }
-
-    public function testRenderJsWithMissingCacheDirectoryShouldThrowException()
-    {
-        $cachePath = __DIR__ . '/non_existing';
-
-        $this->setExpectedException('\RuntimeException', 'Javascript cache directory "' . $cachePath . '" does not exist or is not writable');
-
-        $this->_bundleFu->setJsCachePath($cachePath);
-
-        $this->_bundleFu->start();
-        echo '<script src="/js/js_1.js?1000" type="text/javascript"></script>';
-        $this->_bundleFu->end();
-
-        $this->_bundleFu->renderJs();
-    }
-
     /**************************************************************************/
 
     public function testSetCssCacheUrlShouldBeUsedInOutput()
@@ -478,9 +448,14 @@ class BundleFuTest extends \PHPUnit_Framework_TestCase
                 continue;
             }
 
-            foreach (glob($path . '/bundle_*') as $file) {
+            foreach (glob($path . '/*') as $file) {
+                if ($file[0] == '.') {
+                    continue;
+                }
                 unlink($file);
             }
+
+            rmdir($path);
         }
     }
 
