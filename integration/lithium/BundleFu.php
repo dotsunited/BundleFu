@@ -29,20 +29,20 @@ namespace app\extensions\helper;
  */
 class BundleFu extends \lithium\template\Helper
 {
-	/**
+    /**
      * @var \Du\BundleFu\BundleFu
      */
     protected $_bundleFu;
 
     /**
-	 * Setup autloading for Du namespace.
-	 *
-	 * @return void
-	 */
-	protected function _init() {
-		parent::_init();
+     * Setup autloading for Du namespace.
+     *
+     * @return void
+     */
+    protected function _init() {
+        parent::_init();
 
-		// Setup autoloading
+        // Setup autoloading
         spl_autoload_register(function($className) {
             if (strpos($className, 'Du\\') !== 0) {
                 return;
@@ -50,7 +50,7 @@ class BundleFu extends \lithium\template\Helper
             require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
             return true;
         });
-	}
+    }
 
     /**
      * Set the BundleFu instance

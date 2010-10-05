@@ -27,7 +27,7 @@
  */
 function bundle_fu()
 {
-	static $bundleFu;
+    static $bundleFu;
 
     if (!$bundleFu) {
         // Setup autoloading
@@ -43,5 +43,5 @@ function bundle_fu()
         $bundleFu->setDocRoot(dirname(FCPATH));
     }
 
-	return $bundleFu;
+    return $bundleFu;
 }
