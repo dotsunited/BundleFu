@@ -1,7 +1,7 @@
 Lithium Integration
-================================
+===================
 
-BundleFu.php is a Lithium view helper integrating Du_BundeFu into your Lithium applications.
+BundleFu.php is a [Lithium](http://lithify.me) view helper integrating Du_BundeFu into your Lithium applications.
 
 ## Installation ##
 

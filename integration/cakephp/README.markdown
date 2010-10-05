@@ -1,7 +1,7 @@
 CakePHP Integration
 ===================
 
-bundle_fu.php is a CakePHP view helper integrating Du_BundeFu into your CakePHP applications.
+bundle_fu.php is a [CakePHP](http://cakephp.org) view helper integrating Du_BundeFu into your CakePHP applications.
 
 ## Installation ##
 

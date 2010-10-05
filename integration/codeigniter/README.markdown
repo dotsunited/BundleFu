@@ -1,7 +1,7 @@
 CodeIgniter Integration
 =======================
 
-bundle_fu_helper.php is a CodeIgniter helper integrating Du_BundeFu into your CodeIgniter applications.
+bundle_fu_helper.php is a [CodeIgniter](http://codeigniter.com) helper integrating Du_BundeFu into your CodeIgniter applications.
 
 ## Installation ##
 

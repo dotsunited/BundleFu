@@ -1,7 +1,7 @@
 Zend Framework 1.x.x Integration
 ================================
 
-BundleFu.php is a Zend Framework 1.x.x view helper integrating Du_BundeFu into your Zend Framework applications.
+BundleFu.php is a [Zend Framework](http://framework.zend.com) 1.x.x view helper integrating Du_BundeFu into your Zend Framework applications.
 
 ## Installation ##
 
