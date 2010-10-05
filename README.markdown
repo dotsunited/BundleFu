@@ -3,7 +3,7 @@ Du_BundleFu
 
 Du_BundleFu is PHP5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
 
-It is a port of the [Ruby on Rails](http://rubyonrails.org) plugin [bundle-fu](http://code.google.com/p/bundle-fu/)
+It is a port of the [Ruby on Rails](http://rubyonrails.org) plugin [bundle-fu](http://code.google.com/p/bundle-fu/).
 
 In short, it turns this:
 
@@ -94,3 +94,20 @@ Output the bundle `<script>` and `<link>` tags wherever you want:
     // Renders the <script> tag only
     echo $bundleFu->renderJs();
     ?>
+
+## Filters ##
+
+You can manipulate the bundled css/javascript code with filters. Filters are classes which implement the `\Du\BundleFu\Filter\Filter` interface.
+
+You can add filters like that:
+
+    $bundleFu->getCssFilterChain()->addFilter(new MyCssFilter());
+    $bundleFu->getJsFilterChain()->addFilter(my MyJsFilter());
+
+### Example ###
+
+Du_BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/intl/de-DE/closure/compiler/) using the [Service API](http://code.google.com/intl/de-DE/closure/compiler/docs/api-ref.html).
+
+Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
+
+    $bundleFu->getJsFilterChain()->addFilter(new \Du\BundleFu\Filter\ClosureCompilerService());

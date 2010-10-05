@@ -87,6 +87,25 @@ class BundleFuTest extends \PHPUnit_Framework_TestCase
 
     /**************************************************************************/
 
+    public function testBundleShouldUseFilters()
+    {
+        $called = false;
+        $callback = function($content) use(&$called) {
+            $called = true;
+            return 'filtered';
+        };
+        $this->_bundleFu->getJsFilterChain()->addFilter(new Filter\Callback($callback));
+
+        $this->_bundleFu->start();
+        echo '<script src="/js/js_1.js?1000" type="text/javascript"></script>';
+        $this->_bundleFu->end();
+
+        $rendered = $this->_bundleFu->render();
+
+        $this->assertTrue($called);
+        $this->assertFileMatch($this->_bundleFu->getJsBundlePath(), 'filtered');
+    }
+
     public function testSetCssCacheUrlShouldBeUsedInOutput()
     {
         $this->_bundleFu->setCssCacheUrl('http://mycdn.org');

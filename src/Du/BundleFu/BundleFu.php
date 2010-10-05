@@ -561,7 +561,7 @@ class BundleFu
                 }
             }
 
-            $contents = $this->getCssFilterChain()->filter($contents);
+            $data = $this->getCssFilterChain()->filter($data);
 
             $dir = dirname($cacheFile);
 
@@ -613,7 +613,7 @@ class BundleFu
                 }
             }
 
-            $contents = $this->getJsFilterChain()->filter($contents);
+            $data = $this->getJsFilterChain()->filter($data);
 
             $dir = dirname($cacheFile);
 
