@@ -1,7 +1,7 @@
 Twig Integration
 ================
 
-Twig_Extension_BundleFu is a [Twig](http://www.twig-project.org) extension integrating Du_BundeFu into your applications using the Twig template language.
+BundleFu.php is a [Twig](http://www.twig-project.org) extension integrating Du_BundeFu into your applications using the Twig template language.
 
 ## Installation ##
 
