@@ -106,7 +106,7 @@ You can add filters like that:
 
 ### Example ###
 
-Du_BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/intl/de-DE/closure/compiler/) using the [Service API](http://code.google.com/intl/de-DE/closure/compiler/docs/api-ref.html).
+Du_BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
 
 Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
 
