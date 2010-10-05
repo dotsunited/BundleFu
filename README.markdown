@@ -44,11 +44,9 @@ Du_BundleFu needs at least PHP 5.3.0 to run and requires that you have setup aut
 have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
 
     spl_autoload_register(function($className) {
-        if (strpos($className, 'Du\\') !== 0) {
-            return;
+        if (strpos($className, 'Du\\BundleFu\\') === 0) {
+            require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
         }
-        require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
-        return true;
     });
 
 This requires, that you have installed Du_BundleFu in your `include_path` which is already the case if you have installed Du_BundleFu via PEAR.

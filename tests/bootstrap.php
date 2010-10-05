@@ -34,8 +34,6 @@ spl_autoload_register(function($className) {
     }
 
     require str_replace($replace, DIRECTORY_SEPARATOR, $className) . '.php';
-
-    return true;
 }, true, true);
 
 // Define filters for clover report

@@ -32,11 +32,9 @@ function bundle_fu()
     if (!$bundleFu) {
         // Setup autoloading
         spl_autoload_register(function($className) {
-            if (strpos($className, 'Du\\') !== 0) {
-                return;
+            if (strpos($className, 'Du\\BundleFu\\') === 0) {
+                require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
             }
-            require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
-            return true;
         });
 
         $bundleFu = new \Du\BundleFu\BundleFu();

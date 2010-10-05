@@ -35,7 +35,7 @@ class BundleFu extends \lithium\template\Helper
     protected $_bundleFu;
 
     /**
-     * Setup autloading for Du namespace.
+     * Setup autloading.
      *
      * @return void
      */
@@ -44,11 +44,9 @@ class BundleFu extends \lithium\template\Helper
 
         // Setup autoloading
         spl_autoload_register(function($className) {
-            if (strpos($className, 'Du\\') !== 0) {
-                return;
+            if (strpos($className, 'Du\\BundleFu\\') === 0) {
+                require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
             }
-            require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
-            return true;
         });
     }
 

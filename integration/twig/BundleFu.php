@@ -33,15 +33,14 @@ class Twig_Extension_BundleFu extends Twig_Extension
     protected $_bundleFu;
 
     /**
-     * Constrcutor
+     * Constructor
      */
     public function __construct()
     {
         spl_autoload_register(function($className) {
-            if (strpos($className, 'Du\\BundleFu\\') !== 0) {
-                return;
+            if (strpos($className, 'Du\\BundleFu\\') === 0) {
+                require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
             }
-            require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
         });
     }
 

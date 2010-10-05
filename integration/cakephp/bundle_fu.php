@@ -33,6 +33,18 @@ class BundleFuHelper extends Helper
     protected $_bundleFu;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        spl_autoload_register(function($className) {
+            if (strpos($className, 'Du\\BundleFu\\') === 0) {
+                require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
+            }
+        });
+    }
+
+    /**
      * Set the BundleFu instance
      *
      * @param \Du\BundleFu\BundleFu $bundleFu
