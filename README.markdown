@@ -87,3 +87,13 @@ Output the bundle `<script>` and `<link>` tags wherever you want:
     // Renders the <script> tag only
     echo $bundleFu->renderJs();
     ?>
+
+## Integration ##
+
+BundleFu has integrations into the following frameworks/libraries:
+
+    * [CakePHP](http://github.com/dotsunited/du-bundlefu/tree/master/integration/cakephp/)
+    * [CodeIgniter](http://github.com/dotsunited/du-bundlefu/tree/master/integration/codeigniter/)
+    * [Lithium](http://github.com/dotsunited/du-bundlefu/tree/master/integration/lithium/)
+    * [Twig](http://github.com/dotsunited/du-bundlefu/tree/master/integration/twig/)
+    * [Zend Framework 1.x.x](http://github.com/dotsunited/du-bundlefu/tree/master/integration/zf1/)
