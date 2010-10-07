@@ -21,6 +21,12 @@ Into this:
     <link type="text/css" src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890">
     <script type="text/javascript" src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890"></script>
 
+## Features ##
+
+* Automatically detects modifications to your css and javaccript files and regenerates the bundles automatically.
+* Rewrites relative URLs in your css files to avoid broken image references.
+* Bundle contents can be modified by filters for code minification, compression etc. (A [Google Closure Compiler](http://code.google.com/closure/compiler/) filter using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html) comes with the library).
+
 ## Integration ##
 
 BundleFu offers integrations into the following frameworks/libraries:
