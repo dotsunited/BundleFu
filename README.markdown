@@ -18,7 +18,7 @@ In short, it turns this:
 
 Into this:
 
-    <link type="text/css" src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890"></script>
+    <link type="text/css" src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890">
     <script type="text/javascript" src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890"></script>
 
 ## Integration ##
@@ -84,7 +84,7 @@ Use the instance to bundle your files in your templates:
 
 Output the bundle `<script>` and `<link>` tags wherever you want:
 
-    <?php 
+    <?php
     // Renders both <script> and <link> tags
     echo $bundleFu->render();
 
