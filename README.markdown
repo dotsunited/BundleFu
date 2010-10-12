@@ -31,11 +31,11 @@ Into this:
 
 BundleFu offers integrations into the following frameworks/libraries:
 
-* [CakePHP](http://github.com/dotsunited/du-bundlefu/tree/master/integration/cakephp/)
-* [CodeIgniter](http://github.com/dotsunited/du-bundlefu/tree/master/integration/codeigniter/)
-* [Lithium](http://github.com/dotsunited/du-bundlefu/tree/master/integration/lithium/)
-* [Twig](http://github.com/dotsunited/du-bundlefu/tree/master/integration/twig/)
-* [Zend Framework 1.x.x](http://github.com/dotsunited/du-bundlefu/tree/master/integration/zf1/)
+  * [CakePHP](http://github.com/dotsunited/du-bundlefu/tree/master/integration/cakephp/)
+  * [CodeIgniter](http://github.com/dotsunited/du-bundlefu/tree/master/integration/codeigniter/)
+  * [Lithium](http://github.com/dotsunited/du-bundlefu/tree/master/integration/lithium/)
+  * [Twig](http://github.com/dotsunited/du-bundlefu/tree/master/integration/twig/)
+  * [Zend Framework 1.x.x](http://github.com/dotsunited/du-bundlefu/tree/master/integration/zf1/)
 
 ## Installation ##
 
@@ -120,17 +120,17 @@ Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your java
 
 ## Notes ##
 
-* All content inside of `$bundleFu->start()` and `$bundleFu->end()` will be lost. Be sure to only put css / js includes inside of the block.
-* Scripts / stylesheets are detected by parsing the output and looking for include files. HTML comments are ignored, so if you comment out a script like this:
+  * All content inside of `$bundleFu->start()` and `$bundleFu->end()` will be lost. Be sure to only put css / js includes inside of the block.
+  * Scripts / stylesheets are detected by parsing the output and looking for include files. HTML comments are ignored, so if you comment out a script like this:
 
-      <!-- <script src="/js/script.js" type="text/javascript"></script> -->
+        <!-- <script src="/js/script.js" type="text/javascript"></script> -->
 
-  the comment will be ignored and the file will be bundled anyways. Be sure to comment out via PHP:
+    the comment will be ignored and the file will be bundled anyways. Be sure to comment out via PHP:
 
-      <?php /* <script src="/js/script.js" type="text/javascript"></script> */ ?>
+        <?php /* <script src="/js/script.js" type="text/javascript"></script> */ ?>
 
-* External dependencies via querystring loading will not work:
+  * External dependencies via querystring loading will not work:
 
-      <script src="/js/scriptaculous.js?load=effects,controls" type="text/javascript"></script>
+        <script src="/js/scriptaculous.js?load=effects,controls" type="text/javascript"></script>
 
-  Instead, you’ll need to include each javascript file as normal.
+    Instead, you’ll need to include each javascript file as normal.
