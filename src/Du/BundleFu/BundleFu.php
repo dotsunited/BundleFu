@@ -577,7 +577,7 @@ class BundleFu
         }
 
         return sprintf(
-            '<link href="%s?%s" media="screen" rel="stylesheet" type="text/css"%s>',
+            '<link href="%s?%s" rel="stylesheet" type="text/css"%s>',
             $this->getCssBundleUrl(),
             $cacheTime,
             $this->getRenderAsXhtml() ? ' /' : ''

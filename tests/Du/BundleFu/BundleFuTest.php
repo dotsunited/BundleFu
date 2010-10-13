@@ -116,7 +116,7 @@ class BundleFuTest extends \PHPUnit_Framework_TestCase
 
         $rendered = $this->_bundleFu->render();
 
-        $this->assertRegExp('/<link href="http:\/\/mycdn.org[^"]+" media="screen" rel="stylesheet" type="text\/css">/', $rendered);
+        $this->assertRegExp('/<link href="http:\/\/mycdn.org[^"]+" rel="stylesheet" type="text\/css">/', $rendered);
     }
 
     public function testSetJsCacheUrlShouldBeUsedInOutput()
@@ -140,7 +140,7 @@ class BundleFuTest extends \PHPUnit_Framework_TestCase
 
         $rendered = $this->_bundleFu->render();
 
-        $this->assertRegExp('/<link href="[^"]+" media="screen" rel="stylesheet" type="text\/css">/', $rendered);
+        $this->assertRegExp('/<link href="[^"]+" rel="stylesheet" type="text\/css">/', $rendered);
     }
 
     public function testBundleShouldGenerateXhtmlIfSetRenderAsXhtmlIsCalledWithTrue()
@@ -153,7 +153,7 @@ class BundleFuTest extends \PHPUnit_Framework_TestCase
 
         $rendered = $this->_bundleFu->render();
 
-        $this->assertRegExp('/<link href="[^"]+" media="screen" rel="stylesheet" type="text\/css" \/>/', $rendered);
+        $this->assertRegExp('/<link href="[^"]+" rel="stylesheet" type="text\/css" \/>/', $rendered);
     }
 
     public function testBundleJsFilesShouldIncludeJsContent()
