@@ -133,4 +133,4 @@ Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your java
 
         <script src="/js/scriptaculous.js?load=effects,controls" type="text/javascript"></script>
 
-    Instead, you’ll need to include each javascript file as normal.
+    Instead, you'll need to include each javascript file as normal.
