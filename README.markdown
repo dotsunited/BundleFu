@@ -49,11 +49,13 @@ You can install Du_BundleFu via the [Dots United PEAR channel](http://pear.dotsu
 Du_BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks
 have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
 
+    <?php
     spl_autoload_register(function($className) {
         if (strpos($className, 'Du\\BundleFu\\') === 0) {
             require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
         }
     });
+    ?>
 
 This requires, that you have installed Du_BundleFu in your `include_path` which is already the case if you have installed Du_BundleFu via PEAR.
 
@@ -107,8 +109,10 @@ You can manipulate the bundled css/javascript code with filters. Filters are cla
 
 You can add filters like that:
 
+    <?php
     $bundleFu->getCssFilterChain()->addFilter(new MyCssFilter());
     $bundleFu->getJsFilterChain()->addFilter(my MyJsFilter());
+    ?>
 
 ### Example ###
 
@@ -116,7 +120,9 @@ Du_BundleFu provides a filter to compile javascript code with the [Google Closur
 
 Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
 
+    <?php
     $bundleFu->getJsFilterChain()->addFilter(new \Du\BundleFu\Filter\ClosureCompilerService());
+    ?>
 
 ## Notes ##
 
