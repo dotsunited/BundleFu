@@ -18,8 +18,8 @@ In short, it turns this:
 
 Into this:
 
-    <link type="text/css" src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890">
-    <script type="text/javascript" src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890"></script>
+    <link href="/css/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890" rel="stylesheet" type="text/css">
+    <script src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.css?1234567890" type="text/javascript"></script>
 
 ## Features ##
 
