@@ -140,3 +140,7 @@ Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your java
         <script src="/js/scriptaculous.js?load=effects,controls" type="text/javascript"></script>
 
     Instead, you'll need to include each javascript file as normal.
+
+## License ##
+
+Du_BundleFu is released under the [new BSD license](http://www.opensource.org/licenses/bsd-license.php).
