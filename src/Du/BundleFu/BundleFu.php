@@ -527,18 +527,36 @@ class BundleFu
         if ($options['bypass']) {
             echo $captured;
         } else {
-            preg_match_all('/(href|src) *= *["\']([^"^\'^\?]+)/i', $captured, $matches, PREG_SET_ORDER);
-
-            foreach ($matches as $match) {
-                if (strtolower($match[1]) == 'src') {
-                    $this->addJsFile($match[2], $options['docroot']);
-                } else {
-                    $this->addCssFile($match[2], $options['docroot']);
-                }
-            }
+            $this->extractFiles($captured, $options['docroot']);
         }
 
         $this->_currentBundleOptions = null;
+
+        return $this;
+    }
+
+    /**
+     * Extract files from HTML.
+     *
+     * @param string $html
+     * @param string $docRoot
+     * @return BundleFu
+     */
+    public function extractFiles($html, $docRoot = null)
+    {
+        if (!$docRoot) {
+            $docRoot = $this->getDocRoot();
+        }
+
+        preg_match_all('/(href|src) *= *["\']([^"^\'^\?]+)/i', $html, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+            if (strtolower($match[1]) == 'src') {
+                $this->addJsFile($match[2], $docRoot);
+            } else {
+                $this->addCssFile($match[2], $docRoot);
+            }
+        }
 
         return $this;
     }
