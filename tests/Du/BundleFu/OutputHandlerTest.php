@@ -30,7 +30,7 @@ class OutputHandlerTest extends TestCase
     public function testInvokingObjectShouldRewriteHtml()
     {
         $handler = new OutputHandler($this->_bundleFu);
-        $contents = $handler($this->_includeSome());
+        $contents = $handler($this->_includeAll());
 
         $this->assertRegExp('/<link href="' . preg_quote($this->_bundleFu->getCssBundleUrl(), '/') . '[^"]*" rel="stylesheet" type="text\/css">/', $contents);
         $this->assertRegExp('/<script src="' . preg_quote($this->_bundleFu->getJsBundleUrl(), '/') . '[^"]*" type="text\/javascript">/', $contents);

@@ -74,50 +74,40 @@ class OutputHandler
      */
     public function __invoke($buffer)
     {
-        $document = new \DOMDocument();
-        $document->loadHTML($buffer);
-
         $bundleFu = $this->getBundleFu();
-        $xpath    = new \DOMXPath($document);
 
-        $nodes = $xpath->query('//script[@src]');
+        preg_match_all("/(<link[^>]+>)+/i", $buffer, $matches, PREG_SET_ORDER);
 
-        if ($nodes->length > 0) {
-            for ($i = 0, $length = $nodes->length; $i < $length; $i++) {
-                $item = $nodes->item($i);
-                $bundleFu->addJsFile($item->getAttribute('src'));
+        $last = count($matches) - 1;
+        $curr = 0;
+        foreach ($matches as $match) {
+            $bundleFu->extractFiles($match[0]);
 
-                if ($i >= $length - 1) {
-                    $tmpDoc = new \DOMDocument();
-                    $tmpDoc->loadHTML($bundleFu->renderJs());
-                    $el = $document->importNode($tmpDoc->getElementsByTagName('script')->item(0));
-
-                    $item->parentNode->replaceChild($el, $item);
-                } else {
-                    $item->parentNode->removeChild($item);
-                }
+            if ($curr++ == $last) {
+                $replace = $bundleFu->renderCss() . PHP_EOL;
+            } else {
+                $replace = '';
             }
+
+            $buffer = preg_replace('/' . preg_quote($match[0], '/') . '[\r|\n|\r\n]*/', $replace, $buffer);
         }
 
-        $nodes = $xpath->query('//link[@href]');
+        preg_match_all("/(<script[^>]+><\/script>)+/siU", $buffer, $matches, PREG_SET_ORDER);
 
-        if ($nodes->length > 0) {
-            for ($i = 0, $length = $nodes->length; $i < $length; $i++) {
-                $item = $nodes->item($i);
-                $bundleFu->addCssFile($item->getAttribute('href'));
+        $last = count($matches) - 1;
+        $curr = 0;
+        foreach ($matches as $match) {
+            $bundleFu->extractFiles($match[0]);
 
-                if ($i >= $length - 1) {
-                    $tmpDoc = new \DOMDocument();
-                    $tmpDoc->loadHTML($bundleFu->renderCss());
-                    $el = $document->importNode($tmpDoc->getElementsByTagName('link')->item(0));
-
-                    $item->parentNode->replaceChild($el, $item);
-                } else {
-                    $item->parentNode->removeChild($item);
-                }
+            if ($curr++ == $last) {
+                $replace = $bundleFu->renderJs() . PHP_EOL;
+            } else {
+                $replace = '';
             }
+
+            $buffer = preg_replace('/' . preg_quote($match[0], '/') . '[\r|\n|\r\n]*/', $replace, $buffer);
         }
 
-        return $document->saveHtml();
+        return $buffer;
     }
 }
