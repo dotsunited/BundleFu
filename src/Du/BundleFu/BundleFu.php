@@ -444,6 +444,48 @@ class BundleFu
     }
 
     /**
+     * Add a CSS file.
+     * 
+     * @param string $file
+     * @param string $docRoot
+     * @return BundleFu 
+     */
+    public function addCssFile($file, $docRoot = null)
+    {
+        if (!$docRoot) {
+            $docRoot = $this->getDocRoot();
+        }
+
+        $file    = preg_replace('/^https?:\/\/[^\/]+/i', '', $file);
+        $abspath = $docRoot . $file;
+
+        $this->getCssFileList()->addFile($file, $abspath);
+
+        return $this;
+    }
+
+    /**
+     * Add a javascript file.
+     * 
+     * @param string $file
+     * @param string $docRoot
+     * @return BundleFu 
+     */
+    public function addJsFile($file, $docRoot = null)
+    {
+        if (!$docRoot) {
+            $docRoot = $this->getDocRoot();
+        }
+
+        $file    = preg_replace('/^https?:\/\/[^\/]+/i', '', $file);
+        $abspath = $docRoot . $file;
+
+        $this->getJsFileList()->addFile($file, $abspath);
+
+        return $this;
+    }
+
+    /**
      * Start capturing and bundling current output.
      * 
      * @param array $options
@@ -485,21 +527,36 @@ class BundleFu
         if ($options['bypass']) {
             echo $captured;
         } else {
-            preg_match_all('/(href|src) *= *["\']([^"^\'^\?]+)/i', $captured, $matches, PREG_SET_ORDER);
-
-            foreach ($matches as $match) {
-                $file    = preg_replace('/^https?:\/\/[^\/]+/i', '', $match[2]);
-                $abspath = $options['docroot'] . $file;
-
-                if (strtolower($match[1]) == 'src') {
-                    $this->getJsFileList()->addFile($file, $abspath);
-                } else {
-                    $this->getCssFileList()->addFile($file, $abspath);
-                }
-            }
+            $this->extractFiles($captured, $options['docroot']);
         }
 
         $this->_currentBundleOptions = null;
+
+        return $this;
+    }
+
+    /**
+     * Extract files from HTML.
+     *
+     * @param string $html
+     * @param string $docRoot
+     * @return BundleFu
+     */
+    public function extractFiles($html, $docRoot = null)
+    {
+        if (!$docRoot) {
+            $docRoot = $this->getDocRoot();
+        }
+
+        preg_match_all('/(href|src) *= *["\']([^"^\'^\?]+)/i', $html, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+            if (strtolower($match[1]) == 'src') {
+                $this->addJsFile($match[2], $docRoot);
+            } else {
+                $this->addCssFile($match[2], $docRoot);
+            }
+        }
 
         return $this;
     }
