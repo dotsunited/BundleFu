@@ -68,6 +68,22 @@ class BundleFuTest extends TestCase
 
     /**************************************************************************/
 
+    /**
+     * @expectedException PHPUnit_Framework_Error
+     */
+    public function testBundleShouldTriggerNoticeWhenCallingGetCssFilterChain()
+    {
+        $this->_bundleFu->getCssFilterChain();
+    }
+
+    /**
+     * @expectedException PHPUnit_Framework_Error
+     */
+    public function testBundleShouldTriggerNoticeWhenCallingGetJsFilterChain()
+    {
+        $this->_bundleFu->getJsFilterChain();
+    }
+
     public function testBundleShouldUseCssFilters()
     {
         $called = false;
