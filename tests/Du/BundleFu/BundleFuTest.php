@@ -68,14 +68,33 @@ class BundleFuTest extends TestCase
 
     /**************************************************************************/
 
-    public function testBundleShouldUseFilters()
+    public function testBundleShouldUseCssFilters()
     {
         $called = false;
         $callback = function($content) use(&$called) {
             $called = true;
             return 'filtered';
         };
-        $this->_bundleFu->getJsFilterChain()->addFilter(new Filter\Callback($callback));
+        $this->_bundleFu->setCssFilter(new Filter\Callback($callback));
+
+        $this->_bundleFu->start();
+        echo '<link href="/css/css_1.css?1000" media="screen" rel="stylesheet" type="text/css">';
+        $this->_bundleFu->end();
+
+        $rendered = $this->_bundleFu->render();
+
+        $this->assertTrue($called);
+        $this->assertFileMatch($this->_bundleFu->getCssBundlePath(), 'filtered');
+    }
+
+    public function testBundleShouldUseJsFilters()
+    {
+        $called = false;
+        $callback = function($content) use(&$called) {
+            $called = true;
+            return 'filtered';
+        };
+        $this->_bundleFu->setJsFilter(new Filter\Callback($callback));
 
         $this->_bundleFu->start();
         echo '<script src="/js/js_1.js?1000" type="text/javascript"></script>';

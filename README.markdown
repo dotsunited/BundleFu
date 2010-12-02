@@ -107,11 +107,22 @@ Output the bundle `<script>` and `<link>` tags wherever you want:
 
 You can manipulate the bundled css/javascript code with filters. Filters are classes which implement the `\Du\BundleFu\Filter\Filter` interface.
 
-You can add filters like that:
+You can add filters like this:
 
     <?php
-    $bundleFu->getCssFilterChain()->addFilter(new MyCssFilter());
-    $bundleFu->getJsFilterChain()->addFilter(my MyJsFilter());
+    $bundleFu->setCssFilter(new MyCssFilter());
+    $bundleFu->setJsFilter(my MyJsFilter());
+    ?>
+
+If you need multiple filters, you can use `\Du\BundleFu\Filter\FilterChain` like this:
+
+    <?php
+    $filterChain = new \Du\BundleFu\Filter\FilterChain();
+
+    $filterChain->addFilter(new MyCssFilter1());
+    $filterChain->addFilter(new MyCssFilter2());
+
+    $bundleFu->setCssFilter($filterChain);
     ?>
 
 ### Example ###
@@ -121,7 +132,7 @@ Du_BundleFu provides a filter to compile javascript code with the [Google Closur
 Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
 
     <?php
-    $bundleFu->getJsFilterChain()->addFilter(new \Du\BundleFu\Filter\ClosureCompilerService());
+    $bundleFu->setJsFilter(new \Du\BundleFu\Filter\ClosureCompilerService());
     ?>
 
 ## Notes ##
