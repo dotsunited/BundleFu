@@ -13,9 +13,9 @@
   <email>jan.sorgalla@dotsunited.de</email>
   <active>yes</active>
  </lead>
- <date>2010-10-05</date>
+ <date>2010-12-02</date>
  <version>
-  <release>1.0.0RC1</release>
+  <release>1.0.0RC2</release>
   <api>1.0.0</api>
  </version>
  <stability>
@@ -38,6 +38,7 @@
         <file install-as="Du/BundleFu/BundleFu.php" name="BundleFu.php" role="php" />
         <file install-as="Du/BundleFu/CssUrlRewriter.php" name="CssUrlRewriter.php" role="php" />
         <file install-as="Du/BundleFu/FileList.php" name="FileList.php" role="php" />
+        <file install-as="Du/BundleFu/OutputHander.php" name="OutputHander.php" role="php" />
        </dir>
       </dir>
      </dir>
