@@ -38,7 +38,7 @@
         <file install-as="Du/BundleFu/BundleFu.php" name="BundleFu.php" role="php" />
         <file install-as="Du/BundleFu/CssUrlRewriter.php" name="CssUrlRewriter.php" role="php" />
         <file install-as="Du/BundleFu/FileList.php" name="FileList.php" role="php" />
-        <file install-as="Du/BundleFu/OutputHander.php" name="OutputHander.php" role="php" />
+        <file install-as="Du/BundleFu/OutputHandler.php" name="OutputHandler.php" role="php" />
        </dir>
       </dir>
      </dir>
