@@ -3,7 +3,7 @@ Du_BundleFu
 
 Du_BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
 
-It is a port of the [Ruby on Rails](http://rubyonrails.org) plugin [bundle-fu](http://code.google.com/p/bundle-fu/).
+It is highly inspired by the [Ruby on Rails](http://rubyonrails.org) plugin [bundle-fu](http://code.google.com/p/bundle-fu/).
 
 In short, it turns this:
 
@@ -23,7 +23,7 @@ Into this:
 
 ## Features ##
 
-  * Automatically detects modifications to your css and javaccript files and regenerates the bundles automatically.
+  * Automatically detects modifications to your css and javascript files and regenerates the bundles automatically.
   * Rewrites relative URLs in your css files to avoid broken image references.
   * Bundle contents can be modified by filters for code minification, compression etc. (A [Google Closure Compiler](http://code.google.com/closure/compiler/) filter using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html) comes with the library).
 
@@ -57,7 +57,7 @@ have tools to setup autoloading, if you are unsure you can use the following cod
     });
     ?>
 
-This requires, that you have installed Du_BundleFu in your `include_path` which is already the case if you have installed Du_BundleFu via PEAR.
+This requires that you have installed Du_BundleFu in your `include_path` which is already the case if you have installed it via PEAR.
 
 ## Usage ##
 
@@ -169,8 +169,8 @@ The `\Du\BundleFu\Filter\Callback` can filter by using any PHP callback. If you 
 
 ## Notes ##
 
-  * All content inside of `$bundleFu->start()` and `$bundleFu->end()` will be lost. Be sure to only put css / js includes inside of the block.
-  * Scripts / stylesheets are detected by parsing the output and looking for include files. HTML comments are ignored, so if you comment out a script like this:
+  * All content inside of `$bundleFu->start()` and `$bundleFu->end()` will be lost. Be sure to only put css/javascript includes inside of the block.
+  * Scripts/stylesheets are detected by parsing the output and looking for include files. HTML comments are ignored, so if you comment out a script like this:
 
         <!-- <script src="/js/script.js" type="text/javascript"></script> -->
 
