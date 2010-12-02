@@ -125,7 +125,7 @@ If you need multiple filters, you can use `\Du\BundleFu\Filter\FilterChain` like
     $bundleFu->setCssFilter($filterChain);
     ?>
 
-### Example ###
+### Examples ###
 
 Du_BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
 
@@ -133,6 +133,38 @@ Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your java
 
     <?php
     $bundleFu->setJsFilter(new \Du\BundleFu\Filter\ClosureCompilerService());
+    ?>
+
+The `\Du\BundleFu\Filter\Callback` can filter by using any PHP callback. If you want to compress your CSS using [YUI Compressor](http://developer.yahoo.com/yui/compressor/) you can either write a custom filter or use the following code leveraging the `Callback` filter:
+
+    <?php
+    $filter = new \Du\BundleFu\Filter\Callback(function($content) {
+        $descriptorspec = array(
+             0 => array('pipe', 'r'),  // STDIN
+             1 => array('pipe', 'w'),  // STDOUT
+             2 => array('pipe', 'a')   // STDERR
+        );
+
+        $handle = proc_open('java -jar /path/to/yuicompressor.jar --type css' , $descriptorspec, $pipes);
+
+        if (is_resource($handle)) {
+            fwrite($pipes[0], $content);
+            fclose($pipes[0]);
+
+            $compressed = stream_get_contents($pipes[1]);
+            fclose($pipes[1]);
+
+            proc_close($handle);
+
+            if ($compressed) {
+                return $compressed;
+            }
+        }
+
+        return $content;
+    });
+
+    $bundleFu->setCssFilter($filter);
     ?>
 
 ## Notes ##
