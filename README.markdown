@@ -1,7 +1,7 @@
-Du_BundleFu
+Du\BundleFu
 ===========
 
-Du_BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
+Du\BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
 
 It is highly inspired by the [Ruby on Rails](http://rubyonrails.org) plugin [bundle-fu](http://code.google.com/p/bundle-fu/).
 
@@ -39,14 +39,14 @@ BundleFu offers integrations into the following frameworks/libraries:
 
 ## Installation ##
 
-You can install Du_BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
+You can install Du\BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
 
     pear channel-discover pear.dotsunited.de
     pear install dotsunited/Du_BundleFu-beta
 
 ## Prerequisites ##
 
-Du_BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks
+Du\BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks
 have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
 
     <?php
@@ -57,7 +57,7 @@ have tools to setup autoloading, if you are unsure you can use the following cod
     });
     ?>
 
-This requires that you have installed Du_BundleFu in your `include_path` which is already the case if you have installed it via PEAR.
+This requires that you have installed Du\BundleFu in your `include_path` which is already the case if you have installed it via PEAR.
 
 ## Usage ##
 
@@ -127,7 +127,7 @@ If you need multiple filters, you can use `\Du\BundleFu\Filter\FilterChain` like
 
 ### Examples ###
 
-Du_BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
+Du\BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
 
 Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
 
@@ -186,4 +186,4 @@ The `\Du\BundleFu\Filter\Callback` can filter by using any PHP callback. If you 
 
 ## License ##
 
-Du_BundleFu is released under the [new BSD license](http://www.opensource.org/licenses/bsd-license.php).
+Du\BundleFu is released under the [new BSD license](http://www.opensource.org/licenses/bsd-license.php).
