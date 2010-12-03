@@ -17,6 +17,8 @@
 
 namespace Du\BundleFu;
 
+use Du\BundleFu\Filter\Callback as CallbackFilter;
+
 /**
  * @category   Du
  * @package    Du_BundleFu
@@ -91,7 +93,7 @@ class BundleFuTest extends TestCase
             $called = true;
             return 'filtered';
         };
-        $this->_bundleFu->setCssFilter(new Filter\Callback($callback));
+        $this->_bundleFu->setCssFilter(new CallbackFilter($callback));
 
         $this->_bundleFu->start();
         echo '<link href="/css/css_1.css?1000" media="screen" rel="stylesheet" type="text/css">';
@@ -110,7 +112,7 @@ class BundleFuTest extends TestCase
             $called = true;
             return 'filtered';
         };
-        $this->_bundleFu->setJsFilter(new Filter\Callback($callback));
+        $this->_bundleFu->setJsFilter(new CallbackFilter($callback));
 
         $this->_bundleFu->start();
         echo '<script src="/js/js_1.js?1000" type="text/javascript"></script>';

@@ -16,6 +16,8 @@
 
 namespace Du\BundleFu;
 
+use Du\BundleFu\Filter\Filter;
+
 /**
  * Du\BundleFu\BundleFu
  *
@@ -98,14 +100,14 @@ class BundleFu
     /**
      * CSS filter.
      *
-     * @var Filter\Filter
+     * @var Filter
      */
     protected $_cssFilter;
 
     /**
      * CSS filter.
      *
-     * @var Filter\Filter
+     * @var Filter
      */
     protected $_jsFilter;
 
@@ -308,10 +310,10 @@ class BundleFu
     /**
      * Set css filter.
      *
-     * @param Filter\Filter
+     * @param Filter
      * return BundleFu
      */
-    public function setCssFilter(Filter\Filter $filter)
+    public function setCssFilter(Filter $filter)
     {
         $this->_cssFilter = $filter;
         return $this;
@@ -320,7 +322,7 @@ class BundleFu
     /**
      * Get css filter.
      *
-     * @return Filter\Filter
+     * @return Filter
      */
     public function getCssFilter()
     {
@@ -330,10 +332,10 @@ class BundleFu
     /**
      * Set javascript filter.
      *
-     * @param Filter\Filter
+     * @param Filter
      * return BundleFu
      */
-    public function setJsFilter(Filter\Filter $filter)
+    public function setJsFilter(Filter $filter)
     {
         $this->_jsFilter = $filter;
         return $this;
@@ -342,7 +344,7 @@ class BundleFu
     /**
      * Get javascript filter.
      *
-     * @return Filter\Filter
+     * @return Filter
      */
     public function getJsFilter()
     {
@@ -352,17 +354,17 @@ class BundleFu
     /**
      * Get css filter chain.
      *
-     * @return Filter\FilterChain
+     * @return FilterChain
      */
     public function getCssFilterChain()
     {
         trigger_error('getCssFilterChain() is deprecated, use setCssFilter()/getCssFilter() instead', \E_USER_NOTICE);
 
         if (null === $this->_cssFilter) {
-            $this->_cssFilter = new Filter\FilterChain();
+            $this->_cssFilter = new FilterChain();
         } else {
             $currentFilter = $this->_cssFilter;
-            $this->_cssFilter = new Filter\FilterChain();
+            $this->_cssFilter = new FilterChain();
             $this->_cssFilter->addFilter($currentFilter);
         }
 
@@ -372,17 +374,17 @@ class BundleFu
     /**
      * Get javascript filter chain.
      *
-     * @return Filter\FilterChain
+     * @return FilterChain
      */
     public function getJsFilterChain()
     {
         trigger_error('getJsFilterChain() is deprecated, use setJsFilter()/getJsFilter() instead', \E_USER_NOTICE);
 
         if (null === $this->_jsFilter) {
-            $this->_jsFilter = new Filter\FilterChain();
+            $this->_jsFilter = new FilterChain();
         } else {
             $currentFilter = $this->_jsFilter;
-            $this->_jsFilter = new Filter\FilterChain();
+            $this->_jsFilter = new FilterChain();
             $this->_jsFilter->addFilter($currentFilter);
         }
 
