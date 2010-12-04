@@ -16,6 +16,8 @@
 
 namespace Du\BundleFu;
 
+use Du\BundleFu\Filter\Filter;
+
 /**
  * Du\BundleFu\BundleFu
  *
@@ -96,18 +98,18 @@ class BundleFu
     protected $_jsFileList;
 
     /**
-     * CSS filter chain.
+     * CSS filter.
      *
-     * @var Filter\FilterChan
+     * @var Filter
      */
-    protected $_cssFilterChain;
+    protected $_cssFilter;
 
     /**
-     * CSS filter chain.
+     * CSS filter.
      *
-     * @var Filter\FilterChan
+     * @var Filter
      */
-    protected $_jsFilterChain;
+    protected $_jsFilter;
 
     /**
      * CSS url rewriter.
@@ -306,17 +308,67 @@ class BundleFu
     }
 
     /**
+     * Set css filter.
+     *
+     * @param Filter
+     * return BundleFu
+     */
+    public function setCssFilter(Filter $filter)
+    {
+        $this->_cssFilter = $filter;
+        return $this;
+    }
+
+    /**
+     * Get css filter.
+     *
+     * @return Filter
+     */
+    public function getCssFilter()
+    {
+        return $this->_cssFilter;
+    }
+
+    /**
+     * Set javascript filter.
+     *
+     * @param Filter
+     * return BundleFu
+     */
+    public function setJsFilter(Filter $filter)
+    {
+        $this->_jsFilter = $filter;
+        return $this;
+    }
+
+    /**
+     * Get javascript filter.
+     *
+     * @return Filter
+     */
+    public function getJsFilter()
+    {
+        return $this->_jsFilter;
+    }
+
+    /**
      * Get css filter chain.
      *
      * @return FilterChain
      */
     public function getCssFilterChain()
     {
-        if (null === $this->_cssFilterChain) {
-            $this->_cssFilterChain = new Filter\FilterChain();
+        trigger_error('getCssFilterChain() is deprecated, use setCssFilter()/getCssFilter() instead', \E_USER_NOTICE);
+
+        if (null === $this->_cssFilter) {
+            $this->_cssFilter = new FilterChain();
+        } else {
+            $currentFilter = $this->_cssFilter;
+            $this->_cssFilter = new FilterChain();
+            $this->_cssFilter->addFilter($currentFilter);
         }
 
-        return $this->_cssFilterChain;
+        return $this->_cssFilter;
     }
 
     /**
@@ -326,11 +378,17 @@ class BundleFu
      */
     public function getJsFilterChain()
     {
-        if (null === $this->_jsFilterChain) {
-            $this->_jsFilterChain = new Filter\FilterChain();
+        trigger_error('getJsFilterChain() is deprecated, use setJsFilter()/getJsFilter() instead', \E_USER_NOTICE);
+
+        if (null === $this->_jsFilter) {
+            $this->_jsFilter = new FilterChain();
+        } else {
+            $currentFilter = $this->_jsFilter;
+            $this->_jsFilter = new FilterChain();
+            $this->_jsFilter->addFilter($currentFilter);
         }
 
-        return $this->_jsFilterChain;
+        return $this->_jsFilter;
     }
 
     /**
@@ -618,7 +676,10 @@ class BundleFu
                 }
             }
 
-            $data = $this->getCssFilterChain()->filter($data);
+            $filter = $this->getCssFilter();
+            if (null !== $filter) {
+                $data = $filter->filter($data);
+            }
 
             $dir = dirname($cacheFile);
 
@@ -670,7 +731,10 @@ class BundleFu
                 }
             }
 
-            $data = $this->getJsFilterChain()->filter($data);
+            $filter = $this->getJsFilter();
+            if (null !== $filter) {
+                $data = $filter->filter($data);
+            }
 
             $dir = dirname($cacheFile);
 
