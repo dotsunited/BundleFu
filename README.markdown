@@ -42,7 +42,7 @@ BundleFu offers integrations into the following frameworks/libraries:
 You can install Du\BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
 
     pear channel-discover pear.dotsunited.de
-    pear install dotsunited/Du_BundleFu-beta
+    pear install dotsunited/Du_BundleFu
 
 ## Prerequisites ##
 
