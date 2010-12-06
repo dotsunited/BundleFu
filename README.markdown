@@ -186,4 +186,4 @@ The `\Du\BundleFu\Filter\Callback` can filter by using any PHP callback. If you 
 
 ## License ##
 
-Du\BundleFu is released under the [new BSD license](http://www.opensource.org/licenses/bsd-license.php).
+Du\BundleFu is released under the [new BSD license](https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE).

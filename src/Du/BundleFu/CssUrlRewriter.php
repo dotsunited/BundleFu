@@ -11,7 +11,7 @@
  * @category   Du
  * @package    Du_BundleFu
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
 namespace Du\BundleFu;
@@ -23,7 +23,7 @@ namespace Du\BundleFu;
  * @package    Du_BundleFu
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  * @version    Release: @package_version@
  */
 class CssUrlRewriter

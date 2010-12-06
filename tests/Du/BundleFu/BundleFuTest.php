@@ -12,7 +12,7 @@
  * @package    Du_BundleFu
  * @subpackage UnitTests
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
 namespace Du\BundleFu;
@@ -25,7 +25,7 @@ use Du\BundleFu\Filter\Callback as CallbackFilter;
  * @subpackage UnitTests
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 class BundleFuTest extends TestCase
 {

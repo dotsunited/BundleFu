@@ -22,7 +22,7 @@
   <release>beta</release>
   <api>stable</api>
  </stability>
- <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
+ <license uri="https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE">BSD License</license>
  <notes>http://github.com/dotsunited/du-bundlefu#readme</notes>
   <contents>
    <dir name="/">

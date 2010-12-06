@@ -12,7 +12,7 @@
  * @package    Du_BundleFu
  * @subpackage Integration
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
 /**
@@ -23,7 +23,7 @@
  * @subpackage Integration
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 function bundle_fu()
 {

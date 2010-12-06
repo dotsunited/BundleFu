@@ -12,7 +12,7 @@
  * @package    Du_BundleFu
  * @subpackage Integration
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
 /** Zend_View_Helper_Abstract.php */
@@ -26,7 +26,7 @@ require_once 'Zend/View/Helper/Abstract.php';
  * @subpackage Integration
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
 {
