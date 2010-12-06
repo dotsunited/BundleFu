@@ -26,6 +26,8 @@
  <notes>https://github.com/dotsunited/du-bundlefu#readme</notes>
   <contents>
    <dir name="/">
+     <file name="LICENSE" role="doc" />
+     <file name="README.markdown" role="doc" />
      <dir name="src">
       <dir name="Du">
        <dir name="BundleFu">
