@@ -352,46 +352,6 @@ class BundleFu
     }
 
     /**
-     * Get css filter chain.
-     *
-     * @return FilterChain
-     */
-    public function getCssFilterChain()
-    {
-        trigger_error('getCssFilterChain() is deprecated, use setCssFilter()/getCssFilter() instead', \E_USER_NOTICE);
-
-        if (null === $this->_cssFilter) {
-            $this->_cssFilter = new FilterChain();
-        } else {
-            $currentFilter = $this->_cssFilter;
-            $this->_cssFilter = new FilterChain();
-            $this->_cssFilter->addFilter($currentFilter);
-        }
-
-        return $this->_cssFilter;
-    }
-
-    /**
-     * Get javascript filter chain.
-     *
-     * @return FilterChain
-     */
-    public function getJsFilterChain()
-    {
-        trigger_error('getJsFilterChain() is deprecated, use setJsFilter()/getJsFilter() instead', \E_USER_NOTICE);
-
-        if (null === $this->_jsFilter) {
-            $this->_jsFilter = new FilterChain();
-        } else {
-            $currentFilter = $this->_jsFilter;
-            $this->_jsFilter = new FilterChain();
-            $this->_jsFilter->addFilter($currentFilter);
-        }
-
-        return $this->_jsFilter;
-    }
-
-    /**
      * Get css url rewriter.
      *
      * @return CssUrlRewriter
