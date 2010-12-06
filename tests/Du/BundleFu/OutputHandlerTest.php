@@ -6,7 +6,7 @@
  *
  * This source file is subject to the BSD license that is available
  * through the world-wide-web at this URL:
- * http://opensource.org/licenses/bsd-license.php
+ * https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE
  *
  * @category   Du
  * @package    Du_BundleFu
