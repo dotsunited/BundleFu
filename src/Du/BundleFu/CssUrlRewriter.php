@@ -24,7 +24,7 @@ namespace Du\BundleFu;
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
  * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
- * @version    Release: @package_version@
+ * @version    @package_version@
  */
 class CssUrlRewriter
 {
