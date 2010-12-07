@@ -8,24 +8,22 @@
  * through the world-wide-web at this URL:
  * https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE
  *
- * @category Du
- * @package Du_BundleFu
+ * @category   Du
+ * @package    Du_BundleFu
  * @subpackage UnitTests
- * @copyright Copyright (C) 2010 - Present, Jan Sorgalla
- * @license BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
 namespace Du\BundleFu\Filter;
 
 /**
- * @category Du
- * @package Du_BundleFu
+ * @category   Du
+ * @package    Du_BundleFu
  * @subpackage UnitTests
- * @author Jan Sorgalla
- * @copyright Copyright (C) 2010 - Present, Jan Sorgalla
- * @license BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
- *
- * @covers Du\BundleFu\Filter\Callback
+ * @author     Jan Sorgalla
+ * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
