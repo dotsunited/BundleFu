@@ -1,6 +1,6 @@
 <?php
 /**
- * Du
+ * Du\BundleFu
  *
  * LICENSE
  *
@@ -12,7 +12,7 @@
  * @package    Du_BundleFu
  * @subpackage UnitTests
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 
 namespace Du\BundleFu;
@@ -25,7 +25,7 @@ use Du\BundleFu\Filter\Callback as CallbackFilter;
  * @subpackage UnitTests
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 class BundleFuTest extends TestCase
 {

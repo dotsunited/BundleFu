@@ -1,6 +1,6 @@
 <?php
 /**
- * Du
+ * Du\BundleFu
  *
  * LICENSE
  *
@@ -11,7 +11,7 @@
  * @category   Du
  * @package    Du_BundleFu
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 
 namespace Du\BundleFu;
@@ -26,7 +26,7 @@ use Du\BundleFu\RuntimeException;
  * @package    Du_BundleFu
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  * @version    @package_version@
  */
 class BundleFu
@@ -464,10 +464,10 @@ class BundleFu
 
     /**
      * Add a CSS file.
-     * 
+     *
      * @param string $file
      * @param string $docRoot
-     * @return BundleFu 
+     * @return BundleFu
      */
     public function addCssFile($file, $docRoot = null)
     {
@@ -485,10 +485,10 @@ class BundleFu
 
     /**
      * Add a javascript file.
-     * 
+     *
      * @param string $file
      * @param string $docRoot
-     * @return BundleFu 
+     * @return BundleFu
      */
     public function addJsFile($file, $docRoot = null)
     {
@@ -506,9 +506,9 @@ class BundleFu
 
     /**
      * Start capturing and bundling current output.
-     * 
+     *
      * @param array $options
-     * @return BundleFu 
+     * @return BundleFu
      */
     public function start(array $options = array())
     {
@@ -525,9 +525,9 @@ class BundleFu
 
     /**
      * End capturing and bundling current output.
-     * 
+     *
      * @param array $options
-     * @return BundleFu 
+     * @return BundleFu
      */
     public function end(array $options = array())
     {
@@ -719,7 +719,7 @@ class BundleFu
 
     /**
      * Check whether $path is a local relative path.
-     * 
+     *
      * @param string $path
      * @return boolean
      */

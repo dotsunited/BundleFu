@@ -1,6 +1,6 @@
 <?php
 /**
- * Du
+ * Du\BundleFu
  *
  * LICENSE
  *
@@ -11,7 +11,7 @@
  * @category   Du
  * @package    Du_BundleFu
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 
 // Get base and application path
@@ -23,9 +23,8 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path()
 )));
 
-/**
- * Setup autoloading
- */
+
+// Setup autoloading
 spl_autoload_register(function($className) {
     if (false !== strripos($className, '\\')) {
         $replace = '\\';

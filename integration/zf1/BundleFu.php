@@ -1,6 +1,6 @@
 <?php
 /**
- * Du
+ * Du\BundleFu
  *
  * LICENSE
  *
@@ -12,7 +12,7 @@
  * @package    Du_BundleFu
  * @subpackage Integration
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 
 /** Zend_View_Helper_Abstract.php */
@@ -26,7 +26,7 @@ require_once 'Zend/View/Helper/Abstract.php';
  * @subpackage Integration
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
 {
@@ -37,7 +37,7 @@ class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
 
     /**
      * Set the BundleFu instance
-     * 
+     *
      * @param \Du\BundleFu\BundleFu $bundleFu
      * @return Zend_View_Helper_BundleFu
      */
@@ -104,7 +104,7 @@ class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
 
     /**
      * @param Zend_View_Helper_HeadLink $helper
-     * @return Zend_View_Helper_BundleFu 
+     * @return Zend_View_Helper_BundleFu
      */
     public function bundleHeadLink(Zend_View_Helper_HeadLink $helper)
     {
@@ -122,7 +122,7 @@ class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
 
     /**
      * @param Zend_View_Helper_HeadScript $helper
-     * @return Zend_View_Helper_BundleFu 
+     * @return Zend_View_Helper_BundleFu
      */
     public function bundleHeadScript(Zend_View_Helper_HeadScript $helper)
     {

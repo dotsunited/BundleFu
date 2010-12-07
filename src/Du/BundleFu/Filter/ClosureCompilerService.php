@@ -1,6 +1,6 @@
 <?php
 /**
- * Du
+ * Du\BundleFu
  *
  * LICENSE
  *
@@ -12,7 +12,7 @@
  * @package    Du_BundleFu
  * @subpackage Filter
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 
 namespace Du\BundleFu\Filter;
@@ -25,7 +25,7 @@ namespace Du\BundleFu\Filter;
  * @subpackage Filter
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  * @version    @package_version@
  */
 class ClosureCompilerService implements Filter
@@ -60,7 +60,7 @@ class ClosureCompilerService implements Filter
                 'js_code'       => $content,
                 'output_format' => 'text',
                 'output_info'   => 'compiled_code',
-            ) + 
+            ) +
             $this->_parameters +
             array(
                 'compilation_level' => 'SIMPLE_OPTIMIZATIONS'

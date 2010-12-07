@@ -1,6 +1,6 @@
 <?php
 /**
- * Du
+ * Du\BundleFu
  *
  * LICENSE
  *
@@ -11,7 +11,7 @@
  * @category   Du
  * @package    Du_BundleFu
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 
 namespace Du\BundleFu;
@@ -23,7 +23,7 @@ namespace Du\BundleFu;
  * @package    Du_BundleFu
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  * @version    @package_version@
  */
 class FileList implements \Iterator, \Countable
@@ -81,7 +81,7 @@ class FileList implements \Iterator, \Countable
 
     /**
      * Get the maximum modification of all files in this list.
-     * 
+     *
      * @return integer
      */
     public function getMaxMTime()
@@ -91,7 +91,7 @@ class FileList implements \Iterator, \Countable
 
     /**
      * Get a hash of this file list.
-     * 
+     *
      * @return string
      */
     public function getHash()

@@ -1,6 +1,6 @@
 <?php
 /**
- * Du
+ * Du\BundleFu
  *
  * LICENSE
  *
@@ -12,7 +12,7 @@
  * @package    Du_BundleFu
  * @subpackage Integration
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 
 /**
@@ -23,7 +23,7 @@
  * @subpackage Integration
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 class Twig_Extension_BundleFu extends Twig_Extension
 {
@@ -72,7 +72,7 @@ class Twig_Extension_BundleFu extends Twig_Extension
 
     /**
      * Call a method on the BundleFu instance.
-     * 
+     *
      * @param string $method
      * @param array $params
      * @return mixed
@@ -116,7 +116,7 @@ class Twig_Extension_BundleFu extends Twig_Extension
  * @subpackage Integration
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 class Twig_TokenParser_BundleFu extends Twig_TokenParser
 {
@@ -159,7 +159,7 @@ class Twig_TokenParser_BundleFu extends Twig_TokenParser
  * @subpackage Integration
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 class Twig_Node_BundleFu extends Twig_Node
 {
