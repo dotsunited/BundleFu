@@ -31,27 +31,27 @@ class BundleFuTest extends TestCase
 {
     public function testGetCssBundleUrlWithAbsoluteCssCachePathAndNoCssCacheUrlSetShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'If you do not provide a css cache url, css cache path must be a relative local path...');
+        $this->setExpectedException('Du\BundleFu\RuntimeException', 'If you do not provide a css cache url, css cache path must be a relative local path...');
         $this->_bundleFu->setCssCachePath('/absolute/path');
         $this->_bundleFu->getCssBundleUrl();
     }
 
     public function testGetJsBundleUrlWithAbsoluteJsCachePathAndNoJsCacheUrlSetShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'If you do not provide a js cache url, js cache path must be a relative local path...');
+        $this->setExpectedException('Du\BundleFu\RuntimeException', 'If you do not provide a js cache url, js cache path must be a relative local path...');
         $this->_bundleFu->setJsCachePath('/absolute/path');
         $this->_bundleFu->getJsBundleUrl();
     }
 
     public function testEndWithoutPriorBundleCallShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'end() is called without a start() call.');
+        $this->setExpectedException('Du\BundleFu\RuntimeException', 'end() is called without a start() call.');
         $this->_bundleFu->end();
     }
 
     public function testEndWithoutSettingDocRootFirstShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'Please set a document root either with setDocRoot() or via runtime through bundle options.');
+        $this->setExpectedException('Du\BundleFu\RuntimeException', 'Please set a document root either with setDocRoot() or via runtime through bundle options.');
 
         $bundleFu = new BundleFu();
 
