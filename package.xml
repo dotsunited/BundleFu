@@ -51,10 +51,16 @@
       <file install-as="Du/BundleFu/CssUrlRewriter.php" name="CssUrlRewriter.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
+      <file install-as="Du/Cabinet/Exception.php" name="Exception.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
       <file install-as="Du/BundleFu/FileList.php" name="FileList.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
       <file install-as="Du/BundleFu/OutputHandler.php" name="OutputHandler.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file install-as="Du/Cabinet/RuntimeException.php" name="RuntimeException.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
      </dir>
