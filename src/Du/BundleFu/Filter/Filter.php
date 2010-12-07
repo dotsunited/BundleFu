@@ -10,6 +10,7 @@
  *
  * @category   Du
  * @package    Du_BundleFu
+ * @subpackage Filter
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
  * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
@@ -21,6 +22,7 @@ namespace Du\BundleFu\Filter;
  *
  * @category   Du
  * @package    Du_BundleFu
+ * @subpackage Filter
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
  * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
