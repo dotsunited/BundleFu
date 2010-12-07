@@ -6,13 +6,13 @@
  *
  * This source file is subject to the BSD license that is available
  * through the world-wide-web at this URL:
- * http://opensource.org/licenses/bsd-license.php
+ * https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE
  *
  * @category   Du
  * @package    Du_BundleFu
  * @subpackage UnitTests
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
 namespace Du\BundleFu;
@@ -25,33 +25,33 @@ use Du\BundleFu\Filter\Callback as CallbackFilter;
  * @subpackage UnitTests
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 class BundleFuTest extends TestCase
 {
     public function testGetCssBundleUrlWithAbsoluteCssCachePathAndNoCssCacheUrlSetShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'If you do not provide a css cache url, css cache path must be a relative local path...');
+        $this->setExpectedException('Du\BundleFu\RuntimeException', 'If you do not provide a css cache url, css cache path must be a relative local path...');
         $this->_bundleFu->setCssCachePath('/absolute/path');
         $this->_bundleFu->getCssBundleUrl();
     }
 
     public function testGetJsBundleUrlWithAbsoluteJsCachePathAndNoJsCacheUrlSetShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'If you do not provide a js cache url, js cache path must be a relative local path...');
+        $this->setExpectedException('Du\BundleFu\RuntimeException', 'If you do not provide a js cache url, js cache path must be a relative local path...');
         $this->_bundleFu->setJsCachePath('/absolute/path');
         $this->_bundleFu->getJsBundleUrl();
     }
 
     public function testEndWithoutPriorBundleCallShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'end() is called without a start() call.');
+        $this->setExpectedException('Du\BundleFu\RuntimeException', 'end() is called without a start() call.');
         $this->_bundleFu->end();
     }
 
     public function testEndWithoutSettingDocRootFirstShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'Please set a document root either with setDocRoot() or via runtime through bundle options.');
+        $this->setExpectedException('Du\BundleFu\RuntimeException', 'Please set a document root either with setDocRoot() or via runtime through bundle options.');
 
         $bundleFu = new BundleFu();
 
@@ -69,22 +69,6 @@ class BundleFuTest extends TestCase
     }
 
     /**************************************************************************/
-
-    /**
-     * @expectedException PHPUnit_Framework_Error
-     */
-    public function testBundleShouldTriggerNoticeWhenCallingGetCssFilterChain()
-    {
-        $this->_bundleFu->getCssFilterChain();
-    }
-
-    /**
-     * @expectedException PHPUnit_Framework_Error
-     */
-    public function testBundleShouldTriggerNoticeWhenCallingGetJsFilterChain()
-    {
-        $this->_bundleFu->getJsFilterChain();
-    }
 
     public function testBundleShouldUseCssFilters()
     {

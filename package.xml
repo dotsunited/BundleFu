@@ -13,36 +13,54 @@
   <email>jan.sorgalla@dotsunited.de</email>
   <active>yes</active>
  </lead>
- <date>2010-12-02</date>
+ <date>2010-12-06</date>
  <version>
-  <release>1.0.0RC2</release>
+  <release>1.0.0</release>
   <api>1.0.0</api>
  </version>
  <stability>
-  <release>beta</release>
+  <release>stable</release>
   <api>stable</api>
  </stability>
- <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
- <notes>http://github.com/dotsunited/du-bundlefu#readme</notes>
-  <contents>
-   <dir name="/">
-     <dir name="src">
-      <dir name="Du">
-       <dir name="BundleFu">
-        <dir name="Filter">
-         <file install-as="Du/BundleFu/Filter/Callback.php" name="Callback.php" role="php" />
-         <file install-as="Du/BundleFu/Filter/ClosureCompilerService.php" name="ClosureCompilerService.php" role="php" />
-         <file install-as="Du/BundleFu/Filter/Filter.php" name="Filter.php" role="php" />
-         <file install-as="Du/BundleFu/Filter/FilterChain.php" name="FilterChain.php" role="php" />
-        </dir>
-        <file install-as="Du/BundleFu/BundleFu.php" name="BundleFu.php" role="php" />
-        <file install-as="Du/BundleFu/CssUrlRewriter.php" name="CssUrlRewriter.php" role="php" />
-        <file install-as="Du/BundleFu/FileList.php" name="FileList.php" role="php" />
-        <file install-as="Du/BundleFu/OutputHandler.php" name="OutputHandler.php" role="php" />
-       </dir>
+ <license uri="https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE">BSD License</license>
+ <notes>https://github.com/dotsunited/du-bundlefu#readme</notes>
+ <contents>
+  <dir name="/">
+   <file name="LICENSE" role="doc" />
+   <file name="README.markdown" role="doc" />
+   <dir name="src">
+    <dir name="Du">
+     <dir name="BundleFu">
+      <dir name="Filter">
+       <file install-as="Du/BundleFu/Filter/Callback.php" name="Callback.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+       <file install-as="Du/BundleFu/Filter/ClosureCompilerService.php" name="ClosureCompilerService.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+       <file install-as="Du/BundleFu/Filter/Filter.php" name="Filter.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+       <file install-as="Du/BundleFu/Filter/FilterChain.php" name="FilterChain.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
       </dir>
+      <file install-as="Du/BundleFu/BundleFu.php" name="BundleFu.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file install-as="Du/BundleFu/CssUrlRewriter.php" name="CssUrlRewriter.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file install-as="Du/BundleFu/FileList.php" name="FileList.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file install-as="Du/BundleFu/OutputHandler.php" name="OutputHandler.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
      </dir>
+    </dir>
    </dir>
+  </dir>
  </contents>
  <dependencies>
   <required>

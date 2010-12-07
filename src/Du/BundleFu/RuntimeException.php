@@ -10,36 +10,22 @@
  *
  * @category   Du
  * @package    Du_BundleFu
- * @subpackage Integration
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
  * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
+namespace Du\BundleFu;
+
 /**
- * BundleFu Helper
+ * Du\BundleFu\RuntimeException
  *
  * @category   Du
  * @package    Du_BundleFu
- * @subpackage Integration
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
  * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @version    @package_version@
  */
-function bundle_fu()
+class RuntimeException extends \RuntimeException implements Exception
 {
-    static $bundleFu;
-
-    if (!$bundleFu) {
-        // Setup autoloading
-        spl_autoload_register(function($className) {
-            if (strpos($className, 'Du\\BundleFu\\') === 0) {
-                require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
-            }
-        });
-
-        $bundleFu = new \Du\BundleFu\BundleFu();
-        $bundleFu->setDocRoot(dirname(FCPATH));
-    }
-
-    return $bundleFu;
 }

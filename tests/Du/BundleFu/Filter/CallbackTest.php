@@ -10,36 +10,35 @@
  *
  * @category   Du
  * @package    Du_BundleFu
- * @subpackage Integration
+ * @subpackage UnitTests
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
  * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
+namespace Du\BundleFu\Filter;
+
 /**
- * BundleFu Helper
- *
  * @category   Du
  * @package    Du_BundleFu
- * @subpackage Integration
+ * @subpackage UnitTests
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
  * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
-function bundle_fu()
+class CallbackTest extends \PHPUnit_Framework_TestCase
 {
-    static $bundleFu;
+    public function testCallback()
+    {
+        $called = false;
+        $callback = function() use(&$called) {
+            $called = true;
+            return 'bar';
+        };
 
-    if (!$bundleFu) {
-        // Setup autoloading
-        spl_autoload_register(function($className) {
-            if (strpos($className, 'Du\\BundleFu\\') === 0) {
-                require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
-            }
-        });
+        $filter = new Callback($callback);
+        $result = $filter->filter('foo');
 
-        $bundleFu = new \Du\BundleFu\BundleFu();
-        $bundleFu->setDocRoot(dirname(FCPATH));
+        $this->assertTrue($called);
+        $this->assertEquals('bar', $result);
     }
-
-    return $bundleFu;
 }

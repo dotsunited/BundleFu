@@ -31,18 +31,18 @@ Into this:
 
 BundleFu offers integrations into the following frameworks/libraries:
 
-  * [CakePHP](http://github.com/dotsunited/du-bundlefu/tree/master/integration/cakephp/)
-  * [CodeIgniter](http://github.com/dotsunited/du-bundlefu/tree/master/integration/codeigniter/)
-  * [Lithium](http://github.com/dotsunited/du-bundlefu/tree/master/integration/lithium/)
-  * [Twig](http://github.com/dotsunited/du-bundlefu/tree/master/integration/twig/)
-  * [Zend Framework 1.x.x](http://github.com/dotsunited/du-bundlefu/tree/master/integration/zf1/)
+  * [CakePHP](https://github.com/dotsunited/du-bundlefu/tree/master/integration/cakephp/)
+  * [CodeIgniter](https://github.com/dotsunited/du-bundlefu/tree/master/integration/codeigniter/)
+  * [Lithium](https://github.com/dotsunited/du-bundlefu/tree/master/integration/lithium/)
+  * [Twig](https://github.com/dotsunited/du-bundlefu/tree/master/integration/twig/)
+  * [Zend Framework 1.x.x](https://github.com/dotsunited/du-bundlefu/tree/master/integration/zf1/)
 
 ## Installation ##
 
 You can install Du\BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
 
     pear channel-discover pear.dotsunited.de
-    pear install dotsunited/Du_BundleFu-beta
+    pear install dotsunited/Du_BundleFu
 
 ## Prerequisites ##
 
@@ -186,4 +186,4 @@ The `\Du\BundleFu\Filter\Callback` can filter by using any PHP callback. If you 
 
 ## License ##
 
-Du\BundleFu is released under the [new BSD license](http://www.opensource.org/licenses/bsd-license.php).
+Du\BundleFu is released under the [new BSD license](https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE).

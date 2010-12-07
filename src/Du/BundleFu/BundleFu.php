@@ -6,17 +6,18 @@
  *
  * This source file is subject to the BSD license that is available
  * through the world-wide-web at this URL:
- * http://opensource.org/licenses/bsd-license.php
+ * https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE
  *
  * @category   Du
  * @package    Du_BundleFu
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
 namespace Du\BundleFu;
 
 use Du\BundleFu\Filter\Filter;
+use Du\BundleFu\RuntimeException;
 
 /**
  * Du\BundleFu\BundleFu
@@ -25,8 +26,8 @@ use Du\BundleFu\Filter\Filter;
  * @package    Du_BundleFu
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
- * @version    Release: @package_version@
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @version    @package_version@
  */
 class BundleFu
 {
@@ -352,46 +353,6 @@ class BundleFu
     }
 
     /**
-     * Get css filter chain.
-     *
-     * @return FilterChain
-     */
-    public function getCssFilterChain()
-    {
-        trigger_error('getCssFilterChain() is deprecated, use setCssFilter()/getCssFilter() instead', \E_USER_NOTICE);
-
-        if (null === $this->_cssFilter) {
-            $this->_cssFilter = new FilterChain();
-        } else {
-            $currentFilter = $this->_cssFilter;
-            $this->_cssFilter = new FilterChain();
-            $this->_cssFilter->addFilter($currentFilter);
-        }
-
-        return $this->_cssFilter;
-    }
-
-    /**
-     * Get javascript filter chain.
-     *
-     * @return FilterChain
-     */
-    public function getJsFilterChain()
-    {
-        trigger_error('getJsFilterChain() is deprecated, use setJsFilter()/getJsFilter() instead', \E_USER_NOTICE);
-
-        if (null === $this->_jsFilter) {
-            $this->_jsFilter = new FilterChain();
-        } else {
-            $currentFilter = $this->_jsFilter;
-            $this->_jsFilter = new FilterChain();
-            $this->_jsFilter->addFilter($currentFilter);
-        }
-
-        return $this->_jsFilter;
-    }
-
-    /**
      * Get css url rewriter.
      *
      * @return CssUrlRewriter
@@ -462,7 +423,7 @@ class BundleFu
             $url = $this->getCssCachePath();
 
             if (!$this->isRelativePath($url)) {
-                throw new \RuntimeException('If you do not provide a css cache url, css cache path must be a relative local path...');
+                throw new RuntimeException('If you do not provide a css cache url, css cache path must be a relative local path...');
             }
 
             $url = '/' . str_replace(DIRECTORY_SEPARATOR, '/', $url);
@@ -488,7 +449,7 @@ class BundleFu
             $url = $this->getJsCachePath();
 
             if (!$this->isRelativePath($url)) {
-                throw new \RuntimeException('If you do not provide a js cache url, js cache path must be a relative local path...');
+                throw new RuntimeException('If you do not provide a js cache url, js cache path must be a relative local path...');
             }
 
             $url = '/' . str_replace(DIRECTORY_SEPARATOR, '/', $url);
@@ -571,13 +532,13 @@ class BundleFu
     public function end(array $options = array())
     {
         if (null === $this->_currentBundleOptions) {
-            throw new \RuntimeException('end() is called without a start() call.');
+            throw new RuntimeException('end() is called without a start() call.');
         }
 
         $options = array_merge($this->_currentBundleOptions, $options);
 
         if (empty($options['docroot'])) {
-            throw new \RuntimeException('Please set a document root either with setDocRoot() or via runtime through bundle options.');
+            throw new RuntimeException('Please set a document root either with setDocRoot() or via runtime through bundle options.');
         }
 
         $captured = ob_get_clean();
@@ -688,7 +649,7 @@ class BundleFu
             }
 
             if (false === file_put_contents($cacheFile, $data, LOCK_EX)) {
-                throw new \RuntimeException('Cannot write css cache file to "' . $cacheFile . '"');
+                throw new RuntimeException('Cannot write css cache file to "' . $cacheFile . '"');
             }
 
             $cacheTime = filemtime($cacheFile);
@@ -743,7 +704,7 @@ class BundleFu
             }
 
             if (false === file_put_contents($cacheFile, $data, LOCK_EX)) {
-                throw new \RuntimeException('Cannot write js cache file to "' . $cacheFile . '"');
+                throw new RuntimeException('Cannot write js cache file to "' . $cacheFile . '"');
             }
 
             $cacheTime = filemtime($cacheFile);

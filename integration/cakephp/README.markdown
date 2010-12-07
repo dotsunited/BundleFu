@@ -19,7 +19,7 @@ For more information about helpers, see the [CakePHP Docs](http://book.cakephp.o
 
 Use the helper in your views:
 
-    <?php $bundleFu()->start(); ?>
+    <?php $bundleFu->start(); ?>
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/jquery.myplugin.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>
@@ -28,6 +28,6 @@ Use the helper in your views:
     <link media="screen" type="text/css" href="/css/jquery.myplugin.css">
     <link media="screen" type="text/css" href="/css/app.css">
     <link media="screen" type="text/css" href="/css/app.module.css">
-    <?php $bundleFu()->end(); ?>
+    <?php $bundleFu->end(); ?>
 
-    <?php echo $bundleFu(); ?>
+    <?php echo $bundleFu; ?>

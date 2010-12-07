@@ -6,12 +6,13 @@
  *
  * This source file is subject to the BSD license that is available
  * through the world-wide-web at this URL:
- * http://opensource.org/licenses/bsd-license.php
+ * https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE
  *
  * @category   Du
  * @package    Du_BundleFu
+ * @subpackage Filter
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
  */
 
 namespace Du\BundleFu\Filter;
@@ -21,10 +22,11 @@ namespace Du\BundleFu\Filter;
  *
  * @category   Du
  * @package    Du_BundleFu
+ * @subpackage Filter
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    BSD License {@link http://www.opensource.org/licenses/bsd-license.php}
- * @version    Release: @package_version@
+ * @license    BSD License {@link https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE}
+ * @version    @package_version@
  */
 class ClosureCompilerService implements Filter
 {
