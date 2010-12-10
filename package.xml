@@ -76,6 +76,12 @@
    <pearinstaller>
     <min>1.9.1</min>
    </pearinstaller>
+   <extension>
+    <name>pcre</name>
+   </extension>
+   <extension>
+    <name>spl</name>
+   </extension>
   </required>
  </dependencies>
  <phprelease/>
