@@ -15,7 +15,7 @@
  */
 
 // Get base and application path
-$rootPath = dirname(dirname(__FILE__));
+$rootPath = dirname(__DIR__);
 
 set_include_path(implode(PATH_SEPARATOR, array(
     $rootPath . '/tests',
