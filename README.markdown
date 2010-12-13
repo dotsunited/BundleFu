@@ -105,7 +105,7 @@ Output the bundle `<script>` and `<link>` tags wherever you want:
 
 ## Filters ##
 
-You can manipulate the bundled css/javascript code with filters. Filters are classes which implement the `\Du\BundleFu\Filter\Filter` interface.
+You can manipulate the bundled css/javascript code with filters. Filters are classes which implement the `Du\BundleFu\Filter\Filter` interface.
 
 You can add filters like this:
 
@@ -114,7 +114,7 @@ You can add filters like this:
     $bundleFu->setJsFilter(my MyJsFilter());
     ?>
 
-If you need multiple filters, you can use `\Du\BundleFu\Filter\FilterChain` like this:
+If you need multiple filters, you can use `Du\BundleFu\Filter\FilterChain` like this:
 
     <?php
     $filterChain = new \Du\BundleFu\Filter\FilterChain();
@@ -129,13 +129,13 @@ If you need multiple filters, you can use `\Du\BundleFu\Filter\FilterChain` like
 
 Du\BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
 
-Simply add the `\Du\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
+Simply add the `Du\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
 
     <?php
     $bundleFu->setJsFilter(new \Du\BundleFu\Filter\ClosureCompilerService());
     ?>
 
-The `\Du\BundleFu\Filter\Callback` can filter by using any PHP callback. If you want to compress your CSS using [YUI Compressor](http://developer.yahoo.com/yui/compressor/) you can either write a custom filter or use the following code leveraging the `Callback` filter:
+The `Du\BundleFu\Filter\Callback` can filter by using any PHP callback. If you want to compress your CSS using [YUI Compressor](http://developer.yahoo.com/yui/compressor/) you can either write a custom filter or use the following code leveraging the `Callback` filter:
 
     <?php
     $filter = new \Du\BundleFu\Filter\Callback(function($content) {
