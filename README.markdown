@@ -46,8 +46,7 @@ You can install Du\BundleFu via the [Dots United PEAR channel](http://pear.dotsu
 
 ## Prerequisites ##
 
-Du\BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks
-have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
+Du\BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
 
     <?php
     spl_autoload_register(function($className) {
