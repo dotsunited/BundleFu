@@ -22,7 +22,7 @@
   <release>stable</release>
   <api>stable</api>
  </stability>
- <license uri="https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE">BSD License</license>
+ <license uri="https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE">New BSD License</license>
  <notes>https://github.com/dotsunited/du-bundlefu#readme</notes>
  <contents>
   <dir name="/">
