@@ -23,9 +23,12 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path()
 )));
 
-
 // Setup autoloading
 spl_autoload_register(function($className) {
+    if (strpos($className, 'PHPUnit_') === false && strpos($className, 'Du\\') === false) {
+        return;
+    }
+
     if (false !== strripos($className, '\\')) {
         $replace = '\\';
     } else {
