@@ -1,3 +1,4 @@
 nbproject
 catalog.xml
 tests/logs
+phpunit.xml
