@@ -24,7 +24,7 @@ class Bundle
     /**
      * Whether to bypass capturing.
      *
-     * @var bool
+     * @var boolean
      */
     protected $bypass = false;
 
