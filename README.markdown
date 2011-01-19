@@ -27,16 +27,6 @@ Into this:
   * Rewrites relative URLs in your css files to avoid broken image references.
   * Bundle contents can be modified by filters for code minification, compression etc. (A [Google Closure Compiler](http://code.google.com/closure/compiler/) filter using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html) comes with the library).
 
-## Integration ##
-
-BundleFu offers integrations into the following frameworks/libraries:
-
-  * [CakePHP](https://github.com/dotsunited/BundleFu/tree/master/integration/cakephp/)
-  * [CodeIgniter](https://github.com/dotsunited/BundleFu/tree/master/integration/codeigniter/)
-  * [Lithium](https://github.com/dotsunited/BundleFu/tree/master/integration/lithium/)
-  * [Twig](https://github.com/dotsunited/BundleFu/tree/master/integration/twig/)
-  * [Zend Framework 1.x.x](https://github.com/dotsunited/BundleFu/tree/master/integration/zf1/)
-
 ## Installation ##
 
 You can install BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
