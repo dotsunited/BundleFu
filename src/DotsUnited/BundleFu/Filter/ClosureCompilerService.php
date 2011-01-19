@@ -28,7 +28,7 @@ namespace DotsUnited\BundleFu\Filter;
  * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  * @version    @package_version@
  */
-class ClosureCompilerService implements Filter
+class ClosureCompilerService implements FilterInterface
 {
     /**
      * @var array

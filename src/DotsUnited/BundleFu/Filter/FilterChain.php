@@ -28,7 +28,7 @@ namespace DotsUnited\BundleFu\Filter;
  * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  * @version    @package_version@
  */
-class FilterChain implements Filter
+class FilterChain implements FilterInterface
 {
     const CHAIN_APPEND  = 'append';
     const CHAIN_PREPEND = 'prepend';
@@ -43,11 +43,11 @@ class FilterChain implements Filter
     /**
      * Adds a filter to the chain
      *
-     * @param Filter $filter
+     * @param FilterInterface $filter
      * @param string $placement
      * @return FilterChain
      */
-    public function addFilter(Filter $filter, $placement = self::CHAIN_APPEND)
+    public function addFilter(FilterInterface $filter, $placement = self::CHAIN_APPEND)
     {
         if ($placement == self::CHAIN_PREPEND) {
             array_unshift($this->_filters, $filter);
@@ -60,10 +60,10 @@ class FilterChain implements Filter
     /**
      * Add a filter to the end of the chain
      *
-     * @param Filter $filter
+     * @param FilterInterface $filter
      * @return FilterChain
      */
-    public function appendFilter(Filter $filter)
+    public function appendFilter(FilterInterface $filter)
     {
         return $this->addFilter($filter, self::CHAIN_APPEND);
     }
@@ -71,10 +71,10 @@ class FilterChain implements Filter
     /**
      * Add a filter to the start of the chain
      *
-     * @param Filter $filter
+     * @param FilterInterface $filter
      * @return FilterChain
      */
-    public function prependFilter(Filter $filter)
+    public function prependFilter(FilterInterface $filter)
     {
         return $this->addFilter($filter, self::CHAIN_PREPEND);
     }
@@ -82,7 +82,7 @@ class FilterChain implements Filter
     /**
      * Get all the filters
      *
-     * @return Filter[]
+     * @return FilterInterface[]
      */
     public function getFilters()
     {

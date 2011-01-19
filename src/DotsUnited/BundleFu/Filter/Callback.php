@@ -28,7 +28,7 @@ namespace DotsUnited\BundleFu\Filter;
  * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  * @version    @package_version@
  */
-class Callback implements Filter
+class Callback implements FilterInterface
 {
     /**
      * @var mixed

@@ -16,7 +16,7 @@
 
 namespace DotsUnited\BundleFu;
 
-use DotsUnited\BundleFu\Filter\Filter;
+use DotsUnited\BundleFu\Filter\FilterInterface;
 
 /**
  * DotsUnited\BundleFu\Bundle

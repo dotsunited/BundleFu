@@ -18,7 +18,7 @@
 namespace DotsUnited\BundleFu\Filter;
 
 /**
- * DotsUnited\BundleFu\Filter\Filter
+ * DotsUnited\BundleFu\Filter\FilterInterface
  *
  * @category   Du
  * @package    Du_BundleFu
@@ -28,7 +28,7 @@ namespace DotsUnited\BundleFu\Filter;
  * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  * @version    @package_version@
  */
-interface Filter
+interface FilterInterface
 {
     /**
      * Returns the result of filtering $content

@@ -104,7 +104,7 @@ Output the bundle `<script>` and `<link>` tags wherever you want:
 
 ## Filters ##
 
-You can manipulate the bundled css/javascript code with filters. Filters are classes which implement the `DotsUnited\BundleFu\Filter\Filter` interface.
+You can manipulate the bundled css/javascript code with filters. Filters are classes which implement `DotsUnited\BundleFu\Filter\FilterInterface`.
 
 You can add filters like this:
 
