@@ -52,7 +52,7 @@ This requires that you have installed BundleFu in your `include_path` which is a
 
 ## Usage ##
 
-Configure a BundleFu instance:
+Configure a Bundle instance:
 
     <?php
     $bundle = new \DotsUnited\BundleFu\Bundle();
