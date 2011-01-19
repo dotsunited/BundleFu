@@ -3,27 +3,27 @@
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
- <name>Du_BundleFu</name>
+ <name>BundleFu</name>
  <channel>pear.dotsunited.de</channel>
  <summary>Simple CSS and JavaScript bundling</summary>
- <description>DotsUnited\BundleFu is a PHP 5.3+ library which bundles multiple CSS and JavaScript files into a big package and sends it out at once.</description>
+ <description>BundleFu is a PHP 5.3+ library which bundles multiple CSS and JavaScript files into a big package and sends it out at once.</description>
  <lead>
   <name>Jan Sorgalla</name>
   <user>jsor</user>
   <email>jan.sorgalla@dotsunited.de</email>
   <active>yes</active>
  </lead>
- <date>2010-12-06</date>
+ <date>2011-01-xx</date>
  <version>
-  <release>1.0.0</release>
-  <api>1.0.0</api>
+  <release>0.9.0</release>
+  <api>0.9.0</api>
  </version>
  <stability>
-  <release>stable</release>
-  <api>stable</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
- <license uri="https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE">New BSD License</license>
- <notes>https://github.com/dotsunited/du-bundlefu#readme</notes>
+ <license uri="https://github.com/dotsunited/BundleFu/blob/master/LICENSE">New BSD License</license>
+ <notes>https://github.com/dotsunited/BundleFu#readme</notes>
  <contents>
   <dir name="/">
    <file name="LICENSE" role="doc" />
@@ -38,29 +38,20 @@
        <file install-as="Du/BundleFu/Filter/ClosureCompilerService.php" name="ClosureCompilerService.php" role="php">
         <tasks:replace from="@package_version@" to="version" type="package-info" />
        </file>
-       <file install-as="Du/BundleFu/Filter/Filter.php" name="Filter.php" role="php">
+       <file install-as="Du/BundleFu/Filter/FilterInterface.php" name="FilterInterface.php" role="php">
         <tasks:replace from="@package_version@" to="version" type="package-info" />
        </file>
        <file install-as="Du/BundleFu/Filter/FilterChain.php" name="FilterChain.php" role="php">
         <tasks:replace from="@package_version@" to="version" type="package-info" />
        </file>
       </dir>
-      <file install-as="Du/BundleFu/BundleFu.php" name="BundleFu.php" role="php">
+      <file install-as="Du/BundleFu/Bundle.php" name="Bundle.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
       <file install-as="Du/BundleFu/CssUrlRewriter.php" name="CssUrlRewriter.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
-      <file install-as="Du/Cabinet/Exception.php" name="Exception.php" role="php">
-       <tasks:replace from="@package_version@" to="version" type="package-info" />
-      </file>
       <file install-as="Du/BundleFu/FileList.php" name="FileList.php" role="php">
-       <tasks:replace from="@package_version@" to="version" type="package-info" />
-      </file>
-      <file install-as="Du/BundleFu/OutputHandler.php" name="OutputHandler.php" role="php">
-       <tasks:replace from="@package_version@" to="version" type="package-info" />
-      </file>
-      <file install-as="Du/Cabinet/RuntimeException.php" name="RuntimeException.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
      </dir>
