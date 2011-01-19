@@ -46,7 +46,9 @@ You can install BundleFu via the [Dots United PEAR channel](http://pear.dotsunit
 
 ## Prerequisites ##
 
-BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
+BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading (BundleFu follows the technical interoperability [standards](http://groups.google.com/group/php-standards/web/psr-0-final-proposal) for PHP 5.3 namespaces and class names).
+
+Most modern frameworks have tools to setup autoloading (e.g. [Symfony2](http://docs.symfony-reloaded.org/guides/tools/autoloader.html)), if you are unsure you can use the following code snippet in your bootstrap file:
 
     <?php
     spl_autoload_register(function($className) {
