@@ -36,6 +36,13 @@ class Bundle
     protected $docRoot;
 
     /**
+     * Bundle name.
+     *
+     * @var string
+     */
+    protected $name;
+
+    /**
      * Directory in which to write bundled css files.
      *
      * @var string
@@ -157,7 +164,29 @@ class Bundle
      */
     public function getDocRoot()
     {
-        return $this->docRoot ;
+        return $this->docRoot;
+    }
+
+    /**
+     * Set the bundle name
+     *
+     * @param string $name
+     * @return BundleFu
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Get the bundle name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -369,13 +398,17 @@ class Bundle
             $cacheDir = $this->getDocRoot() . DIRECTORY_SEPARATOR . $cacheDir;
         }
 
-        $hash = $this->getCssFileList()->getHash();
+        $name = $this->getName();
+
+        if (null === $name) {
+            $name = sprintf('bundle_%s', $this->getCssFileList()->getHash());
+        }
 
         return sprintf(
-            "%s%sbundle_%s.css",
+            "%s%s%s.css",
             $cacheDir,
             DIRECTORY_SEPARATOR,
-            $hash
+            $name
         );
     }
 
@@ -392,11 +425,17 @@ class Bundle
             $cacheDir = $this->getDocRoot() . DIRECTORY_SEPARATOR . $cacheDir;
         }
 
+        $name = $this->getName();
+
+        if (null === $name) {
+            $name = sprintf('bundle_%s', $this->getJsFileList()->getHash());
+        }
+
         return sprintf(
-            "%s%sbundle_%s.js",
+            "%s%s%s.js",
             $cacheDir,
             DIRECTORY_SEPARATOR,
-            $this->getJsFileList()->getHash()
+            $name
         );
     }
 
@@ -419,10 +458,16 @@ class Bundle
             $url = '/' . str_replace(DIRECTORY_SEPARATOR, '/', $url);
         }
 
+        $name = $this->getName();
+
+        if (null === $name) {
+            $name = sprintf('bundle_%s', $this->getCssFileList()->getHash());
+        }
+
         return sprintf(
-            "%s/bundle_%s.css",
+            "%s/%s.css",
             $url,
-            $this->getCssFileList()->getHash()
+            $name
         );
     }
 
@@ -445,10 +490,16 @@ class Bundle
             $url = '/' . str_replace(DIRECTORY_SEPARATOR, '/', $url);
         }
 
+        $name = $this->getName();
+
+        if (null === $name) {
+            $name = sprintf('bundle_%s', $this->getJsFileList()->getHash());
+        }
+
         return sprintf(
-            "%s/bundle_%s.js",
+            "%s/%s.js",
             $url,
-            $this->getJsFileList()->getHash()
+            $name
         );
     }
 
@@ -466,7 +517,7 @@ class Bundle
         }
 
         $file    = preg_replace('/^https?:\/\/[^\/]+/i', '', $file);
-        $abspath = $docRoot . $file;
+        $abspath = $docRoot . DIRECTORY_SEPARATOR . $file;
 
         $this->getCssFileList()->addFile($file, $abspath);
 
@@ -487,7 +538,7 @@ class Bundle
         }
 
         $file    = preg_replace('/^https?:\/\/[^\/]+/i', '', $file);
-        $abspath = $docRoot . $file;
+        $abspath = $docRoot . DIRECTORY_SEPARATOR . $file;
 
         $this->getJsFileList()->addFile($file, $abspath);
 
