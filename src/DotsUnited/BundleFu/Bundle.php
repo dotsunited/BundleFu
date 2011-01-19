@@ -136,7 +136,7 @@ class Bundle
     }
 
     /**
-     * Get whether to bypass bundling.
+     * Get whether to bypass capturing.
      *
      * @return boolean
      */
