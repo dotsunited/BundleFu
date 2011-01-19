@@ -22,7 +22,7 @@ class ClosureCompilerService implements FilterInterface
     /**
      * @var array
      */
-    protected $_parameters = array();
+    protected $parameters = array();
 
     /**
      * @param array $parameters
@@ -30,7 +30,7 @@ class ClosureCompilerService implements FilterInterface
     public function __construct(array $parameters = null)
     {
         if (null !== $parameters) {
-            $this->_parameters = $parameters;
+            $this->parameters = $parameters;
         }
     }
 
@@ -50,7 +50,7 @@ class ClosureCompilerService implements FilterInterface
                 'output_format' => 'text',
                 'output_info'   => 'compiled_code',
             ) +
-            $this->_parameters +
+            $this->parameters +
             array(
                 'compilation_level' => 'SIMPLE_OPTIMIZATIONS'
             )

@@ -22,12 +22,12 @@ class FileList implements \Iterator, \Countable
     /**
      * @var array
      */
-    protected $_files = array();
+    protected $files = array();
 
     /**
      * @var integer
      */
-    protected $_maxMTime = 0;
+    protected $maxMTime = 0;
 
     /**
      * Add a file to the list.
@@ -42,7 +42,7 @@ class FileList implements \Iterator, \Countable
             $fileInfo = new \SplFileInfo($fileInfo);
         }
 
-        $this->_files[$file] = $fileInfo;
+        $this->files[$file] = $fileInfo;
 
         try {
             $mTime = $fileInfo->getMTime();
@@ -50,8 +50,8 @@ class FileList implements \Iterator, \Countable
             $mTime = 0;
         }
 
-        if ($mTime > $this->_maxMTime) {
-            $this->_maxMTime = $mTime;
+        if ($mTime > $this->maxMTime) {
+            $this->maxMTime = $mTime;
         }
 
         return $this;
@@ -64,8 +64,8 @@ class FileList implements \Iterator, \Countable
      */
     public function reset()
     {
-        $this->_files    = array();
-        $this->_maxMTime = 0;
+        $this->files    = array();
+        $this->maxMTime = 0;
 
         return $this;
     }
@@ -77,7 +77,7 @@ class FileList implements \Iterator, \Countable
      */
     public function getMaxMTime()
     {
-        return $this->_maxMTime;
+        return $this->maxMTime;
     }
 
     /**
@@ -87,7 +87,7 @@ class FileList implements \Iterator, \Countable
      */
     public function getHash()
     {
-        return md5(implode('', array_keys($this->_files)));
+        return md5(implode('', array_keys($this->files)));
     }
 
     /**
@@ -97,7 +97,7 @@ class FileList implements \Iterator, \Countable
      */
     public function rewind()
     {
-        reset($this->_files);
+        reset($this->files);
     }
 
     /**
@@ -111,7 +111,7 @@ class FileList implements \Iterator, \Countable
             return null;
         }
 
-        return current($this->_files);
+        return current($this->files);
     }
 
     /**
@@ -121,7 +121,7 @@ class FileList implements \Iterator, \Countable
      */
     public function key()
     {
-        return key($this->_files);
+        return key($this->files);
     }
 
     /**
@@ -131,7 +131,7 @@ class FileList implements \Iterator, \Countable
      */
     public function next()
     {
-        next($this->_files);
+        next($this->files);
     }
 
     /**
@@ -141,7 +141,7 @@ class FileList implements \Iterator, \Countable
      */
     public function valid()
     {
-        return current($this->_files) !== false;
+        return current($this->files) !== false;
     }
 
     /**
@@ -151,6 +151,6 @@ class FileList implements \Iterator, \Countable
      */
     public function count()
     {
-        return count($this->_files);
+        return count($this->files);
     }
 }

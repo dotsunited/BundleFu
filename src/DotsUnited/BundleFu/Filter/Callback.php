@@ -22,14 +22,14 @@ class Callback implements FilterInterface
     /**
      * @var mixed
      */
-    protected $_callback;
+    protected $callback;
 
     /**
      * @param mixed $callback
      */
     public function __construct($callback)
     {
-        $this->_callback = $callback;
+        $this->callback = $callback;
     }
 
     /**
@@ -42,6 +42,6 @@ class Callback implements FilterInterface
      */
     public function filter($content)
     {
-        return call_user_func($this->_callback, $content);
+        return call_user_func($this->callback, $content);
     }
 }

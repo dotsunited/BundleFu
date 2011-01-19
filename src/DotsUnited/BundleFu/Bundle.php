@@ -26,95 +26,95 @@ class Bundle
      *
      * @var bool
      */
-    protected $_bypass = false;
+    protected $bypass = false;
 
     /**
      * Directory in which to look for files.
      *
      * @var string
      */
-    protected $_docRoot;
+    protected $docRoot;
 
     /**
      * Directory in which to write bundled css files.
      *
      * @var string
      */
-    protected $_cssCachePath = 'css/cache';
+    protected $cssCachePath = 'css/cache';
 
     /**
      * Directory in which to write bundled javascript files.
      *
      * @var string
      */
-    protected $_jsCachePath = 'js/cache';
+    protected $jsCachePath = 'js/cache';
 
     /**
      * Path the generated css bundles are publicly accessible under.
      *
-     * Optional. If not set, $this->_cssCachePath is used.
+     * Optional. If not set, $this->cssCachePath is used.
      *
      * @var string
      */
-    protected $_cssCacheUrl;
+    protected $cssCacheUrl;
 
     /**
      * Path the generated javascript bundles are publicly accessible under.
      *
-     * Optional. If not set, $this->_jsCachePath is used.
+     * Optional. If not set, $this->jsCachePath is used.
      *
      * @var string
      */
-    protected $_jsCacheUrl;
+    protected $jsCacheUrl;
 
     /**
      * Whether to render as XHTML.
      *
      * @var boolean
      */
-    protected $_renderAsXhtml = false;
+    protected $renderAsXhtml = false;
 
     /**
      * CSS file list.
      *
      * @var FileList
      */
-    protected $_cssFileList;
+    protected $cssFileList;
 
     /**
      * Javascript file list.
      *
      * @var FileList
      */
-    protected $_jsFileList;
+    protected $jsFileList;
 
     /**
      * CSS filter.
      *
      * @var Filter
      */
-    protected $_cssFilter;
+    protected $cssFilter;
 
     /**
      * CSS filter.
      *
      * @var Filter
      */
-    protected $_jsFilter;
+    protected $jsFilter;
 
     /**
      * CSS url rewriter.
      *
      * @var CssUrlRewriter
      */
-    protected $_cssUrlRewriter;
+    protected $cssUrlRewriter;
 
     /**
      * Options for bundling in process.
      *
      * @var array
      */
-    protected $_currentBundleOptions;
+    protected $currentBundleOptions;
 
     /**
      * Set whether to bypass bundling
@@ -124,7 +124,7 @@ class Bundle
      */
     public function setBypass($bypass)
     {
-        $this->_bypass = $bypass;
+        $this->bypass = $bypass;
         return $this;
     }
 
@@ -135,7 +135,7 @@ class Bundle
      */
     public function getBypass()
     {
-        return $this->_bypass ;
+        return $this->bypass ;
     }
 
     /**
@@ -146,7 +146,7 @@ class Bundle
      */
     public function setDocRoot($docRoot)
     {
-        $this->_docRoot = $docRoot;
+        $this->docRoot = $docRoot;
         return $this;
     }
 
@@ -157,7 +157,7 @@ class Bundle
      */
     public function getDocRoot()
     {
-        return $this->_docRoot ;
+        return $this->docRoot ;
     }
 
     /**
@@ -168,7 +168,7 @@ class Bundle
      */
     public function setCssCachePath($cssCachePath)
     {
-        $this->_cssCachePath = $cssCachePath;
+        $this->cssCachePath = $cssCachePath;
         return $this;
     }
 
@@ -179,7 +179,7 @@ class Bundle
      */
     public function getCssCachePath()
     {
-        return $this->_cssCachePath ;
+        return $this->cssCachePath ;
     }
 
     /**
@@ -190,7 +190,7 @@ class Bundle
      */
     public function setJsCachePath($jsCachePath)
     {
-        $this->_jsCachePath = $jsCachePath;
+        $this->jsCachePath = $jsCachePath;
         return $this;
     }
 
@@ -201,7 +201,7 @@ class Bundle
      */
     public function getJsCachePath()
     {
-        return $this->_jsCachePath ;
+        return $this->jsCachePath ;
     }
 
     /**
@@ -212,7 +212,7 @@ class Bundle
      */
     public function setCssCacheUrl($cssCacheUrl)
     {
-        $this->_cssCacheUrl = $cssCacheUrl;
+        $this->cssCacheUrl = $cssCacheUrl;
         return $this;
     }
 
@@ -223,7 +223,7 @@ class Bundle
      */
     public function getCssCacheUrl()
     {
-        return $this->_cssCacheUrl ;
+        return $this->cssCacheUrl ;
     }
 
     /**
@@ -234,7 +234,7 @@ class Bundle
      */
     public function setJsCacheUrl($jsCacheUrl)
     {
-        $this->_jsCacheUrl = $jsCacheUrl;
+        $this->jsCacheUrl = $jsCacheUrl;
         return $this;
     }
 
@@ -245,7 +245,7 @@ class Bundle
      */
     public function getJsCacheUrl()
     {
-        return $this->_jsCacheUrl ;
+        return $this->jsCacheUrl ;
     }
 
     /**
@@ -256,7 +256,7 @@ class Bundle
      */
     public function setRenderAsXhtml($renderAsXhtml)
     {
-        $this->_renderAsXhtml = $renderAsXhtml;
+        $this->renderAsXhtml = $renderAsXhtml;
         return $this;
     }
 
@@ -267,7 +267,7 @@ class Bundle
      */
     public function getRenderAsXhtml()
     {
-        return $this->_renderAsXhtml;
+        return $this->renderAsXhtml;
     }
 
     /**
@@ -277,11 +277,11 @@ class Bundle
      */
     public function getCssFileList()
     {
-        if (null === $this->_cssFileList) {
-            $this->_cssFileList = new FileList();
+        if (null === $this->cssFileList) {
+            $this->cssFileList = new FileList();
         }
 
-        return $this->_cssFileList;
+        return $this->cssFileList;
     }
 
     /**
@@ -291,11 +291,11 @@ class Bundle
      */
     public function getJsFileList()
     {
-        if (null === $this->_jsFileList) {
-            $this->_jsFileList = new FileList();
+        if (null === $this->jsFileList) {
+            $this->jsFileList = new FileList();
         }
 
-        return $this->_jsFileList;
+        return $this->jsFileList;
     }
 
     /**
@@ -306,7 +306,7 @@ class Bundle
      */
     public function setCssFilter(Filter $filter)
     {
-        $this->_cssFilter = $filter;
+        $this->cssFilter = $filter;
         return $this;
     }
 
@@ -317,7 +317,7 @@ class Bundle
      */
     public function getCssFilter()
     {
-        return $this->_cssFilter;
+        return $this->cssFilter;
     }
 
     /**
@@ -328,7 +328,7 @@ class Bundle
      */
     public function setJsFilter(Filter $filter)
     {
-        $this->_jsFilter = $filter;
+        $this->jsFilter = $filter;
         return $this;
     }
 
@@ -339,7 +339,7 @@ class Bundle
      */
     public function getJsFilter()
     {
-        return $this->_jsFilter;
+        return $this->jsFilter;
     }
 
     /**
@@ -349,11 +349,11 @@ class Bundle
      */
     public function getCssUrlRewriter()
     {
-        if (null === $this->_cssUrlRewriter) {
-            $this->_cssUrlRewriter = new CssUrlRewriter();
+        if (null === $this->cssUrlRewriter) {
+            $this->cssUrlRewriter = new CssUrlRewriter();
         }
 
-        return $this->_cssUrlRewriter;
+        return $this->cssUrlRewriter;
     }
 
     /**
@@ -507,7 +507,7 @@ class Bundle
             'bypass'  => $this->getBypass(),
         );
 
-        $this->_currentBundleOptions = array_merge($currentBundleOptions, $options);
+        $this->currentBundleOptions = array_merge($currentBundleOptions, $options);
         ob_start();
 
         return $this;
@@ -521,11 +521,11 @@ class Bundle
      */
     public function end(array $options = array())
     {
-        if (null === $this->_currentBundleOptions) {
+        if (null === $this->currentBundleOptions) {
             throw new \RuntimeException('end() is called without a start() call.');
         }
 
-        $options = array_merge($this->_currentBundleOptions, $options);
+        $options = array_merge($this->currentBundleOptions, $options);
 
         if (empty($options['docroot'])) {
             throw new \RuntimeException('Please set a document root either with setDocRoot() or via runtime through bundle options.');
@@ -539,7 +539,7 @@ class Bundle
             $this->extractFiles($captured, $options['docroot']);
         }
 
-        $this->_currentBundleOptions = null;
+        $this->currentBundleOptions = null;
 
         return $this;
     }

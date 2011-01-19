@@ -27,7 +27,7 @@ class FilterChain implements FilterInterface
      *
      * @var array
      */
-    protected $_filters = array();
+    protected $filters = array();
 
     /**
      * Adds a filter to the chain
@@ -39,9 +39,9 @@ class FilterChain implements FilterInterface
     public function addFilter(FilterInterface $filter, $placement = self::CHAIN_APPEND)
     {
         if ($placement == self::CHAIN_PREPEND) {
-            array_unshift($this->_filters, $filter);
+            array_unshift($this->filters, $filter);
         } else {
-            $this->_filters[] = $filter;
+            $this->filters[] = $filter;
         }
         return $this;
     }
@@ -75,7 +75,7 @@ class FilterChain implements FilterInterface
      */
     public function getFilters()
     {
-        return $this->_filters;
+        return $this->filters;
     }
 
     /**
@@ -85,7 +85,7 @@ class FilterChain implements FilterInterface
      */
     public function resetFilters()
     {
-        $this->_filters = array();
+        $this->filters = array();
         return $this;
     }
 
@@ -100,7 +100,7 @@ class FilterChain implements FilterInterface
     public function filter($content)
     {
         $contentFiltered = $content;
-        foreach ($this->_filters as $filter) {
+        foreach ($this->filters as $filter) {
             $contentFiltered = $filter->filter($contentFiltered);
         }
         return $contentFiltered;
