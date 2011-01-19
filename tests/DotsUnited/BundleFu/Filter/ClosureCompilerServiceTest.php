@@ -14,6 +14,8 @@ namespace DotsUnited\BundleFu\Filter;
 /**
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
  * @version @package_version@
+ *
+ * @group online
  */
 class ClosureCompilerServiceTest extends \PHPUnit_Framework_TestCase
 {
