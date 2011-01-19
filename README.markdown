@@ -1,7 +1,7 @@
-DotsUnited\BundleFu
-===========
+BundleFu
+========
 
-DotsUnited\BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
+BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
 
 It is highly inspired by the [Ruby on Rails](http://rubyonrails.org) plugin [bundle-fu](http://code.google.com/p/bundle-fu/).
 
@@ -31,22 +31,22 @@ Into this:
 
 BundleFu offers integrations into the following frameworks/libraries:
 
-  * [CakePHP](https://github.com/dotsunited/du-bundlefu/tree/master/integration/cakephp/)
-  * [CodeIgniter](https://github.com/dotsunited/du-bundlefu/tree/master/integration/codeigniter/)
-  * [Lithium](https://github.com/dotsunited/du-bundlefu/tree/master/integration/lithium/)
-  * [Twig](https://github.com/dotsunited/du-bundlefu/tree/master/integration/twig/)
-  * [Zend Framework 1.x.x](https://github.com/dotsunited/du-bundlefu/tree/master/integration/zf1/)
+  * [CakePHP](https://github.com/dotsunited/BundleFu/tree/master/integration/cakephp/)
+  * [CodeIgniter](https://github.com/dotsunited/BundleFu/tree/master/integration/codeigniter/)
+  * [Lithium](https://github.com/dotsunited/BundleFu/tree/master/integration/lithium/)
+  * [Twig](https://github.com/dotsunited/BundleFu/tree/master/integration/twig/)
+  * [Zend Framework 1.x.x](https://github.com/dotsunited/BundleFu/tree/master/integration/zf1/)
 
 ## Installation ##
 
-You can install DotsUnited\BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
+You can install BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
 
     pear channel-discover pear.dotsunited.de
-    pear install dotsunited/Du_BundleFu
+    pear install dotsunited/BundleFu-beta
 
 ## Prerequisites ##
 
-DotsUnited\BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
+BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
 
     <?php
     spl_autoload_register(function($className) {
@@ -56,16 +56,16 @@ DotsUnited\BundleFu needs at least PHP 5.3.0 to run and requires that you have s
     });
     ?>
 
-This requires that you have installed DotsUnited\BundleFu in your `include_path` which is already the case if you have installed it via PEAR.
+This requires that you have installed BundleFu in your `include_path` which is already the case if you have installed it via PEAR.
 
 ## Usage ##
 
 Configure a BundleFu instance:
 
     <?php
-    $bundleFu = new \DotsUnited\BundleFu\BundleFu();
+    $bundle = new \DotsUnited\BundleFu\Bundle();
 
-    $bundleFu
+    $bundle
         // Set the document root
         ->setDocRoot('/path/to/your/document_root')
 
@@ -78,7 +78,7 @@ Configure a BundleFu instance:
 
 Use the instance to bundle your files in your templates:
 
-    <?php $bundleFu->start(); ?>
+    <?php $bundle->start(); ?>
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/jquery.myplugin.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>
@@ -87,19 +87,19 @@ Use the instance to bundle your files in your templates:
     <link media="screen" type="text/css" href="/css/jquery.myplugin.css">
     <link media="screen" type="text/css" href="/css/app.css">
     <link media="screen" type="text/css" href="/css/app.module.css">
-    <?php $bundleFu->end(); ?>
+    <?php $bundle->end(); ?>
 
 Output the bundle `<script>` and `<link>` tags wherever you want:
 
     <?php
     // Renders both <script> and <link> tags
-    echo $bundleFu->render();
+    echo $bundle->render();
 
     // Renders the <link> tag only
-    echo $bundleFu->renderCss();
+    echo $bundle->renderCss();
 
     // Renders the <script> tag only
-    echo $bundleFu->renderJs();
+    echo $bundle->renderJs();
     ?>
 
 ## Filters ##
@@ -109,8 +109,8 @@ You can manipulate the bundled css/javascript code with filters. Filters are cla
 You can add filters like this:
 
     <?php
-    $bundleFu->setCssFilter(new MyCssFilter());
-    $bundleFu->setJsFilter(my MyJsFilter());
+    $bundle->setCssFilter(new MyCssFilter());
+    $bundle->setJsFilter(my MyJsFilter());
     ?>
 
 If you need multiple filters, you can use `DotsUnited\BundleFu\Filter\FilterChain` like this:
@@ -121,17 +121,17 @@ If you need multiple filters, you can use `DotsUnited\BundleFu\Filter\FilterChai
     $filterChain->addFilter(new MyCssFilter1());
     $filterChain->addFilter(new MyCssFilter2());
 
-    $bundleFu->setCssFilter($filterChain);
+    $bundle->setCssFilter($filterChain);
     ?>
 
 ### Examples ###
 
-DotsUnited\BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
+BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
 
 Simply add the `DotsUnited\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
 
     <?php
-    $bundleFu->setJsFilter(new \DotsUnited\BundleFu\Filter\ClosureCompilerService());
+    $bundle->setJsFilter(new \DotsUnited\BundleFu\Filter\ClosureCompilerService());
     ?>
 
 The `DotsUnited\BundleFu\Filter\Callback` can filter by using any PHP callback. If you want to compress your CSS using [YUI Compressor](http://developer.yahoo.com/yui/compressor/) you can either write a custom filter or use the following code leveraging the `Callback` filter:
@@ -163,12 +163,12 @@ The `DotsUnited\BundleFu\Filter\Callback` can filter by using any PHP callback. 
         return $content;
     });
 
-    $bundleFu->setCssFilter($filter);
+    $bundle->setCssFilter($filter);
     ?>
 
 ## Notes ##
 
-  * All content inside of `$bundleFu->start()` and `$bundleFu->end()` will be lost. Be sure to only put css/javascript includes inside of the block.
+  * All content inside of `$bundle->start()` and `$bundle->end()` will be lost. Be sure to only put css/javascript includes inside of the block.
   * Scripts/stylesheets are detected by parsing the output and looking for include files. HTML comments are ignored, so if you comment out a script like this:
 
         <!-- <script src="/js/script.js" type="text/javascript"></script> -->
@@ -185,4 +185,4 @@ The `DotsUnited\BundleFu\Filter\Callback` can filter by using any PHP callback. 
 
 ## License ##
 
-DotsUnited\BundleFu is released under the [new BSD license](https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE).
+BundleFu is released under the [New BSD License](https://github.com/dotsunited/BundleFu/blob/master/LICENSE).
