@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="tests/bootstrap.php">
-    <testsuite name="Du\BundleFu Test Suite">
-        <directory suffix="Test.php">./tests/Du/BundleFu/</directory>
+    <testsuite name="DotsUnited\BundleFu Test Suite">
+        <directory suffix="Test.php">./tests/DotsUnited/BundleFu/</directory>
     </testsuite>
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/Du/BundleFu/</directory>
+            <directory suffix=".php">./src/DotsUnited/BundleFu/</directory>
         </whitelist>
     </filter>
 </phpunit>

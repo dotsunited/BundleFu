@@ -6,7 +6,7 @@
  <name>Du_BundleFu</name>
  <channel>pear.dotsunited.de</channel>
  <summary>Simple CSS and JavaScript bundling</summary>
- <description>Du\BundleFu is a PHP 5.3+ library which bundles multiple CSS and JavaScript files into a big package and sends it out at once.</description>
+ <description>DotsUnited\BundleFu is a PHP 5.3+ library which bundles multiple CSS and JavaScript files into a big package and sends it out at once.</description>
  <lead>
   <name>Jan Sorgalla</name>
   <user>jsor</user>

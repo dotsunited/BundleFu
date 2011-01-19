@@ -1,6 +1,6 @@
 <?php
 /**
- * Du\BundleFu
+ * DotsUnited\BundleFu
  *
  * LICENSE
  *
@@ -31,17 +31,17 @@ require_once 'Zend/View/Helper/Abstract.php';
 class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
 {
     /**
-     * @var \Du\BundleFu\BundleFu
+     * @var \DotsUnited\BundleFu\BundleFu
      */
     protected $_bundleFu;
 
     /**
      * Set the BundleFu instance
      *
-     * @param \Du\BundleFu\BundleFu $bundleFu
+     * @param \DotsUnited\BundleFu\BundleFu $bundleFu
      * @return Zend_View_Helper_BundleFu
      */
-    public function setBundleFu(\Du\BundleFu\BundleFu $bundleFu)
+    public function setBundleFu(\DotsUnited\BundleFu\BundleFu $bundleFu)
     {
         $this->_bundleFu = $bundleFu;
         return $this;
@@ -50,12 +50,12 @@ class Zend_View_Helper_BundleFu extends Zend_View_Helper_Abstract
     /**
      * Get the BundleFu instance
      *
-     * @return \Du\BundleFu\BundleFu
+     * @return \DotsUnited\BundleFu\BundleFu
      */
     public function getBundleFu()
     {
         if (null === $this->_bundleFu) {
-            $this->_bundleFu = new \Du\BundleFu\BundleFu();
+            $this->_bundleFu = new \DotsUnited\BundleFu\BundleFu();
         }
 
         return $this->_bundleFu;

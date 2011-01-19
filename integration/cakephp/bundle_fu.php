@@ -1,6 +1,6 @@
 <?php
 /**
- * Du\BundleFu
+ * DotsUnited\BundleFu
  *
  * LICENSE
  *
@@ -28,7 +28,7 @@
 class BundleFuHelper extends Helper
 {
     /**
-     * @var \Du\BundleFu\BundleFu
+     * @var \DotsUnited\BundleFu\BundleFu
      */
     protected $_bundleFu;
 
@@ -38,7 +38,7 @@ class BundleFuHelper extends Helper
     public function __construct()
     {
         spl_autoload_register(function($className) {
-            if (strpos($className, 'Du\\BundleFu\\') === 0) {
+            if (strpos($className, 'DotsUnited\\BundleFu\\') === 0) {
                 require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
             }
         });
@@ -47,10 +47,10 @@ class BundleFuHelper extends Helper
     /**
      * Set the BundleFu instance
      *
-     * @param \Du\BundleFu\BundleFu $bundleFu
+     * @param \DotsUnited\BundleFu\BundleFu $bundleFu
      * @return BundleFuHelper
      */
-    public function setBundleFu(\Du\BundleFu\BundleFu $bundleFu)
+    public function setBundleFu(\DotsUnited\BundleFu\BundleFu $bundleFu)
     {
         $this->_bundleFu = $bundleFu;
         return $this;
@@ -59,12 +59,12 @@ class BundleFuHelper extends Helper
     /**
      * Get the BundleFu instance
      *
-     * @return \Du\BundleFu\BundleFu
+     * @return \DotsUnited\BundleFu\BundleFu
      */
     public function getBundleFu()
     {
         if (null === $this->_bundleFu) {
-            $this->_bundleFu = new \Du\BundleFu\BundleFu();
+            $this->_bundleFu = new \DotsUnited\BundleFu\BundleFu();
             $this->_bundleFu->setDocRoot(WWW_ROOT);
         }
 

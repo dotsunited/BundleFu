@@ -1,6 +1,6 @@
 <?php
 /**
- * Du\BundleFu
+ * DotsUnited\BundleFu
  *
  * LICENSE
  *
@@ -30,7 +30,7 @@ namespace app\extensions\helper;
 class BundleFu extends \lithium\template\Helper
 {
     /**
-     * @var \Du\BundleFu\BundleFu
+     * @var \DotsUnited\BundleFu\BundleFu
      */
     protected $_bundleFu;
 
@@ -44,7 +44,7 @@ class BundleFu extends \lithium\template\Helper
 
         // Setup autoloading
         spl_autoload_register(function($className) {
-            if (strpos($className, 'Du\\BundleFu\\') === 0) {
+            if (strpos($className, 'DotsUnited\\BundleFu\\') === 0) {
                 require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
             }
         });
@@ -53,10 +53,10 @@ class BundleFu extends \lithium\template\Helper
     /**
      * Set the BundleFu instance
      *
-     * @param \Du\BundleFu\BundleFu $bundleFu
+     * @param \DotsUnited\BundleFu\BundleFu $bundleFu
      * @return Zend_View_Helper_BundleFu
      */
-    public function setBundleFu(\Du\BundleFu\BundleFu $bundleFu)
+    public function setBundleFu(\DotsUnited\BundleFu\BundleFu $bundleFu)
     {
         $this->_bundleFu = $bundleFu;
         return $this;
@@ -65,12 +65,12 @@ class BundleFu extends \lithium\template\Helper
     /**
      * Get the BundleFu instance
      *
-     * @return \Du\BundleFu\BundleFu
+     * @return \DotsUnited\BundleFu\BundleFu
      */
     public function getBundleFu()
     {
         if (null === $this->_bundleFu) {
-            $this->_bundleFu = new \Du\BundleFu\BundleFu();
+            $this->_bundleFu = new \DotsUnited\BundleFu\BundleFu();
             $this->_bundleFu->setDocRoot($this->_context->request()->env('DOCUMENT_ROOT'));
         }
 

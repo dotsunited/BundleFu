@@ -1,6 +1,6 @@
 <?php
 /**
- * Du\BundleFu
+ * DotsUnited\BundleFu
  *
  * LICENSE
  *
@@ -14,10 +14,10 @@
  * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 
-namespace Du\BundleFu;
+namespace DotsUnited\BundleFu;
 
 /**
- * Du\BundleFu\CssUrlRewriter
+ * DotsUnited\BundleFu\CssUrlRewriter
  *
  * @category   Du
  * @package    Du_BundleFu

@@ -1,6 +1,6 @@
 <?php
 /**
- * Du\BundleFu
+ * DotsUnited\BundleFu
  *
  * LICENSE
  *
@@ -15,10 +15,10 @@
  * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  */
 
-namespace Du\BundleFu\Filter;
+namespace DotsUnited\BundleFu\Filter;
 
 /**
- * Du\BundleFu\Filter\Filter
+ * DotsUnited\BundleFu\Filter\Filter
  *
  * @category   Du
  * @package    Du_BundleFu

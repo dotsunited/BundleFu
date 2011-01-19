@@ -1,6 +1,6 @@
 <?php
 /**
- * Du\BundleFu
+ * DotsUnited\BundleFu
  *
  * LICENSE
  *
@@ -32,12 +32,12 @@ function bundle_fu()
     if (!$bundleFu) {
         // Setup autoloading
         spl_autoload_register(function($className) {
-            if (strpos($className, 'Du\\BundleFu\\') === 0) {
+            if (strpos($className, 'DotsUnited\\BundleFu\\') === 0) {
                 require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
             }
         });
 
-        $bundleFu = new \Du\BundleFu\BundleFu();
+        $bundleFu = new \DotsUnited\BundleFu\BundleFu();
         $bundleFu->setDocRoot(dirname(FCPATH));
     }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Du\BundleFu
+ * DotsUnited\BundleFu
  *
  * LICENSE
  *
@@ -25,7 +25,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
 
 // Setup autoloading
 spl_autoload_register(function($className) {
-    if (strpos($className, 'PHPUnit_') === false && strpos($className, 'Du\\') === false) {
+    if (strpos($className, 'PHPUnit_') === false && strpos($className, 'DotsUnited\\') === false) {
         return;
     }
 

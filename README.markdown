@@ -1,7 +1,7 @@
-Du\BundleFu
+DotsUnited\BundleFu
 ===========
 
-Du\BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
+DotsUnited\BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
 
 It is highly inspired by the [Ruby on Rails](http://rubyonrails.org) plugin [bundle-fu](http://code.google.com/p/bundle-fu/).
 
@@ -39,31 +39,31 @@ BundleFu offers integrations into the following frameworks/libraries:
 
 ## Installation ##
 
-You can install Du\BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
+You can install DotsUnited\BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
 
     pear channel-discover pear.dotsunited.de
     pear install dotsunited/Du_BundleFu
 
 ## Prerequisites ##
 
-Du\BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
+DotsUnited\BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading. Most modern frameworks have tools to setup autoloading, if you are unsure you can use the following code snippet in your bootstrap file:
 
     <?php
     spl_autoload_register(function($className) {
-        if (strpos($className, 'Du\\BundleFu\\') === 0) {
+        if (strpos($className, 'DotsUnited\\BundleFu\\') === 0) {
             require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
         }
     });
     ?>
 
-This requires that you have installed Du\BundleFu in your `include_path` which is already the case if you have installed it via PEAR.
+This requires that you have installed DotsUnited\BundleFu in your `include_path` which is already the case if you have installed it via PEAR.
 
 ## Usage ##
 
 Configure a BundleFu instance:
 
     <?php
-    $bundleFu = new \Du\BundleFu\BundleFu();
+    $bundleFu = new \DotsUnited\BundleFu\BundleFu();
 
     $bundleFu
         // Set the document root
@@ -104,7 +104,7 @@ Output the bundle `<script>` and `<link>` tags wherever you want:
 
 ## Filters ##
 
-You can manipulate the bundled css/javascript code with filters. Filters are classes which implement the `Du\BundleFu\Filter\Filter` interface.
+You can manipulate the bundled css/javascript code with filters. Filters are classes which implement the `DotsUnited\BundleFu\Filter\Filter` interface.
 
 You can add filters like this:
 
@@ -113,10 +113,10 @@ You can add filters like this:
     $bundleFu->setJsFilter(my MyJsFilter());
     ?>
 
-If you need multiple filters, you can use `Du\BundleFu\Filter\FilterChain` like this:
+If you need multiple filters, you can use `DotsUnited\BundleFu\Filter\FilterChain` like this:
 
     <?php
-    $filterChain = new \Du\BundleFu\Filter\FilterChain();
+    $filterChain = new \DotsUnited\BundleFu\Filter\FilterChain();
 
     $filterChain->addFilter(new MyCssFilter1());
     $filterChain->addFilter(new MyCssFilter2());
@@ -126,18 +126,18 @@ If you need multiple filters, you can use `Du\BundleFu\Filter\FilterChain` like 
 
 ### Examples ###
 
-Du\BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
+DotsUnited\BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
 
-Simply add the `Du\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
+Simply add the `DotsUnited\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
 
     <?php
-    $bundleFu->setJsFilter(new \Du\BundleFu\Filter\ClosureCompilerService());
+    $bundleFu->setJsFilter(new \DotsUnited\BundleFu\Filter\ClosureCompilerService());
     ?>
 
-The `Du\BundleFu\Filter\Callback` can filter by using any PHP callback. If you want to compress your CSS using [YUI Compressor](http://developer.yahoo.com/yui/compressor/) you can either write a custom filter or use the following code leveraging the `Callback` filter:
+The `DotsUnited\BundleFu\Filter\Callback` can filter by using any PHP callback. If you want to compress your CSS using [YUI Compressor](http://developer.yahoo.com/yui/compressor/) you can either write a custom filter or use the following code leveraging the `Callback` filter:
 
     <?php
-    $filter = new \Du\BundleFu\Filter\Callback(function($content) {
+    $filter = new \DotsUnited\BundleFu\Filter\Callback(function($content) {
         $descriptorspec = array(
              0 => array('pipe', 'r'),  // STDIN
              1 => array('pipe', 'w'),  // STDOUT
@@ -185,4 +185,4 @@ The `Du\BundleFu\Filter\Callback` can filter by using any PHP callback. If you w
 
 ## License ##
 
-Du\BundleFu is released under the [new BSD license](https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE).
+DotsUnited\BundleFu is released under the [new BSD license](https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE).
