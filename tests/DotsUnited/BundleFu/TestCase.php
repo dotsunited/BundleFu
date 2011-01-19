@@ -9,7 +9,7 @@
  * https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE
  *
  * @category   Du
- * @package    Du_BundleFu
+ * @package    Dubundle
  * @subpackage UnitTests
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
  * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
@@ -19,7 +19,7 @@ namespace DotsUnited\BundleFu;
 
 /**
  * @category   Du
- * @package    Du_BundleFu
+ * @package    Dubundle
  * @subpackage UnitTests
  * @author     Jan Sorgalla
  * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
@@ -28,20 +28,20 @@ namespace DotsUnited\BundleFu;
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var BundleFu
+     * @var Bundle
      */
-    protected $_bundleFu;
+    protected $bundle;
 
     public function setUp()
     {
-        $this->_bundleFu = new BundleFu();
-        $this->_bundleFu->setDocRoot(__DIR__ . '/_files');
+        $this->bundle = new Bundle();
+        $this->bundle->setDocRoot(__DIR__ . '/_files');
     }
 
     public function tearDown()
     {
-        $this->_purgeCache();
-        $this->_bundleFu = null;
+        $this->purgeCache();
+        $this->bundle = null;
     }
 
     /**************************************************************************/
@@ -66,13 +66,13 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         $this->assertNotRegExp('/' . preg_quote($needle, '/') . '/', file_get_contents($filename), $message);
     }
 
-    protected function _appendToFile($filename, $content)
+    protected function appendToFile($filename, $content)
     {
         $this->assertFileExists($filename);
         file_put_contents($filename, $content, FILE_APPEND);
     }
 
-    protected function _purgeCache()
+    protected function purgeCache()
     {
         $paths = array(
             __DIR__ . '/_files/css/cache',
@@ -95,7 +95,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         }
     }
 
-    protected function _includeSome()
+    protected function includeSome()
     {
         return '<script src="/js/js_1.js?1000" type="text/javascript"></script>' . "\n" .
                '<script src="/js/js_2.js?1000" type="text/javascript"></script>' . "\n" .
@@ -103,9 +103,9 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
                '<link href="/css/css_2.css?1000" media="screen" rel="stylesheet" type="text/css">';
     }
 
-    protected function _includeAll()
+    protected function includeAll()
     {
-        return $this->_includeSome() . "\n" .
+        return $this->includeSome() . "\n" .
                '<script src="/js/js_3.js?1000" type="text/javascript"></script>' . "\n" .
                '<link href="/css/css_3.css?1000" media="screen" rel="stylesheet" type="text/css" />';
     }

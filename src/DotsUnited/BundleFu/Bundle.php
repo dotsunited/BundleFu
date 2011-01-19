@@ -19,7 +19,7 @@ namespace DotsUnited\BundleFu;
 use DotsUnited\BundleFu\Filter\Filter;
 
 /**
- * DotsUnited\BundleFu\BundleFu
+ * DotsUnited\BundleFu\Bundle
  *
  * @category   Du
  * @package    Du_BundleFu
@@ -28,7 +28,7 @@ use DotsUnited\BundleFu\Filter\Filter;
  * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
  * @version    @package_version@
  */
-class BundleFu
+class Bundle
 {
     /**
      * Whether bundling is disabled.
