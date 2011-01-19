@@ -127,7 +127,7 @@ class Bundle
      * Set whether to bypass bundling
      *
      * @param boolean $bypass
-     * @return BundleFu
+     * @return Bundle
      */
     public function setBypass($bypass)
     {
@@ -149,7 +149,7 @@ class Bundle
      * Set directory in which to look for files
      *
      * @param string $docRoot
-     * @return BundleFu
+     * @return Bundle
      */
     public function setDocRoot($docRoot)
     {
@@ -171,7 +171,7 @@ class Bundle
      * Set the bundle name
      *
      * @param string $name
-     * @return BundleFu
+     * @return Bundle
      */
     public function setName($name)
     {
@@ -193,7 +193,7 @@ class Bundle
      * Set directory in which to write bundled css files
      *
      * @param string $cssCachePath
-     * @return BundleFu
+     * @return Bundle
      */
     public function setCssCachePath($cssCachePath)
     {
@@ -215,7 +215,7 @@ class Bundle
      * Set directory in which to write bundled javascript files
      *
      * @param string $jsCachePath
-     * @return BundleFu
+     * @return Bundle
      */
     public function setJsCachePath($jsCachePath)
     {
@@ -237,7 +237,7 @@ class Bundle
      * Set path the generated css bundles are publicly accessible under
      *
      * @param string $cssCacheUrl
-     * @return BundleFu
+     * @return Bundle
      */
     public function setCssCacheUrl($cssCacheUrl)
     {
@@ -259,7 +259,7 @@ class Bundle
      * Set path the generated javascript bundles are publicly accessible under
      *
      * @param string $jsCacheUrl
-     * @return BundleFu
+     * @return Bundle
      */
     public function setJsCacheUrl($jsCacheUrl)
     {
@@ -281,7 +281,7 @@ class Bundle
      * Set whether to render as XHTML.
      *
      * @param  boolean $renderAsXhtml
-     * @return BundleFu
+     * @return Bundle
      */
     public function setRenderAsXhtml($renderAsXhtml)
     {
@@ -508,7 +508,7 @@ class Bundle
      *
      * @param string $file
      * @param string $docRoot
-     * @return BundleFu
+     * @return Bundle
      */
     public function addCssFile($file, $docRoot = null)
     {
@@ -529,7 +529,7 @@ class Bundle
      *
      * @param string $file
      * @param string $docRoot
-     * @return BundleFu
+     * @return Bundle
      */
     public function addJsFile($file, $docRoot = null)
     {
@@ -549,7 +549,7 @@ class Bundle
      * Start capturing and bundling current output.
      *
      * @param array $options
-     * @return BundleFu
+     * @return Bundle
      */
     public function start(array $options = array())
     {
@@ -568,7 +568,7 @@ class Bundle
      * End capturing and bundling current output.
      *
      * @param array $options
-     * @return BundleFu
+     * @return Bundle
      */
     public function end(array $options = array())
     {
@@ -600,7 +600,7 @@ class Bundle
      *
      * @param string $html
      * @param string $docRoot
-     * @return BundleFu
+     * @return Bundle
      */
     public function extractFiles($html, $docRoot = null)
     {
