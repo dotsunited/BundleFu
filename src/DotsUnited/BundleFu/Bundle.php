@@ -330,10 +330,10 @@ class Bundle
     /**
      * Set css filter.
      *
-     * @param Filter
+     * @param FilterInterface
      * @return Bundle
      */
-    public function setCssFilter(Filter $filter)
+    public function setCssFilter(FilterInterface $filter)
     {
         $this->cssFilter = $filter;
         return $this;
@@ -342,7 +342,7 @@ class Bundle
     /**
      * Get css filter.
      *
-     * @return Filter
+     * @return FilterInterface
      */
     public function getCssFilter()
     {
@@ -352,10 +352,10 @@ class Bundle
     /**
      * Set javascript filter.
      *
-     * @param Filter
+     * @param FilterInterface
      * @return Bundle
      */
-    public function setJsFilter(Filter $filter)
+    public function setJsFilter(FilterInterface $filter)
     {
         $this->jsFilter = $filter;
         return $this;
@@ -364,7 +364,7 @@ class Bundle
     /**
      * Get javascript filter.
      *
-     * @return Filter
+     * @return FilterInterface
      */
     public function getJsFilter()
     {
@@ -618,6 +618,18 @@ class Bundle
             }
         }
 
+        return $this;
+    }
+
+    /**
+     * Reset the bundle.
+     *
+     * @return Bundle
+     */
+    public function reset()
+    {
+        $this->getCssFileList()->reset();
+        $this->getJsFileList()->reset();
         return $this;
     }
 
