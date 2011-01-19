@@ -331,7 +331,7 @@ class Bundle
      * Set css filter.
      *
      * @param Filter
-     * return BundleFu
+     * @return Bundle
      */
     public function setCssFilter(Filter $filter)
     {
@@ -353,7 +353,7 @@ class Bundle
      * Set javascript filter.
      *
      * @param Filter
-     * return BundleFu
+     * @return Bundle
      */
     public function setJsFilter(Filter $filter)
     {
