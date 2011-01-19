@@ -1,29 +1,19 @@
 <?php
-/**
- * DotsUnited\BundleFu
+
+/*
+ * This file is part of BundleFu.
  *
- * LICENSE
+ * (c) 2011 Jan Sorgalla <jan.sorgalla@dotsunited.de>
  *
- * This source file is subject to the BSD license that is available
- * through the world-wide-web at this URL:
- * https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE
- *
- * @category   Du
- * @package    Du_BundleFu
- * @subpackage UnitTests
- * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace DotsUnited\BundleFu\Filter;
 
 /**
- * @category   Du
- * @package    Du_BundleFu
- * @subpackage UnitTests
- * @author     Jan Sorgalla
- * @copyright  Copyright (C) 2010 - Present, Jan Sorgalla
- * @license    https://github.com/dotsunited/du-bundlefu/blob/master/LICENSE New BSD License
+ * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
+ * @version @package_version@
  */
 class FilterChainTest extends \PHPUnit_Framework_TestCase
 {
