@@ -32,7 +32,7 @@ class FileList implements \Iterator, \Countable
     /**
      * Add a file to the list.
      *
-     * @param string $file The (relative) file
+     * @param string $file The file
      * @param \SplFileInfo $fileInfo
      * @return FileList
      */
