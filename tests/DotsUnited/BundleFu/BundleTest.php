@@ -58,6 +58,49 @@ class BundleTest extends TestCase
         $this->assertEquals($this->bundle->render(), (string) $this->bundle);
     }
 
+    public function testResetResetsFileLists()
+    {
+        $this->bundle->start();
+        echo $this->includeAll();
+        $this->bundle->end();
+
+        $this->assertGreaterThan(0, count($this->bundle->getCssFileList()));
+        $this->assertGreaterThan(0, count($this->bundle->getJsFileList()));
+
+        $this->bundle->reset();
+
+        $this->assertEquals(0, count($this->bundle->getCssFileList()));
+        $this->assertEquals(0, count($this->bundle->getJsFileList()));
+    }
+
+    public function testCustomNameShouldBeUsed()
+    {
+        $this->bundle->setName('custom_bundle');
+
+        $this->assertEquals('custom_bundle.css', basename($this->bundle->getCssBundlePath()));
+        $this->assertEquals('custom_bundle.js', basename($this->bundle->getJsBundlePath()));
+    }
+
+    /**
+     * @todo Check why setExpectedException() is not working
+     */
+    public function testCastingToStringShouldNotThrowException()
+    {
+        //$this->setExpectedException('\PHPUnit_Framework_Error_Warning');
+
+        $callback = function($content) {
+            throw new \Exception('Test');
+        };
+        $this->bundle->setCssFilter(new CallbackFilter($callback));
+        $this->bundle->setJsFilter(new CallbackFilter($callback));
+
+        $this->bundle->start();
+        echo $this->includeAll();
+        $this->bundle->end();
+
+        $this->assertEquals('', @$this->bundle->__toString());
+    }
+
     /**************************************************************************/
 
     public function testBundleShouldUseCssFilters()
