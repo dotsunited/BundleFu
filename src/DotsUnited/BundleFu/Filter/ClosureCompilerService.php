@@ -25,6 +25,8 @@ class ClosureCompilerService implements FilterInterface
     protected $parameters = array();
 
     /**
+     * Constructor.
+     * 
      * @param array $parameters
      */
     public function __construct(array $parameters = null)
@@ -35,9 +37,7 @@ class ClosureCompilerService implements FilterInterface
     }
 
     /**
-     * Returns $content filtered through each filter in the chain
-     *
-     * Filters are run in the order in which they were added to the chain (FIFO)
+     * Returns the result of filtering $content.
      *
      * @param mixed $content
      * @return mixed

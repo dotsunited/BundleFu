@@ -25,6 +25,8 @@ class Callback implements FilterInterface
     protected $callback;
 
     /**
+     * Constructor.
+     * 
      * @param mixed $callback
      */
     public function __construct($callback)
@@ -33,9 +35,7 @@ class Callback implements FilterInterface
     }
 
     /**
-     * Returns $content filtered through each filter in the chain
-     *
-     * Filters are run in the order in which they were added to the chain (FIFO)
+     * Returns the result of filtering $content.
      *
      * @param mixed $content
      * @return mixed

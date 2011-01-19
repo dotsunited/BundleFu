@@ -22,7 +22,7 @@ use DotsUnited\BundleFu\Filter\FilterInterface;
 class Bundle
 {
     /**
-     * Whether bundling is disabled.
+     * Whether to bypass capturing.
      *
      * @var bool
      */
@@ -124,7 +124,7 @@ class Bundle
     protected $currentBundleOptions;
 
     /**
-     * Set whether to bypass bundling
+     * Set whether to bypass capturing.
      *
      * @param boolean $bypass
      * @return Bundle
@@ -136,7 +136,7 @@ class Bundle
     }
 
     /**
-     * Get whether to bypass bundling
+     * Get whether to bypass bundling.
      *
      * @return boolean
      */
@@ -146,7 +146,7 @@ class Bundle
     }
 
     /**
-     * Set directory in which to look for files
+     * Set directory in which to look for files.
      *
      * @param string $docRoot
      * @return Bundle
@@ -158,7 +158,7 @@ class Bundle
     }
 
     /**
-     * Get directory in which to look for files
+     * Get directory in which to look for files.
      *
      * @return string
      */
@@ -168,7 +168,7 @@ class Bundle
     }
 
     /**
-     * Set the bundle name
+     * Set the bundle name.
      *
      * @param string $name
      * @return Bundle
@@ -180,7 +180,7 @@ class Bundle
     }
 
     /**
-     * Get the bundle name
+     * Get the bundle name.
      *
      * @return string
      */
@@ -190,7 +190,7 @@ class Bundle
     }
 
     /**
-     * Set directory in which to write bundled css files
+     * Set directory in which to write bundled css files.
      *
      * @param string $cssCachePath
      * @return Bundle
@@ -202,7 +202,7 @@ class Bundle
     }
 
     /**
-     * Get directory in which to write bundled css files
+     * Get directory in which to write bundled css files.
      *
      * @return string
      */
@@ -212,7 +212,7 @@ class Bundle
     }
 
     /**
-     * Set directory in which to write bundled javascript files
+     * Set directory in which to write bundled javascript files.
      *
      * @param string $jsCachePath
      * @return Bundle
@@ -224,7 +224,7 @@ class Bundle
     }
 
     /**
-     * Get directory in which to write bundled javascript files
+     * Get directory in which to write bundled javascript files.
      *
      * @return string
      */
@@ -234,7 +234,7 @@ class Bundle
     }
 
     /**
-     * Set path the generated css bundles are publicly accessible under
+     * Set path the generated css bundles are publicly accessible under.
      *
      * @param string $cssCacheUrl
      * @return Bundle
@@ -246,7 +246,7 @@ class Bundle
     }
 
     /**
-     * Get path the generated css bundles are publicly accessible under
+     * Get path the generated css bundles are publicly accessible under.
      *
      * @return string
      */
@@ -256,7 +256,7 @@ class Bundle
     }
 
     /**
-     * Set path the generated javascript bundles are publicly accessible under
+     * Set path the generated javascript bundles are publicly accessible under.
      *
      * @param string $jsCacheUrl
      * @return Bundle
@@ -268,7 +268,7 @@ class Bundle
     }
 
     /**
-     * Get path the generated javascript bundles are publicly accessible under
+     * Get path the generated javascript bundles are publicly accessible under.
      *
      * @return string
      */
@@ -555,7 +555,7 @@ class Bundle
     {
         $currentBundleOptions = array(
             'docroot' => $this->getDocRoot(),
-            'bypass'  => $this->getBypass(),
+            'bypass'  => $this->getBypass()
         );
 
         $this->currentBundleOptions = array_merge($currentBundleOptions, $options);

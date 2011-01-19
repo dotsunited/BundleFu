@@ -20,7 +20,7 @@ namespace DotsUnited\BundleFu\Filter;
 interface FilterInterface
 {
     /**
-     * Returns the result of filtering $content
+     * Returns the result of filtering $content.
      *
      * @param mixed $content
      * @return mixed
