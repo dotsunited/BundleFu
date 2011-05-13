@@ -25,5 +25,5 @@ interface FilterInterface
      * @param mixed $content
      * @return mixed
      */
-    public function filter($content);
+    function filter($content);
 }
