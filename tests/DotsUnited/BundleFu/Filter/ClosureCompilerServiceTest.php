@@ -36,7 +36,7 @@ function func() {
   return true
 }
 ";
-        $compiled = 'function js_1(){alert("hi")}function func(){alert("hi");return true}function func(){alert("hi");return true};';
+        $compiled = 'function js_1(){alert("hi")}function func(){alert("hi");return!0}function func(){alert("hi");return!0};';
 
         $this->assertEquals($compiled, trim($filter->filter($uncompiled)));
     }
