@@ -53,7 +53,9 @@ class ClosureCompilerService implements FilterInterface
             $this->parameters +
             array(
                 'compilation_level' => 'SIMPLE_OPTIMIZATIONS'
-            )
+            ),
+            null,
+            '&'
         );
 
         $opts = array(
