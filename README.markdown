@@ -56,6 +56,7 @@ spl_autoload_register(function($className) {
     }
 });
 ?>
+```
 
 This requires that you have installed BundleFu in your `include_path` which is already the case if you have installed it via PEAR.
 
