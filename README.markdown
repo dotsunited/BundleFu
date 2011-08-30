@@ -193,14 +193,14 @@ $bundle->setCssFilter($filter);
 
     the comment will be ignored and the file will be bundled anyways. Be sure to comment out via PHP:
 
-     ```php
-        <?php /* <script src="/js/script.js" type="text/javascript"></script> */ ?>
-     ```
+    ```php
+    <?php /* <script src="/js/script.js" type="text/javascript"></script> */ ?>
+    ```
 
   * External dependencies via querystring loading will not work:
 
     ```html
-        <script src="/js/scriptaculous.js?load=effects,controls" type="text/javascript"></script>
+    <script src="/js/scriptaculous.js?load=effects,controls" type="text/javascript"></script>
     ```
 
     Instead, you'll need to include each javascript file as normal.
