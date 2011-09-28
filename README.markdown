@@ -3,7 +3,7 @@ BundleFu
 
 BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
 
-__Note__: If you need a PHP 5.2 version of this BundleFu, checkout the [5.2 branch](https://github.com/dotsunited/BundleFu/tree/5.2).
+**Note**: If you need a PHP 5.2 version of this BundleFu, checkout the [5.2 branch](https://github.com/dotsunited/BundleFu/tree/5.2).
 
 It is highly inspired by the [Ruby on Rails](http://rubyonrails.org) plugin [bundle-fu](http://code.google.com/p/bundle-fu/).
 
