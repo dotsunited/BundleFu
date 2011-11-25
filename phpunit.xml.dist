@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="tests/bootstrap.php">
-    <testsuite name="DotsUnited\BundleFu Test Suite">
-        <directory suffix="Test.php">./tests/DotsUnited/BundleFu/</directory>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         bootstrap="tests/bootstrap.php"
+>
+    <testsuite name="BundleFu Test Suite">
+        <directory>./tests/DotsUnited/BundleFu/</directory>
     </testsuite>
+
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/DotsUnited/BundleFu/</directory>
+            <directory>./src/DotsUnited/BundleFu/</directory>
         </whitelist>
     </filter>
 </phpunit>
