@@ -1,0 +1,23 @@
+{
+    "name": "dotsunited/bundlefu",
+    "type": "library",
+    "description": "BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once",
+    "keywords": ["css", "javascript", "bundling", "asset"],
+    "homepage": "https://github.com/dotsunited/BundleFu",
+    "license": "New BSD",
+    "authors": [
+        {
+            "name": "Jan Sorgalla",
+            "email": "jan.sorgalla@dotsunited.de",
+            "homepage": "http://dotsunited.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "DotsUnited\\BundleFu": "src/"
+        }
+    }
+}

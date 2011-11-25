@@ -1,4 +1,5 @@
-nbproject
-catalog.xml
-tests/logs
+build/
+composer.lock
+composer.phar
 phpunit.xml
+vendor/
