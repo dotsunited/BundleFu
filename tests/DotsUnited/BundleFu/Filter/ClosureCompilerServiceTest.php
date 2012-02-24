@@ -41,6 +41,28 @@ function func() {
         $this->assertEquals($compiled, trim($filter->filter($uncompiled)));
     }
 
+    public function testFilterShouldAcceptParametersInContructor()
+    {
+        $filter = new ClosureCompilerService(array('compilation_level' => 'WHITESPACE_ONLY'));
+
+        $uncompiled = "function js_1() { alert('hi')};
+
+// this is a function
+function func() {
+  alert('hi')
+  return true
+}
+
+function func() {
+  alert('hi')
+  return true
+}
+";
+        $compiled = 'function js_1(){alert("hi")}function func(){alert("hi");return true}function func(){alert("hi");return true};';
+
+        $this->assertEquals($compiled, trim($filter->filter($uncompiled)));
+    }
+
     public function testFilterInvalidCodeShouldReturnOriginalContent()
     {
         $filter = new ClosureCompilerService();
