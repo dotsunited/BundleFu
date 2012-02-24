@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace DotsUnited\BundleFu;
+namespace DotsUnited\BundleFu\Tests;
 
+use DotsUnited\BundleFu\Bundle;
 use DotsUnited\BundleFu\Filter\Callback as CallbackFilter;
 
 /**

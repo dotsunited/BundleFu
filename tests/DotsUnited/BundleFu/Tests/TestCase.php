@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace DotsUnited\BundleFu;
+namespace DotsUnited\BundleFu\Tests;
+
+use DotsUnited\BundleFu\Bundle;
 
 /**
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>

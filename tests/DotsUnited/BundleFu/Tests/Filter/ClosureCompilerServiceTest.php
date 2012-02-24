@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace DotsUnited\BundleFu\Filter;
+namespace DotsUnited\BundleFu\Tests\Filter;
+
+use DotsUnited\BundleFu\Filter\ClosureCompilerService;
 
 /**
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
