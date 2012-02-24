@@ -8,4 +8,4 @@ before_script:
   - wget -nc http://getcomposer.org/composer.phar
   - php composer.phar update
 
-script: phpunit --configuration phpunit.travis.xml
+script: phpunit --coverage-text --configuration phpunit.travis.xml
