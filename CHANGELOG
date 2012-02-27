@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.9.1 (2012-02-27)
+------------------
+
+  * Added a `setOptions` method in `BundleFu\Bundle` for setting multiple options as array
+  * The filter setters in `BundleFu\Bundle` accept `null` as argument to reset the current filter
+  * Added composer.json (BundleFu is registered at packagist.org as "dotsunited/bundlefu")
+  * Explicitly set arg separator to & in `BundleFu\Bundle\Filter\ClosureCompilerService`
+
 0.9.0 (2011-01-19)
 ------------------
 
