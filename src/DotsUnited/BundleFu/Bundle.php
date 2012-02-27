@@ -124,6 +124,52 @@ class Bundle
     protected $currentBundleOptions;
 
     /**
+     * Allows to pass options as array.
+     *
+     * @param array $options
+     * @return Bundle
+     */
+    public function setOptions(array $options)
+    {
+        foreach ($options as $key => $val) {
+            switch ($key) {
+                case 'name':
+                    $this->setName($val);
+                    break;
+                case 'doc_root':
+                    $this->setDocRoot($val);
+                    break;
+                case 'bypass':
+                    $this->setBypass($val);
+                    break;
+                case 'render_as_xhtml':
+                    $this->setRenderAsXhtml($val);
+                    break;
+                case 'css_filter':
+                    $this->setCssFilter($val);
+                    break;
+                case 'js_filter':
+                    $this->setJsFilter($val);
+                    break;
+                case 'css_cache_path':
+                    $this->setCssCachePath($val);
+                    break;
+                case 'js_cache_path':
+                    $this->setJsCachePath($val);
+                    break;
+                case 'css_cache_url':
+                    $this->setCssCacheUrl($val);
+                    break;
+                case 'js_cache_url':
+                    $this->setJsCacheUrl($val);
+                    break;
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * Set whether to bypass capturing.
      *
      * @param boolean $bypass
