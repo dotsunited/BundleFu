@@ -29,40 +29,27 @@ Into this:
 <script src="/js/cache/bundle_3f84da97fc873ca8371a8203fcdd8a82.js?1234567890" type="text/javascript"></script>
 ```
 
-## Features ##
+Features
+--------
 
   * Automatically detects modifications to your css and javascript files and regenerates the bundles automatically.
   * Rewrites relative URLs in your css files to avoid broken image references.
   * Bundle contents can be modified by filters for code minification, compression etc. (A [Google Closure Compiler](http://code.google.com/closure/compiler/) filter using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html) comes with the library).
 
-## Installation ##
+Installation
+------------
 
-You can install BundleFu via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
+BundleFu can be installed using the [Composer](http://packagist.org) tool. You can either add `dotsunited/bundlefu` to your package dependencies, or if you want to install BundleFu as standalone, go to the main directory of this package and run:
 
-```
-pear channel-discover pear.dotsunited.de
-pear install dotsunited/BundleFu-beta
-```
+    $ wget http://getcomposer.org/composer.phar 
+    $ php composer.phar install
 
-## Prerequisites ##
+You can then use the composer-generated autoloader to access the BundleFu classes:
 
-BundleFu needs at least PHP 5.3.0 to run and requires that you have setup autoloading (BundleFu follows the technical interoperability [standards](http://groups.google.com/group/php-standards/web/psr-0-final-proposal) for PHP 5.3 namespaces and class names).
+    require 'vendor/.composer/autoload.php';
 
-Most modern frameworks have tools to setup autoloading (e.g. [Symfony2](http://docs.symfony-reloaded.org/guides/tools/autoloader.html)), if you are unsure you can use the following code snippet in your bootstrap file:
-
-```php
-<?php
-spl_autoload_register(function($className) {
-    if (strpos($className, 'DotsUnited\\BundleFu\\') === 0) {
-        require str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
-    }
-});
-?>
-```
-
-This requires that you have installed BundleFu in your `include_path` which is already the case if you have installed it via PEAR.
-
-## Usage ##
+Usage
+-----
 
 Configure a Bundle instance:
 
@@ -112,7 +99,8 @@ echo $bundle->renderJs();
 ?>
 ```
 
-## Filters ##
+Filters
+-------
 
 You can manipulate the bundled css/javascript code with filters. Filters are classes which implement `DotsUnited\BundleFu\Filter\FilterInterface`.
 
@@ -184,7 +172,8 @@ $bundle->setCssFilter($filter);
 ?>
 ```
 
-## Notes ##
+Notes
+-----
 
   * All content inside of `$bundle->start()` and `$bundle->end()` will be lost. Be sure to only put css/javascript includes inside of the block.
   * Scripts/stylesheets are detected by parsing the output and looking for include files. HTML comments are ignored, so if you comment out a script like this:
@@ -207,6 +196,7 @@ $bundle->setCssFilter($filter);
 
     Instead, you'll need to include each javascript file as normal.
 
-## License ##
+License
+-------
 
 BundleFu is released under the [New BSD License](https://github.com/dotsunited/BundleFu/blob/master/LICENSE).
