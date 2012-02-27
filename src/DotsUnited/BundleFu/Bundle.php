@@ -254,7 +254,7 @@ class Bundle
      */
     public function getCssCachePath()
     {
-        return $this->cssCachePath ;
+        return $this->cssCachePath;
     }
 
     /**
@@ -276,7 +276,7 @@ class Bundle
      */
     public function getJsCachePath()
     {
-        return $this->jsCachePath ;
+        return $this->jsCachePath;
     }
 
     /**
@@ -379,7 +379,7 @@ class Bundle
      * @param FilterInterface
      * @return Bundle
      */
-    public function setCssFilter(FilterInterface $filter)
+    public function setCssFilter(FilterInterface $filter = null)
     {
         $this->cssFilter = $filter;
         return $this;
@@ -401,7 +401,7 @@ class Bundle
      * @param FilterInterface
      * @return Bundle
      */
-    public function setJsFilter(FilterInterface $filter)
+    public function setJsFilter(FilterInterface $filter = null)
     {
         $this->jsFilter = $filter;
         return $this;
