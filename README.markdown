@@ -49,7 +49,9 @@ $ php composer.phar install
 You can then use the composer-generated autoloader to access the BundleFu classes:
 
 ```php
+<?php
 require 'vendor/.composer/autoload.php';
+?>
 ```
 
 Usage
