@@ -13,10 +13,10 @@
   <email>jan.sorgalla@dotsunited.de</email>
   <active>yes</active>
  </lead>
- <date>2011-01-19</date>
+ <date>2012-02-28</date>
  <version>
-  <release>0.9.1</release>
-  <api>0.9.1</api>
+  <release>0.9.2</release>
+  <api>0.9.2</api>
  </version>
  <stability>
   <release>beta</release>
@@ -49,6 +49,9 @@
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
       <file install-as="DotsUnited/BundleFu/CssUrlRewriter.php" name="CssUrlRewriter.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file install-as="DotsUnited/BundleFu/Factory.php" name="Factory.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
       <file install-as="DotsUnited/BundleFu/FileList.php" name="FileList.php" role="php">
