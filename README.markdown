@@ -75,6 +75,20 @@ $bundle
 ?>
 ```
 
+Alternatively, you can pass an options array to the constructor (or use the method `setOptions` later):
+
+```php
+<?php
+$options = array(
+    'doc_root' => '/path/to/your/document_root',
+    'css_cache_path' => 'css/cache',
+    'js_cache_path' => 'js/cache',
+);
+
+$bundle = new \DotsUnited\BundleFu\Bundle($options);
+?>
+```
+
 Use the instance to bundle your files in your templates:
 
 ```php
@@ -102,6 +116,49 @@ echo $bundle->renderCss();
 
 // Renders the <script> tag only
 echo $bundle->renderJs();
+?>
+```
+
+### Using the Factory ###
+
+You can also use a factory to create bundle instances. The advantage is, that the factory can hold global options (like `bypass` and `doc_root`) which are shared across all created bundles:
+
+```php
+<?php
+$options = array(
+    'doc_root' => '/path/to/your/document_root',
+    'css_cache_path' => 'css/cache',
+    'js_cache_path' => 'js/cache',
+);
+
+$factory = new \DotsUnited\BundleFu\Factory($options);
+
+// $bundle1 and $bundle2 use the same doc_root, css_cache_path and js_cache_path options
+$bundle1 = $factory->createBundle();
+$bundle2 = $factory->createBundle();
+?>
+```
+
+You can pass specific options to the `createBundle` method (global factory options will be overwritten):
+
+```php
+<?php
+$bundle1 = $factory->createBundle(array('name' => 'bundle1', 'doc_root' => '/path/to/another/document_root'));
+$bundle2 = $factory->createBundle(array('name' => 'bundle2'));
+?>
+```
+
+The factory also lets you define name aliases for filters. You can then define the string alias for the `css_filter` and `js_filter` options instead of passing a filter instance:
+
+```php
+<?php
+$filters = array(
+    'js_closure_compiler' => new \DotsUnited\BundleFu\Filter\ClosureCompilerService()
+);
+
+$factory = new \DotsUnited\BundleFu\Factory(array(), $filters);
+
+$bundle1 = $factory->createBundle(array('js_filter' => 'js_closure_compiler'));
 ?>
 ```
 
