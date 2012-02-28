@@ -39,7 +39,7 @@ Features
 Installation
 ------------
 
-BundleFu can be installed using the [Composer](http://packagist.org) tool. You can either add `dotsunited/bundlefu` to your package dependencies, or if you want to install BundleFu as standalone, go to the main directory of this package and run:
+BundleFu can be installed using the [Composer](http://packagist.org) tool. You can either add `dotsunited/bundlefu` to the dependencies in your composer.json, or if you want to install BundleFu as standalone, go to the main directory and run:
 
 ```bash
 $ wget http://getcomposer.org/composer.phar 
