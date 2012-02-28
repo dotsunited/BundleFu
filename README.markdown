@@ -1,7 +1,7 @@
 BundleFu
 ========
 
-[![Build Status](https://secure.travis-ci.org/dotsunited/BundleFu.png)](http://travis-ci.org/dotsunited/BundleFu)
+[![Build Status](https://secure.travis-ci.org/dotsunited/BundleFu.png?branch=master)](http://travis-ci.org/dotsunited/BundleFu)
 
 BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once.
 
