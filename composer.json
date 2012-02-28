@@ -4,7 +4,7 @@
     "description": "BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once",
     "keywords": ["css", "javascript", "bundling", "asset"],
     "homepage": "https://github.com/dotsunited/BundleFu",
-    "version": "0.9.2",
+    "version": "0.9.3",
     "license": "New BSD",
     "authors": [
         {
