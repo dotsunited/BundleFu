@@ -29,7 +29,7 @@ class Factory
     protected $options = array();
 
     /**
-     * Filter ma.
+     * Filter map.
      *
      * @var array
      */
