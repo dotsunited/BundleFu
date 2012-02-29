@@ -259,6 +259,7 @@ Notes
 
     Instead, you'll need to include each javascript file as normal.
 
+
 License
 -------
 
