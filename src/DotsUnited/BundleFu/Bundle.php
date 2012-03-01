@@ -759,17 +759,7 @@ class Bundle
                 $data = $filter->filter($data);
             }
 
-            $dir = dirname($cacheFile);
-
-            if (!file_exists($dir)) {
-                mkdir($dir, 0777, true);
-            }
-
-            if (false === file_put_contents($cacheFile, $data, LOCK_EX)) {
-                throw new \RuntimeException('Cannot write css cache file to "' . $cacheFile . '"');
-            }
-
-            $cacheTime = filemtime($cacheFile);
+            $cacheTime = $this->writeCacheFile($cacheFile, $data);
         }
 
         return sprintf(
@@ -814,17 +804,7 @@ class Bundle
                 $data = $filter->filter($data);
             }
 
-            $dir = dirname($cacheFile);
-
-            if (!file_exists($dir)) {
-                mkdir($dir, 0777, true);
-            }
-
-            if (false === file_put_contents($cacheFile, $data, LOCK_EX)) {
-                throw new \RuntimeException('Cannot write js cache file to "' . $cacheFile . '"');
-            }
-
-            $cacheTime = filemtime($cacheFile);
+            $cacheTime = $this->writeCacheFile($cacheFile, $data);
         }
 
         return sprintf(
@@ -843,5 +823,27 @@ class Bundle
     public function isRelativePath($path)
     {
         return strpos($path, '://') === false && !preg_match('/^\\//', $path) && !preg_match('/^[A-Z]:\\\\/i', $path);
+    }
+
+    /**
+     * Write a cache file to disk.
+     *
+     * @param string $cacheFile
+     * @param string $data
+     * @return integer
+     */
+    protected function writeCacheFile($cacheFile, $data)
+    {
+        $dir = dirname($cacheFile);
+
+        if (!file_exists($dir)) {
+            mkdir($dir, 0777, true);
+        }
+
+        if (false === file_put_contents($cacheFile, $data, LOCK_EX)) {
+            throw new \RuntimeException('Cannot write cache file to "' . $cacheFile . '"');
+        }
+
+        return filemtime($cacheFile);
     }
 }
