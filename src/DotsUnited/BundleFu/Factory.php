@@ -73,7 +73,7 @@ class Factory
      * @param \DotsUnited\BundleFu\Filter\FilterInterface $filter
      * @return \DotsUnited\BundleFu\Factory
      */
-    public function setFilter($name, FilterInterface $filter)
+    public function setFilter($name, FilterInterface $filter = null)
     {
         $this->filters[$name] = $filter;
 
@@ -88,7 +88,7 @@ class Factory
      */
     public function getFilter($name)
     {
-        if (!isset($this->filters[$name])) {
+        if (!array_key_exists($name, $this->filters)) {
             throw new \RuntimeException('There is no filter for the name "' . $name . '" registered.');
         }
 

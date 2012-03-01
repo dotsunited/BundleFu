@@ -63,6 +63,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new Factory();
         $factory->createBundle(array('css_filter' => 'css_filter'));
     }
+    
+    public function testFactoryAllowsSettingNullFilters()
+    {
+        $factory = new Factory(array(), array('css_filter' => null));
+        $factory->createBundle(array('css_filter' => 'css_filter'));
+    }
 
     public function testCreateBundleAcceptsArrayArgument()
     {
