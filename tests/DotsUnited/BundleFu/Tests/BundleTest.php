@@ -64,16 +64,6 @@ class BundleTest extends TestCase
         $this->bundle->end();
     }
 
-    public function testEndWithoutSettingDocRootFirstShouldThrowException()
-    {
-        $this->setExpectedException('\RuntimeException', 'Please set a document root either with setDocRoot() or via runtime through bundle options.');
-
-        $bundle = new Bundle();
-
-        $bundle->start();
-        $bundle->end();
-    }
-
     public function testCastingInstanceToStringShouldCallRender()
     {
         $this->bundle->start();
@@ -127,6 +117,39 @@ class BundleTest extends TestCase
     }
 
     /**************************************************************************/
+
+    public function testAddCssFileShouldAcceptAbsolutePath()
+    {
+        $docRoot = $this->bundle->getDocRoot();
+        $this->bundle->setDocRoot(null);
+
+        $this->bundle->addCssFile($docRoot . '/css/css_1.css');
+
+        $this->assertEquals($docRoot . '/css/css_1.css', $this->bundle->getCssFileList()->current()->getPathname());
+    }
+
+    public function testAddJsFileShouldAcceptAbsolutePath()
+    {
+        $docRoot = $this->bundle->getDocRoot();
+        $this->bundle->setDocRoot(null);
+
+        $this->bundle->addJsFile($docRoot . '/js/js_1.js');
+
+        $this->assertEquals($docRoot . '/js/js_1.js', $this->bundle->getJsFileList()->current()->getPathname());
+    }
+
+    public function testExtractFilesShouldAcceptAbsolutePaths()
+    {
+        $docRoot = $this->bundle->getDocRoot();
+        $this->bundle->setDocRoot(null);
+
+        $str = '<link href="' . $docRoot . '/css/css_1.css"><script src="' . $docRoot . '/js/js_1.js"/>';
+
+        $this->bundle->extractFiles($str);
+
+        $this->assertEquals($docRoot . '/css/css_1.css', $this->bundle->getCssFileList()->current()->getPathname());
+        $this->assertEquals($docRoot . '/js/js_1.js', $this->bundle->getJsFileList()->current()->getPathname());
+    }
 
     public function testBundleShouldUseCssFilters()
     {

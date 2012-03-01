@@ -122,11 +122,11 @@ class Bundle
      * @var array
      */
     protected $currentBundleOptions;
-    
+
     /**
      * Constructor.
-     * 
-     * @param array $options 
+     *
+     * @param array $options
      */
     public function __construct(array $options = array())
     {
@@ -568,12 +568,18 @@ class Bundle
      */
     public function addCssFile($file, $docRoot = null)
     {
-        if (!$docRoot) {
+        if (null === $docRoot) {
             $docRoot = $this->getDocRoot();
         }
 
+        $docRoot = (string) $docRoot;
+
+        if ('' !== $docRoot) {
+            $docRoot .= DIRECTORY_SEPARATOR;
+        }
+
         $file    = preg_replace('/^https?:\/\/[^\/]+/i', '', $file);
-        $abspath = $docRoot . DIRECTORY_SEPARATOR . $file;
+        $abspath = $docRoot . $file;
 
         $this->getCssFileList()->addFile($file, $abspath);
 
@@ -589,12 +595,18 @@ class Bundle
      */
     public function addJsFile($file, $docRoot = null)
     {
-        if (!$docRoot) {
+        if (null === $docRoot) {
             $docRoot = $this->getDocRoot();
         }
 
+        $docRoot = (string) $docRoot;
+
+        if ('' !== $docRoot) {
+            $docRoot .= DIRECTORY_SEPARATOR;
+        }
+
         $file    = preg_replace('/^https?:\/\/[^\/]+/i', '', $file);
-        $abspath = $docRoot . DIRECTORY_SEPARATOR . $file;
+        $abspath = $docRoot . $file;
 
         $this->getJsFileList()->addFile($file, $abspath);
 
@@ -634,10 +646,6 @@ class Bundle
 
         $options = array_merge($this->currentBundleOptions, $options);
 
-        if (empty($options['docroot'])) {
-            throw new \RuntimeException('Please set a document root either with setDocRoot() or via runtime through bundle options.');
-        }
-
         $captured = ob_get_clean();
 
         if ($options['bypass']) {
@@ -660,7 +668,7 @@ class Bundle
      */
     public function extractFiles($html, $docRoot = null)
     {
-        if (!$docRoot) {
+        if (null === $docRoot) {
             $docRoot = $this->getDocRoot();
         }
 
