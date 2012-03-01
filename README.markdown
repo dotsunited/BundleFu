@@ -42,7 +42,7 @@ Installation
 BundleFu can be installed using the [Composer](http://packagist.org) tool. You can either add `dotsunited/bundlefu` to the dependencies in your composer.json, or if you want to install BundleFu as standalone, go to the main directory and run:
 
 ```bash
-$ wget http://getcomposer.org/composer.phar 
+$ wget http://getcomposer.org/composer.phar
 $ php composer.phar install
 ```
 
