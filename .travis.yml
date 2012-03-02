@@ -12,4 +12,4 @@ script: phpunit --coverage-text --configuration phpunit.travis.xml
 
 notifications:
   email: false
-  webhooks: http://dotsunited.de/webhooks/travisci.php
+  webhooks: http://www.dotsunited.de/webhooks/travisci.php
