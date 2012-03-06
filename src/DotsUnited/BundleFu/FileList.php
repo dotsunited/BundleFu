@@ -108,7 +108,9 @@ class FileList implements \Iterator, \Countable
     public function current()
     {
         if ($this->valid() === false) {
+            // @codeCoverageIgnoreStart
             return null;
+            // @codeCoverageIgnoreEnd
         }
 
         return current($this->files);

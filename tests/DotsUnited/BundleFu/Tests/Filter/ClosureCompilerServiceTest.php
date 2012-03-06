@@ -73,4 +73,13 @@ function func() {
 
         $this->assertEquals($uncompiled, trim($filter->filter($uncompiled)));
     }
+    
+    public function testFilterFileDoesNothing()
+    {
+        $filter = new ClosureCompilerService();
+        
+        $value = "function js_1() {";
+
+        $this->assertEquals($value, $filter->filterFile($value, '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js')));
+    }
 }

@@ -20,10 +20,20 @@ namespace DotsUnited\BundleFu\Filter;
 interface FilterInterface
 {
     /**
-     * Returns the result of filtering $content.
+     * Filter applied to concenated content before its written to the cache file.
      *
      * @param mixed $content
      * @return mixed
      */
     function filter($content);
+    
+    /**
+     * Filter applied to a single file after it has beed loaded.
+     *
+     * @param mixed $content
+     * @param string $file File as it appears in the href/src attribute
+     * @param \SplFileInfo $fileInfo
+     * @return mixed
+     */
+    function filterFile($content, $file, \SplFileInfo $fileInfo);
 }

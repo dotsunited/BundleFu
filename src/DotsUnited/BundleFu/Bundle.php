@@ -783,6 +783,7 @@ class Bundle
             $data = '';
 
             $cssUrlRewriter = $this->getCssUrlRewriter();
+            $filter = $this->getCssFilter();
 
             foreach ($cssFileList as $file => $fileInfo) {
                 $data .= '/* --------- ' . $file . ' --------- */' . PHP_EOL;
@@ -790,11 +791,14 @@ class Bundle
                 if (!$contents) {
                     $data .= '/* FILE READ ERROR! */' . PHP_EOL;
                 } else {
+                    if (null !== $filter) {
+                        $data = $filter->filterFile($data, $file, $fileInfo);
+                    }
+
                     $data .= $cssUrlRewriter->rewriteUrls($file, $contents) . PHP_EOL;
                 }
             }
 
-            $filter = $this->getCssFilter();
             if (null !== $filter) {
                 $data = $filter->filter($data);
             }
@@ -837,17 +841,22 @@ class Bundle
         if ($generate) {
             $data = '';
 
+            $filter = $this->getJsFilter();
+
             foreach ($jsFileList as $file => $fileInfo) {
                 $data .= '/* --------- ' . $file . ' --------- */' . PHP_EOL;
                 $contents = @file_get_contents($fileInfo->getPathname());
                 if (!$contents) {
                     $data .= '/* FILE READ ERROR! */' . PHP_EOL;
                 } else {
+                    if (null !== $filter) {
+                        $data = $filter->filterFile($data, $file, $fileInfo);
+                    }
+
                     $data .= $contents . PHP_EOL;
                 }
             }
 
-            $filter = $this->getJsFilter();
             if (null !== $filter) {
                 $data = $filter->filter($data);
             }
@@ -889,7 +898,9 @@ class Bundle
         }
 
         if (false === file_put_contents($cacheFile, $data, LOCK_EX)) {
+            // @codeCoverageIgnoreStart
             throw new \RuntimeException('Cannot write cache file to "' . $cacheFile . '"');
+            // @codeCoverageIgnoreEnd
         }
 
         return filemtime($cacheFile);

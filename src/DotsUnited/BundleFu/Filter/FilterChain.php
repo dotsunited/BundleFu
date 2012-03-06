@@ -90,18 +90,25 @@ class FilterChain implements FilterInterface
     }
 
     /**
-     * Returns $content filtered through each filter in the chain
-     *
-     * Filters are run in the order in which they were added to the chain (FIFO)
-     *
-     * @param mixed $content
-     * @return mixed
+     * {@inheritDoc}
      */
     public function filter($content)
     {
         $contentFiltered = $content;
         foreach ($this->filters as $filter) {
             $contentFiltered = $filter->filter($contentFiltered);
+        }
+        return $contentFiltered;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function filterFile($content, $file, \SplFileInfo $fileInfo)
+    {
+        $contentFiltered = $content;
+        foreach ($this->filters as $filter) {
+            $contentFiltered = $filter->filterFile($contentFiltered, $file, $fileInfo);
         }
         return $contentFiltered;
     }

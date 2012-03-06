@@ -26,7 +26,7 @@ class ClosureCompilerService implements FilterInterface
 
     /**
      * Constructor.
-     * 
+     *
      * @param array $parameters
      */
     public function __construct(array $parameters = null)
@@ -37,10 +37,7 @@ class ClosureCompilerService implements FilterInterface
     }
 
     /**
-     * Returns the result of filtering $content.
-     *
-     * @param mixed $content
-     * @return mixed
+     * {@inheritDoc}
      */
     public function filter($content)
     {
@@ -74,6 +71,14 @@ class ClosureCompilerService implements FilterInterface
             return $result;
         }
 
+        return $content;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    function filterFile($content, $file, \SplFileInfo $fileInfo)
+    {
         return $content;
     }
 }
