@@ -165,7 +165,7 @@ $bundle1 = $factory->createBundle(array('js_filter' => 'js_closure_compiler'));
 Filters
 -------
 
-You can manipulate the bundled css/javascript code with filters. Filters are classes which implement `DotsUnited\BundleFu\Filter\FilterInterface`.
+You can manipulate the loaded css/javascript files and the bundled css/javascript code with filters. Filters are classes which implement `DotsUnited\BundleFu\Filter\FilterInterface`.
 
 You can add filters like this:
 
