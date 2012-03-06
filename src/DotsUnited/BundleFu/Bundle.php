@@ -29,6 +29,13 @@ class Bundle
     protected $bypass = false;
 
     /**
+     * Whether to force bundling.
+     *
+     * @var boolean
+     */
+    protected $force = false;
+
+    /**
      * Directory in which to look for files.
      *
      * @var string
@@ -152,6 +159,9 @@ class Bundle
                 case 'bypass':
                     $this->setBypass($val);
                     break;
+                case 'force':
+                    $this->setForce($val);
+                    break;
                 case 'render_as_xhtml':
                     $this->setRenderAsXhtml($val);
                     break;
@@ -198,7 +208,29 @@ class Bundle
      */
     public function getBypass()
     {
-        return $this->bypass ;
+        return $this->bypass;
+    }
+
+    /**
+     * Set whether to force bundling.
+     *
+     * @param boolean $force
+     * @return Bundle
+     */
+    public function setForce($force)
+    {
+        $this->force = $force;
+        return $this;
+    }
+
+    /**
+     * Get whether to force bundling.
+     *
+     * @return boolean
+     */
+    public function getForce()
+    {
+        return $this->force;
     }
 
     /**
@@ -736,10 +768,18 @@ class Bundle
             return '';
         }
 
+        $generate  = true;
         $cacheFile = $this->getCssBundlePath();
-        $cacheTime = @filemtime($cacheFile);
 
-        if (false === $cacheTime || $cacheTime < $cssFileList->getMaxMTime()) {
+        if (!$this->getForce() && file_exists($cacheFile)) {
+            $cacheTime = filemtime($cacheFile);
+
+            if (false !== $cacheTime && $cacheTime >= $cssFileList->getMaxMTime()) {
+                $generate = false;
+            }
+        }
+
+        if ($generate) {
             $data = '';
 
             $cssUrlRewriter = $this->getCssUrlRewriter();
@@ -783,10 +823,18 @@ class Bundle
             return '';
         }
 
+        $generate  = true;
         $cacheFile = $this->getJsBundlePath();
-        $cacheTime = @filemtime($cacheFile);
 
-        if (false === $cacheTime || $cacheTime < $jsFileList->getMaxMTime()) {
+        if (!$this->getForce() && file_exists($cacheFile)) {
+            $cacheTime = filemtime($cacheFile);
+
+            if (false !== $cacheTime && $cacheTime >= $jsFileList->getMaxMTime()) {
+                $generate = false;
+            }
+        }
+
+        if ($generate) {
             $data = '';
 
             foreach ($jsFileList as $file => $fileInfo) {

@@ -26,6 +26,7 @@ class BundleTest extends TestCase
             'name'            => 'testbundle',
             'doc_root'        => '/my/custom/docroot',
             'bypass'          => true,
+            'force'           => true,
             'render_as_xhtml' => true,
             'css_filter'      => $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface'),
             'js_filter'       => $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface'),
@@ -391,6 +392,30 @@ class BundleTest extends TestCase
         $this->bundle->render();
 
         $this->assertEquals($this->includeSome() . $this->includeAll(), $contents);
+    }
+
+    public function testForceShouldAlwaysBundle()
+    {
+        $this->bundle->setForce(true);
+
+        $this->bundle->start();
+        echo $this->includeSome();
+        $this->bundle->end();
+
+        $first = $this->bundle->render();
+
+        $this->bundle->reset();
+
+        // Ensure we're sleeping 1 second so that the cache time changes
+        sleep(1);
+
+        $this->bundle->start();
+        echo $this->includeSome();
+        $this->bundle->end();
+
+        $second = $this->bundle->render();
+
+        $this->assertNotEquals($first, $second);
     }
 
     public function testBundleCssFileShouldRewriteRelativePath()
