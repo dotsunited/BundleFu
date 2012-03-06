@@ -154,40 +154,52 @@ class BundleTest extends TestCase
 
     public function testBundleShouldUseCssFilters()
     {
-        $called = false;
-        $callback = function($content) use(&$called) {
-            $called = true;
-            return 'filtered';
-        };
-        $this->bundle->setCssFilter(new CallbackFilter($callback));
+        $filter = $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface');
+
+        $filter
+            ->expects($this->at(0))
+            ->method('filterFile')
+            ->will($this->returnValue('filtered1'));
+
+        $filter
+            ->expects($this->at(1))
+            ->method('filter')
+            ->will($this->returnValue('filtered2'));
+
+        $this->bundle->setCssFilter($filter);
 
         $this->bundle->start();
         echo '<link href="/css/css_1.css?1000" media="screen" rel="stylesheet" type="text/css">';
         $this->bundle->end();
 
-        $rendered = $this->bundle->render();
+        $this->bundle->render();
 
-        $this->assertTrue($called);
-        $this->assertFileMatch($this->bundle->getCssBundlePath(), 'filtered');
+        $this->assertFileMatch($this->bundle->getCssBundlePath(), 'filtered2');
     }
 
     public function testBundleShouldUseJsFilters()
     {
-        $called = false;
-        $callback = function($content) use(&$called) {
-            $called = true;
-            return 'filtered';
-        };
-        $this->bundle->setJsFilter(new CallbackFilter($callback));
+        $filter = $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface');
+
+        $filter
+            ->expects($this->at(0))
+            ->method('filterFile')
+            ->will($this->returnValue('filtered1'));
+
+        $filter
+            ->expects($this->at(1))
+            ->method('filter')
+            ->will($this->returnValue('filtered2'));
+
+        $this->bundle->setJsFilter($filter);
 
         $this->bundle->start();
         echo '<script src="/js/js_1.js?1000" type="text/javascript"></script>';
         $this->bundle->end();
 
-        $rendered = $this->bundle->render();
+        $this->bundle->render();
 
-        $this->assertTrue($called);
-        $this->assertFileMatch($this->bundle->getJsBundlePath(), 'filtered');
+        $this->assertFileMatch($this->bundle->getJsBundlePath(), 'filtered2');
     }
 
     public function testSetCssCacheUrlShouldBeUsedInOutput()

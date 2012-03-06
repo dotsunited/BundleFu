@@ -25,6 +25,7 @@ class FilterChainTest extends \PHPUnit_Framework_TestCase
         $filter = new FilterChain();
         $value = 'something';
         $this->assertEquals($value, $filter->filter($value));
+        $this->assertEquals($value, $filter->filterFile($value, '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js')));
     }
 
     public function testFilterOrder()
@@ -35,6 +36,7 @@ class FilterChainTest extends \PHPUnit_Framework_TestCase
         $value = 'AbC';
         $valueExpected = 'abc';
         $this->assertEquals($valueExpected, $filter->filter($value));
+        $this->assertEquals($valueExpected, $filter->filterFile($value, '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js')));
     }
 
     public function testFilterPrependOrder()
@@ -45,6 +47,7 @@ class FilterChainTest extends \PHPUnit_Framework_TestCase
         $value = 'AbC';
         $valueExpected = 'abc';
         $this->assertEquals($valueExpected, $filter->filter($value));
+        $this->assertEquals($valueExpected, $filter->filterFile($value, '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js')));
     }
 
     public function testFilterReset()
@@ -58,6 +61,7 @@ class FilterChainTest extends \PHPUnit_Framework_TestCase
         $value = 'AbC';
         $valueExpected = 'AbC';
         $this->assertEquals($valueExpected, $filter->filter($value));
+        $this->assertEquals($valueExpected, $filter->filterFile($value, '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js')));
     }
 
     public function testGetFilters()
@@ -80,17 +84,27 @@ class FilterChainTest extends \PHPUnit_Framework_TestCase
 
 class LowerCase implements FilterInterface
 {
-    public function filter($value)
+    public function filter($content)
     {
-        return strtolower($value);
+        return strtolower($content);
+    }
+
+    public function filterFile($content, $file, \SplFileInfo $fileInfo)
+    {
+        return strtolower($content);
     }
 }
 
 
 class StripUpperCase implements FilterInterface
 {
-    public function filter($value)
+    public function filter($content)
     {
-        return preg_replace('/[A-Z]/', '', $value);
+        return preg_replace('/[A-Z]/', '', $content);
+    }
+
+    public function filterFile($content, $file, \SplFileInfo $fileInfo)
+    {
+        return preg_replace('/[A-Z]/', '', $content);
     }
 }

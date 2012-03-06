@@ -25,23 +25,43 @@ class Callback implements FilterInterface
     protected $callback;
 
     /**
-     * Constructor.
-     * 
-     * @param mixed $callback
+     * @var mixed
      */
-    public function __construct($callback)
+    protected $callbackFile;
+
+    /**
+     * Constructor.
+     *
+     * @param mixed $callback
+     * @param mixed $callbackFile
+     */
+    public function __construct($callback = null, $callbackFile = null)
     {
-        $this->callback = $callback;
+        $this->callback     = $callback;
+        $this->callbackFile = $callbackFile;
     }
 
     /**
-     * Returns the result of filtering $content.
-     *
-     * @param mixed $content
-     * @return mixed
+     * {@inheritDoc}
      */
     public function filter($content)
     {
+        if (null === $this->callback) {
+            return $content;
+        }
+
         return call_user_func($this->callback, $content);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function filterFile($content, $file, \SplFileInfo $fileInfo)
+    {
+        if (null === $this->callbackFile) {
+            return $content;
+        }
+
+        return call_user_func($this->callbackFile, $content, $file, $fileInfo);
     }
 }

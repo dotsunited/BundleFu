@@ -33,4 +33,29 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($called);
         $this->assertEquals('bar', $result);
     }
+
+    public function testFileCallback()
+    {
+        $called = false;
+        $callbackFile = function() use(&$called) {
+            $called = true;
+            return 'bar';
+        };
+
+        $filter = new Callback(null, $callbackFile);
+        $result = $filter->filterFile('foo', '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js'));
+
+        $this->assertTrue($called);
+        $this->assertEquals('bar', $result);
+    }
+
+    public function testNullCallbacks()
+    {
+        $filter = new Callback();
+
+        $value = "foo";
+
+        $this->assertEquals($value, $filter->filter($value));
+        $this->assertEquals($value, $filter->filterFile($value, '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js')));
+    }
 }
