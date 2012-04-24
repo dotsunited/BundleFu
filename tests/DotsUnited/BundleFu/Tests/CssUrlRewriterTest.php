@@ -91,6 +91,38 @@ class CssUrlRewriterTest extends \PHPUnit_Framework_TestCase
                 'ftp://www.url.com/images/image.gif'
             )
         );
+        
+        $this->assertEquals(
+            '//www.url.com/images/image.gif',
+            $rewriter->rewriteRelativePath(
+                'stylesheets/main.css',
+                '//www.url.com/images/image.gif'
+            )
+        );
+    }
+    
+    public function testRewriteRelativePathShouldRewriteRelativeForDestUrl()
+    {
+        $rewriter = new CssUrlRewriter();
+        $rewriter->setRewriteRelative(true);
+        
+        $this->assertEquals(
+            '../../stylesheets/images/image.gif',
+            $rewriter->rewriteRelativePath(
+                '/stylesheets/default/main.css',
+                '../images/image.gif',
+                '/stylesheets/cache/style.css'
+            )
+        );
+
+        $this->assertEquals(
+            '../../stylesheets/images/image.gif',
+            $rewriter->rewriteRelativePath(
+                'stylesheets/default/main.css',
+                '../images/image.gif',
+                'stylesheets/cache/style.css'
+            )
+        );
     }
 
     public function testRewriteRelativePathShouldStripSpacesAndQuotes()

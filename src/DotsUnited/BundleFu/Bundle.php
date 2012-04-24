@@ -778,6 +778,8 @@ class Bundle
                 $generate = false;
             }
         }
+        
+        $bundleUrl = $this->getCssBundleUrl();
 
         if ($generate) {
             $data = '';
@@ -795,7 +797,7 @@ class Bundle
                         $contents = $filter->filterFile($contents, $file, $fileInfo);
                     }
 
-                    $data .= $cssUrlRewriter->rewriteUrls($file, $contents) . PHP_EOL;
+                    $data .= $cssUrlRewriter->rewriteUrls($file, $contents, $bundleUrl) . PHP_EOL;
                 }
             }
 
@@ -808,7 +810,7 @@ class Bundle
 
         return sprintf(
             '<link href="%s?%s" rel="stylesheet" type="text/css"%s>',
-            $this->getCssBundleUrl(),
+            $bundleUrl,
             $cacheTime,
             $this->getRenderAsXhtml() ? ' /' : ''
         );
