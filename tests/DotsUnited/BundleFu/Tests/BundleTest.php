@@ -438,7 +438,7 @@ class BundleTest extends TestCase
 
         $this->bundle->render();
 
-        $this->assertFileMatch($this->bundle->getCssBundlePath(), "background-image: url(/images/background.gif)");
-        $this->assertFileMatch($this->bundle->getCssBundlePath(), "background-image: url(/images/groovy/background_2.gif)");
+        $this->assertFileMatch($this->bundle->getCssBundlePath(), "background-image: url(../../images/background.gif)");
+        $this->assertFileMatch($this->bundle->getCssBundlePath(), "background-image: url(\"../../images/groovy/background_2.gif\")");
     }
 }

@@ -12,6 +12,7 @@
 namespace DotsUnited\BundleFu;
 
 use DotsUnited\BundleFu\Filter\FilterInterface;
+use DotsUnited\BundleFu\Filter\CssUrlRewriteFilter;
 
 /**
  * DotsUnited\BundleFu\Bundle
@@ -137,6 +138,10 @@ class Bundle
      */
     public function __construct(array $options = array())
     {
+        if (!array_key_exists('css_filter', $options)) {
+            $options['css_filter'] = new CssUrlRewriteFilter();
+        }
+
         $this->setOptions($options);
     }
 
@@ -778,13 +783,11 @@ class Bundle
                 $generate = false;
             }
         }
-        
+
         $bundleUrl = $this->getCssBundleUrl();
 
         if ($generate) {
-            $data = '';
-
-            $cssUrlRewriter = $this->getCssUrlRewriter();
+            $data   = '';
             $filter = $this->getCssFilter();
 
             foreach ($cssFileList as $file => $fileInfo) {
@@ -797,7 +800,7 @@ class Bundle
                         $contents = $filter->filterFile($contents, $file, $fileInfo, $bundleUrl, $bundlePath);
                     }
 
-                    $data .= $cssUrlRewriter->rewriteUrls($file, $contents, $bundleUrl) . PHP_EOL;
+                    $data .= $contents . PHP_EOL;
                 }
             }
 
@@ -839,12 +842,11 @@ class Bundle
                 $generate = false;
             }
         }
-        
+
         $bundleUrl = $this->getJsBundleUrl();
 
         if ($generate) {
-            $data = '';
-
+            $data   = '';
             $filter = $this->getJsFilter();
 
             foreach ($jsFileList as $file => $fileInfo) {
