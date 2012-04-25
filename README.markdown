@@ -33,8 +33,7 @@ Features
 --------
 
   * Automatically detects modifications to your css and javascript files and regenerates the bundles automatically.
-  * Rewrites relative URLs in your css files to avoid broken image references.
-  * Bundle contents can be modified by filters for code minification, compression etc. (A [Google Closure Compiler](http://code.google.com/closure/compiler/) filter using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html) comes with the library).
+  * Bundle contents can be modified by filters for css url rewriting to avoid broken images, code minification and compression etc. (A [Google Closure Compiler](http://code.google.com/closure/compiler/) filter using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html) comes with the library).
 
 Installation
 ------------
@@ -189,11 +188,27 @@ $bundle->setCssFilter($filterChain);
 ?>
 ```
 
-### Examples ###
+### Default filters ###
 
-BundleFu provides a filter to compile javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
+BundleFu provides the following filters out of the box.
 
-Simply add the `DotsUnited\BundleFu\Filter\ClosureCompilerService` filter and your javascript bundles will be automatically compiled:
+#### CssUrlRewriteFilter ####
+
+The `DotsUnited\BundleFu\Filter\CssUrlRewriteFilter` rewrites relative URLs in your CSS file to avoid broken image references:
+
+```php
+<?php
+$bundle->setCssFilter(new \DotsUnited\BundleFu\Filter\CssUrlRewriteFilter());
+?>
+```
+
+**Note**: Unless you set a CSS filter yourself, this filter is automatically registered for each bundle as the default CSS filter.
+
+#### ClosureCompilerServiceFilter ####
+
+This filter compiles javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
+
+Simply add the `DotsUnited\BundleFu\Filter\ClosureCompilerServiceFilter` filter and your javascript bundles will be automatically compiled:
 
 ```php
 <?php
@@ -201,7 +216,9 @@ $bundle->setJsFilter(new \DotsUnited\BundleFu\Filter\ClosureCompilerServiceFilte
 ?>
 ```
 
-The `DotsUnited\BundleFu\Filter\Callback` can filter by using any PHP callback. If you want to compress your CSS using [YUI Compressor](http://developer.yahoo.com/yui/compressor/) you can either write a custom filter or use the following code leveraging the `Callback` filter:
+#### CallbackFilter ####
+
+The `DotsUnited\BundleFu\Filter\CallbackFilter` can filter by using any PHP callback. If you want to compress your CSS using [YUI Compressor](http://developer.yahoo.com/yui/compressor/) you can either write a custom filter or use the following code leveraging the `Callback` filter:
 
 ```php
 <?php
