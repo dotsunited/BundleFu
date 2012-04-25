@@ -118,6 +118,20 @@ class Bundle
     protected $jsFilter;
 
     /**
+     * CSS template.
+     *
+     * @var string|callable
+     */
+    protected $cssTemplate = '<link href="%s?%s" rel="stylesheet" type="text/css"%s>';
+
+    /**
+     * CSS filter.
+     *
+     * @var Filter
+     */
+    protected $jsTemplate = '<script src="%s?%s" type="text/javascript"></script>';
+
+    /**
      * Options for bundling in process.
      *
      * @var array
@@ -180,6 +194,12 @@ class Bundle
                     break;
                 case 'js_cache_url':
                     $this->setJsCacheUrl($val);
+                    break;
+                case 'css_template':
+                    $this->setCssTemplate($val);
+                    break;
+                case 'js_template':
+                    $this->setJsTemplate($val);
                     break;
             }
         }
@@ -383,6 +403,50 @@ class Bundle
     public function getRenderAsXhtml()
     {
         return $this->renderAsXhtml;
+    }
+
+    /**
+     * Set the template used for rendering the css <link> tag (can be a callable).
+     *
+     * @param string|callable $cssTemplate
+     * @return Bundle
+     */
+    public function setCssTemplate($cssTemplate)
+    {
+        $this->cssTemplate = $cssTemplate;
+        return $this;
+    }
+
+    /**
+     * Get the template used for rendering the css <link> tag (can be a callable).
+     *
+     * @return string|callable
+     */
+    public function getCssTemplate()
+    {
+        return $this->cssTemplate ;
+    }
+
+    /**
+     * Set the template used for rendering the js <script> tag (can be a callable).
+     *
+     * @param string|callable $jsTemplate
+     * @return Bundle
+     */
+    public function setJsTemplate($jsTemplate)
+    {
+        $this->jsTemplate = $jsTemplate;
+        return $this;
+    }
+
+    /**
+     * Get the template used for rendering the js <script> tag (can be a callable).
+     *
+     * @return string|callable
+     */
+    public function getJsTemplate()
+    {
+        return $this->jsTemplate ;
     }
 
     /**
@@ -790,8 +854,14 @@ class Bundle
             $cacheTime = $this->writeBundleFile($bundlePath, $data);
         }
 
+        $template = $this->getCssTemplate();
+
+        if (is_callable($template)) {
+            return call_user_func($template, $bundleUrl, $cacheTime, $this->getRenderAsXhtml());
+        }
+
         return sprintf(
-            '<link href="%s?%s" rel="stylesheet" type="text/css"%s>',
+            $template,
             $bundleUrl,
             $cacheTime,
             $this->getRenderAsXhtml() ? ' /' : ''
@@ -849,8 +919,14 @@ class Bundle
             $cacheTime = $this->writeBundleFile($bundlePath, $data);
         }
 
+        $template = $this->getJsTemplate();
+
+        if (is_callable($template)) {
+            return call_user_func($template, $bundleUrl, $cacheTime);
+        }
+
         return sprintf(
-            '<script src="%s?%s" type="text/javascript"></script>',
+            $template,
             $bundleUrl,
             $cacheTime
         );

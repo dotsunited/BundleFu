@@ -34,6 +34,8 @@ class BundleTest extends TestCase
             'js_cache_path'   => 'js/cache/path',
             'css_cache_url'   => 'css/cache/url',
             'js_cache_url'    => 'js/cache/url',
+            'css_template'    => '%s%s',
+            'js_template'     => '%s%s',
         );
 
         $bundle = new Bundle();
@@ -226,6 +228,62 @@ class BundleTest extends TestCase
         $rendered = $this->bundle->render();
 
         $this->assertRegExp('/<script src="http:\/\/mycdn.org[^"]+" type="text\/javascript"><\/script>/', $rendered);
+    }
+    
+    public function testSetCssTemlateShouldBeUsedInOutput()
+    {
+        $this->bundle->setCssTemplate('<link href="%s?%s">');
+
+        $this->bundle->start();
+        echo '<link href="/css/css_1.css?1000" media="screen" rel="stylesheet" type="text/css">';
+        $this->bundle->end();
+
+        $rendered = $this->bundle->render();
+
+        $this->assertRegExp('/<link href="[^"]+">/', $rendered);
+    }
+    
+    public function testSetJsTemlateShouldBeUsedInOutput()
+    {
+        $this->bundle->setJsTemplate('<script src="%s?%s">');
+
+        $this->bundle->start();
+        echo '<script src="/js/js_1.js?1000" type="text/javascript"></script>';
+        $this->bundle->end();
+
+        $rendered = $this->bundle->render();
+
+        $this->assertRegExp('/<script src="[^"]+">/', $rendered);
+    }
+    
+    public function testSetCssTemlateAsCallableShouldBeUsedInOutput()
+    {
+        $this->bundle->setCssTemplate(function() {
+            return '<link>';
+        });
+
+        $this->bundle->start();
+        echo '<link href="/css/css_1.css?1000" media="screen" rel="stylesheet" type="text/css">';
+        $this->bundle->end();
+
+        $rendered = $this->bundle->render();
+
+        $this->assertRegExp('/<link>/', $rendered);
+    }
+    
+    public function testSetJsTemlateAsCallableShouldBeUsedInOutput()
+    {
+        $this->bundle->setJsTemplate(function() {
+            return '<script>';
+        });
+
+        $this->bundle->start();
+        echo '<script src="/js/js_1.js?1000" type="text/javascript"></script>';
+        $this->bundle->end();
+
+        $rendered = $this->bundle->render();
+
+        $this->assertRegExp('/<script>/', $rendered);
     }
 
     public function testBundleShouldGenerateNonXhtmlByDefault()
