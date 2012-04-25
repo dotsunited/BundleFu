@@ -118,13 +118,6 @@ class Bundle
     protected $jsFilter;
 
     /**
-     * CSS url rewriter.
-     *
-     * @var CssUrlRewriter
-     */
-    protected $cssUrlRewriter;
-
-    /**
      * Options for bundling in process.
      *
      * @var array
@@ -462,20 +455,6 @@ class Bundle
     public function getJsFilter()
     {
         return $this->jsFilter;
-    }
-
-    /**
-     * Get css url rewriter.
-     *
-     * @return CssUrlRewriter
-     */
-    public function getCssUrlRewriter()
-    {
-        if (null === $this->cssUrlRewriter) {
-            $this->cssUrlRewriter = new CssUrlRewriter();
-        }
-
-        return $this->cssUrlRewriter;
     }
 
     /**
