@@ -17,7 +17,7 @@ namespace DotsUnited\BundleFu\Filter;
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
  * @version @package_version@
  */
-class ClosureCompilerService implements FilterInterface
+class ClosureCompilerServiceFilter implements FilterInterface
 {
     /**
      * @var array

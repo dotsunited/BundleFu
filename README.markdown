@@ -153,7 +153,7 @@ The factory also lets you define name aliases for filters. You can then define t
 ```php
 <?php
 $filters = array(
-    'js_closure_compiler' => new \DotsUnited\BundleFu\Filter\ClosureCompilerService()
+    'js_closure_compiler' => new \DotsUnited\BundleFu\Filter\ClosureCompilerServiceFilter()
 );
 
 $factory = new \DotsUnited\BundleFu\Factory(array(), $filters);
@@ -197,7 +197,7 @@ Simply add the `DotsUnited\BundleFu\Filter\ClosureCompilerService` filter and yo
 
 ```php
 <?php
-$bundle->setJsFilter(new \DotsUnited\BundleFu\Filter\ClosureCompilerService());
+$bundle->setJsFilter(new \DotsUnited\BundleFu\Filter\ClosureCompilerServiceFilter());
 ?>
 ```
 
@@ -205,7 +205,7 @@ The `DotsUnited\BundleFu\Filter\Callback` can filter by using any PHP callback. 
 
 ```php
 <?php
-$filter = new \DotsUnited\BundleFu\Filter\Callback(function($content) {
+$filter = new \DotsUnited\BundleFu\Filter\CallbackFilter(function($content) {
     $descriptorspec = array(
          0 => array('pipe', 'r'),  // STDIN
          1 => array('pipe', 'w'),  // STDOUT

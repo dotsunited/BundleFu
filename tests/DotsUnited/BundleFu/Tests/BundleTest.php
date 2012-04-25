@@ -12,7 +12,7 @@
 namespace DotsUnited\BundleFu\Tests;
 
 use DotsUnited\BundleFu\Bundle;
-use DotsUnited\BundleFu\Filter\Callback as CallbackFilter;
+use DotsUnited\BundleFu\Filter\CallbackFilter;
 
 /**
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>

@@ -11,7 +11,7 @@
 
 namespace DotsUnited\BundleFu\Tests\Filter;
 
-use DotsUnited\BundleFu\Filter\ClosureCompilerService;
+use DotsUnited\BundleFu\Filter\ClosureCompilerServiceFilter;
 
 /**
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
@@ -19,11 +19,11 @@ use DotsUnited\BundleFu\Filter\ClosureCompilerService;
  *
  * @group online
  */
-class ClosureCompilerServiceTest extends \PHPUnit_Framework_TestCase
+class ClosureCompilerServiceFilterTest extends \PHPUnit_Framework_TestCase
 {
     public function testFilterShouldCompileContents()
     {
-        $filter = new ClosureCompilerService();
+        $filter = new ClosureCompilerServiceFilter();
 
         $uncompiled = "function js_1() { alert('hi')};
 
@@ -45,7 +45,7 @@ function func() {
 
     public function testFilterShouldAcceptParametersInContructor()
     {
-        $filter = new ClosureCompilerService(array('compilation_level' => 'WHITESPACE_ONLY'));
+        $filter = new ClosureCompilerServiceFilter(array('compilation_level' => 'WHITESPACE_ONLY'));
 
         $uncompiled = "function js_1() { alert('hi')};
 
@@ -67,7 +67,7 @@ function func() {
 
     public function testFilterInvalidCodeShouldReturnOriginalContent()
     {
-        $filter = new ClosureCompilerService();
+        $filter = new ClosureCompilerServiceFilter();
 
         $uncompiled = "function js_1() {";
 
@@ -76,7 +76,7 @@ function func() {
     
     public function testFilterFileDoesNothing()
     {
-        $filter = new ClosureCompilerService();
+        $filter = new ClosureCompilerServiceFilter();
         
         $value = "function js_1() {";
 

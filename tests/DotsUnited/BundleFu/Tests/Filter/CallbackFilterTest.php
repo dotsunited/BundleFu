@@ -11,15 +11,15 @@
 
 namespace DotsUnited\BundleFu\Tests\Filter;
 
-use DotsUnited\BundleFu\Filter\Callback;
+use DotsUnited\BundleFu\Filter\CallbackFilter;
 
 /**
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
  * @version @package_version@
  */
-class CallbackTest extends \PHPUnit_Framework_TestCase
+class CallbackFilterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testCallback()
+    public function testCallbackFilter()
     {
         $called = false;
         $callback = function() use(&$called) {
@@ -27,14 +27,14 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
             return 'bar';
         };
 
-        $filter = new Callback($callback);
+        $filter = new CallbackFilter($callback);
         $result = $filter->filter('foo');
 
         $this->assertTrue($called);
         $this->assertEquals('bar', $result);
     }
 
-    public function testFileCallback()
+    public function testFileCallbackFilter()
     {
         $called = false;
         $callbackFile = function() use(&$called) {
@@ -42,7 +42,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
             return 'bar';
         };
 
-        $filter = new Callback(null, $callbackFile);
+        $filter = new CallbackFilter(null, $callbackFile);
         $result = $filter->filterFile('foo', '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js'));
 
         $this->assertTrue($called);
@@ -51,7 +51,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 
     public function testNullCallbacks()
     {
-        $filter = new Callback();
+        $filter = new CallbackFilter();
 
         $value = "foo";
 
