@@ -77,7 +77,7 @@ class ClosureCompilerServiceFilter implements FilterInterface
     /**
      * {@inheritDoc}
      */
-    function filterFile($content, $file, \SplFileInfo $fileInfo)
+    function filterFile($content, $file, \SplFileInfo $fileInfo, $bundleUrl, $bundlePath)
     {
         return $content;
     }

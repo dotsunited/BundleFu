@@ -768,11 +768,11 @@ class Bundle
             return '';
         }
 
-        $generate  = true;
-        $cacheFile = $this->getCssBundlePath();
+        $generate   = true;
+        $bundlePath = $this->getCssBundlePath();
 
-        if (!$this->getForce() && file_exists($cacheFile)) {
-            $cacheTime = filemtime($cacheFile);
+        if (!$this->getForce() && file_exists($bundlePath)) {
+            $cacheTime = filemtime($bundlePath);
 
             if (false !== $cacheTime && $cacheTime >= $cssFileList->getMaxMTime()) {
                 $generate = false;
@@ -794,7 +794,7 @@ class Bundle
                     $data .= '/* FILE READ ERROR! */' . PHP_EOL;
                 } else {
                     if (null !== $filter) {
-                        $contents = $filter->filterFile($contents, $file, $fileInfo);
+                        $contents = $filter->filterFile($contents, $file, $fileInfo, $bundleUrl, $bundlePath);
                     }
 
                     $data .= $cssUrlRewriter->rewriteUrls($file, $contents, $bundleUrl) . PHP_EOL;
@@ -805,7 +805,7 @@ class Bundle
                 $data = $filter->filter($data);
             }
 
-            $cacheTime = $this->writeCacheFile($cacheFile, $data);
+            $cacheTime = $this->writeBundleFile($bundlePath, $data);
         }
 
         return sprintf(
@@ -829,16 +829,18 @@ class Bundle
             return '';
         }
 
-        $generate  = true;
-        $cacheFile = $this->getJsBundlePath();
+        $generate   = true;
+        $bundlePath = $this->getJsBundlePath();
 
-        if (!$this->getForce() && file_exists($cacheFile)) {
-            $cacheTime = filemtime($cacheFile);
+        if (!$this->getForce() && file_exists($bundlePath)) {
+            $cacheTime = filemtime($bundlePath);
 
             if (false !== $cacheTime && $cacheTime >= $jsFileList->getMaxMTime()) {
                 $generate = false;
             }
         }
+        
+        $bundleUrl = $this->getJsBundleUrl();
 
         if ($generate) {
             $data = '';
@@ -852,7 +854,7 @@ class Bundle
                     $data .= '/* FILE READ ERROR! */' . PHP_EOL;
                 } else {
                     if (null !== $filter) {
-                        $contents = $filter->filterFile($contents, $file, $fileInfo);
+                        $contents = $filter->filterFile($contents, $file, $fileInfo, $bundleUrl, $bundlePath);
                     }
 
                     $data .= $contents . PHP_EOL;
@@ -863,12 +865,12 @@ class Bundle
                 $data = $filter->filter($data);
             }
 
-            $cacheTime = $this->writeCacheFile($cacheFile, $data);
+            $cacheTime = $this->writeBundleFile($bundlePath, $data);
         }
 
         return sprintf(
             '<script src="%s?%s" type="text/javascript"></script>',
-            $this->getJsBundleUrl(),
+            $bundleUrl,
             $cacheTime
         );
     }
@@ -885,26 +887,26 @@ class Bundle
     }
 
     /**
-     * Write a cache file to disk.
+     * Write a bundle file to disk.
      *
-     * @param string $cacheFile
+     * @param string $bundlePath
      * @param string $data
      * @return integer
      */
-    protected function writeCacheFile($cacheFile, $data)
+    protected function writeBundleFile($bundlePath, $data)
     {
-        $dir = dirname($cacheFile);
+        $dir = dirname($bundlePath);
 
         if (!file_exists($dir)) {
             mkdir($dir, 0777, true);
         }
 
-        if (false === file_put_contents($cacheFile, $data, LOCK_EX)) {
+        if (false === file_put_contents($bundlePath, $data, LOCK_EX)) {
             // @codeCoverageIgnoreStart
-            throw new \RuntimeException('Cannot write cache file to "' . $cacheFile . '"');
+            throw new \RuntimeException('Cannot write cache file to "' . $bundlePath . '"');
             // @codeCoverageIgnoreEnd
         }
 
-        return filemtime($cacheFile);
+        return filemtime($bundlePath);
     }
 }

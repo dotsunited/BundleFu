@@ -104,11 +104,11 @@ class FilterChain implements FilterInterface
     /**
      * {@inheritDoc}
      */
-    public function filterFile($content, $file, \SplFileInfo $fileInfo)
+    public function filterFile($content, $file, \SplFileInfo $fileInfo, $bundleUrl, $bundlePath)
     {
         $contentFiltered = $content;
         foreach ($this->filters as $filter) {
-            $contentFiltered = $filter->filterFile($contentFiltered, $file, $fileInfo);
+            $contentFiltered = $filter->filterFile($contentFiltered, $file, $fileInfo, $bundleUrl, $bundlePath);
         }
         return $contentFiltered;
     }

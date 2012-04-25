@@ -56,12 +56,12 @@ class CallbackFilter implements FilterInterface
     /**
      * {@inheritDoc}
      */
-    public function filterFile($content, $file, \SplFileInfo $fileInfo)
+    public function filterFile($content, $file, \SplFileInfo $fileInfo, $bundleUrl, $bundlePath)
     {
         if (null === $this->callbackFile) {
             return $content;
         }
 
-        return call_user_func($this->callbackFile, $content, $file, $fileInfo);
+        return call_user_func($this->callbackFile, $content, $file, $fileInfo, $bundleUrl, $bundlePath);
     }
 }

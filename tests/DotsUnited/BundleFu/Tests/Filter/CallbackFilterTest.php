@@ -43,7 +43,7 @@ class CallbackFilterTest extends \PHPUnit_Framework_TestCase
         };
 
         $filter = new CallbackFilter(null, $callbackFile);
-        $result = $filter->filterFile('foo', '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js'));
+        $result = $filter->filterFile('foo', '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js'), null, null);
 
         $this->assertTrue($called);
         $this->assertEquals('bar', $result);
@@ -56,6 +56,6 @@ class CallbackFilterTest extends \PHPUnit_Framework_TestCase
         $value = "foo";
 
         $this->assertEquals($value, $filter->filter($value));
-        $this->assertEquals($value, $filter->filterFile($value, '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js')));
+        $this->assertEquals($value, $filter->filterFile($value, '/js/js_1.js', new \SplFileInfo(__DIR__ . '/_files/js/js_1.js'), null, null));
     }
 }
