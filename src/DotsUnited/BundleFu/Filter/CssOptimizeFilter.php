@@ -19,8 +19,6 @@ namespace DotsUnited\BundleFu\Filter;
  */
 class CssOptimizeFilter implements FilterInterface
 {
-    protected $file;
-    protected $bundleUrl;
     protected $options = array(
         'optimizeColors' => true,
     );
@@ -47,12 +45,6 @@ class CssOptimizeFilter implements FilterInterface
         // strip units from zero values
         '/([\s:])(0)(px|em|%|in|cm|mm|pc|pt|ex)/' => '$1$2',
 
-        // strip multiple zeroes down to one
-        '/:0([\ \t]+0){1,3};/' => ':0;',
-
-        // fix the previous regexp for a corner case
-        '/background-position\:0\;/' => 'background-position:0 0;',
-
         // remove "0." integer parts from floating numbers where safe
         '/(:|\s)0+\.(\d+)/' => '$1.$2',
 
@@ -62,8 +54,14 @@ class CssOptimizeFilter implements FilterInterface
         // remove redundant top-right-bottom-left values
         '/:\s*(0|(?:(?:\d*\.?\d+(?:p(?:[xct])|(?:[cem])m|%|in|ex))))(\s+\1){1,3}[\s]*;/' => ':$1;',
 
+        // strip multiple zeroes down to one
+        '/:0([\ \t]+0){1,3};/' => ':0;',
+
+        // fix the previous regexp for a corner case
+        '/background-position\:0;/' => 'background-position:0 0;',
+
         // remove semicolon before a closing bracket
-        '/\;\s+\}/' => '}',
+        '/\;\s*\}/' => '}',
 
         // remove multiple semicolons
         '/;;+/' => ';',
@@ -105,17 +103,14 @@ class CssOptimizeFilter implements FilterInterface
     /**
      * {@inheritDoc}
      */
-    public function filterFile($content, $file, \SplFileInfo $fileInfo, $bundleUrl, $bundlePath)
+    public function filterFile($content, $file = null, \SplFileInfo $fileInfo = null, $bundleUrl = null, $bundlePath = null)
     {
-        $this->file = $file;
-        $this->bundleUrl = $bundleUrl;
-
         if (empty($content)) {
             throw new \Exception('Empty file content');
         }
 
         if ($this->getOption('optimizeColors', true)) {
-            $this->optimizeColors();
+            $content = $this->optimizeColors($content);
         }
 
         return preg_replace(array_keys($this->regexps), $this->regexps, $content);
@@ -128,36 +123,36 @@ class CssOptimizeFilter implements FilterInterface
     protected function optimizeColors($content = '') {
         $colors = array(
             // Color names shorter than hex notation. Except for red.
-            'F0FFFF' => 'azure',
-            'F5F5DC' => 'beige',
-            'FFE4C4' => 'bisque',
-            'A52A2A' => 'brown',
-            'FF7F50' => 'coral',
-            'FFD700' => 'gold',
-            '808080' => 'grey',
-            '008000' => 'green',
-            '4B0082' => 'indigo',
-            'FFFFF0' => 'ivory',
-            'F0E68C' => 'khaki',
-            'FAF0E6' => 'linen',
-            '800000' => 'maroon',
-            '000080' => 'navy',
-            '808000' => 'olive',
-            'FFA500' => 'orange',
-            'DA70D6' => 'orchid',
-            'CD853F' => 'peru',
-            'FFC0CB' => 'pink',
-            'DDA0DD' => 'plum',
-            '800080' => 'purple',
-            'FA8072' => 'salmon',
-            'A0522D' => 'sienna',
-            'C0C0C0' => 'silver',
-            'FFFAFA' => 'snow',
-            'D2B48C' => 'tan',
-            '008080' => 'teal',
-            'FF6347' => 'tomato',
-            'EE82EE' => 'violet',
-            'F5DEB3' => 'wheat',
+            '#F0FFFF' => 'azure',
+            '#F5F5DC' => 'beige',
+            '#FFE4C4' => 'bisque',
+            '#A52A2A' => 'brown',
+            '#FF7F50' => 'coral',
+            '#FFD700' => 'gold',
+            '#808080' => 'grey',
+            '#008000' => 'green',
+            '#4B0082' => 'indigo',
+            '#FFFFF0' => 'ivory',
+            '#F0E68C' => 'khaki',
+            '#FAF0E6' => 'linen',
+            '#800000' => 'maroon',
+            '#000080' => 'navy',
+            '#808000' => 'olive',
+            '#FFA500' => 'orange',
+            '#DA70D6' => 'orchid',
+            '#CD853F' => 'peru',
+            '#FFC0CB' => 'pink',
+            '#DDA0DD' => 'plum',
+            '#800080' => 'purple',
+            '#FA8072' => 'salmon',
+            '#A0522D' => 'sienna',
+            '#C0C0C0' => 'silver',
+            '#FFFAFA' => 'snow',
+            '#D2B48C' => 'tan',
+            '#008080' => 'teal',
+            '#FF6347' => 'tomato',
+            '#EE82EE' => 'violet',
+            '#F5DEB3' => 'wheat',
             // Hex notation shorter than named value
             'black'          => '#000',
             'fuchsia'        => '#f0f',
@@ -192,7 +187,7 @@ class CssOptimizeFilter implements FilterInterface
         foreach ($colors as $key => $color) {
             // check values only on the right side of the colon
             $content = preg_replace(
-                '/(?<=:)[\s]*$key/',
+                "/(?<=:)[\s]*$key/i",
                 $color,
                 $content
             );
