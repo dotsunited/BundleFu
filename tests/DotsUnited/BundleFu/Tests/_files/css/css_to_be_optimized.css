@@ -1,0 +1,20 @@
+
+/*
+ * This is a multi-line comment
+ */
+html {
+    margin: 10px 10px 10px 10px;
+    color: magenta;
+}
+
+/*This is a single-line comment*/
+body {
+    background-position: 0 0;
+    background-color: #dda0dd;
+}
+
+#foo {
+    width: 0px;
+    font-size: 0.9px;
+    color: #aaaaaa;
+}
