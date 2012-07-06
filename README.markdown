@@ -204,6 +204,16 @@ $bundle->setCssFilter(new \DotsUnited\BundleFu\Filter\CssUrlRewriteFilter());
 
 **Note**: Unless you set a CSS filter yourself, this filter is automatically registered for each bundle as the default CSS filter.
 
+#### CssOptimizeFilter ####
+
+The `DotsUnited\BundleFu\Filter\CssOptimizeFilter` performs some tasks to reduce the size of your CSS file:
+
+```php
+<?php
+$bundle->setCssFilter(new \DotsUnited\BundleFu\Filter\CssOptimizeFilter());
+?>
+```
+
 #### ClosureCompilerServiceFilter ####
 
 This filter compiles javascript code with the [Google Closure Compiler](http://code.google.com/closure/compiler/) using the [Service API](http://code.google.com/closure/compiler/docs/api-ref.html).
