@@ -47,7 +47,7 @@ class CssUrlRewriteFilter implements FilterInterface
     /**
      * Callback which rewrites matched CSS ruls.
      *
-     * @param array $matches
+     * @param  array  $matches
      * @return string
      */
     protected function rewriteUrl($matches)
@@ -87,9 +87,9 @@ class CssUrlRewriteFilter implements FilterInterface
     /**
      * Rewrites to a relative url.
      *
-     * @param string $url
-     * @param string $sourceUrl
-     * @param string $bundleUrl
+     * @param  string $url
+     * @param  string $sourceUrl
+     * @param  string $bundleUrl
      * @return string
      */
     protected function rewriteRelative($url, $sourceUrl, $bundleUrl)
@@ -138,7 +138,7 @@ class CssUrlRewriteFilter implements FilterInterface
     /**
      * Canonicalizes a path.
      *
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     protected function canonicalize($path)

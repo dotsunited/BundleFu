@@ -32,8 +32,8 @@ class FilterChain implements FilterInterface
     /**
      * Adds a filter to the chain
      *
-     * @param FilterInterface $filter
-     * @param string $placement
+     * @param  FilterInterface $filter
+     * @param  string          $placement
      * @return FilterChain
      */
     public function addFilter(FilterInterface $filter, $placement = self::CHAIN_APPEND)
@@ -43,13 +43,14 @@ class FilterChain implements FilterInterface
         } else {
             $this->filters[] = $filter;
         }
+
         return $this;
     }
 
     /**
      * Add a filter to the end of the chain
      *
-     * @param FilterInterface $filter
+     * @param  FilterInterface $filter
      * @return FilterChain
      */
     public function appendFilter(FilterInterface $filter)
@@ -60,7 +61,7 @@ class FilterChain implements FilterInterface
     /**
      * Add a filter to the start of the chain
      *
-     * @param FilterInterface $filter
+     * @param  FilterInterface $filter
      * @return FilterChain
      */
     public function prependFilter(FilterInterface $filter)
@@ -86,6 +87,7 @@ class FilterChain implements FilterInterface
     public function resetFilters()
     {
         $this->filters = array();
+
         return $this;
     }
 
@@ -95,9 +97,11 @@ class FilterChain implements FilterInterface
     public function filter($content)
     {
         $contentFiltered = $content;
+
         foreach ($this->filters as $filter) {
             $contentFiltered = $filter->filter($contentFiltered);
         }
+
         return $contentFiltered;
     }
 
@@ -107,9 +111,11 @@ class FilterChain implements FilterInterface
     public function filterFile($content, $file, \SplFileInfo $fileInfo, $bundleUrl, $bundlePath)
     {
         $contentFiltered = $content;
+
         foreach ($this->filters as $filter) {
             $contentFiltered = $filter->filterFile($contentFiltered, $file, $fileInfo, $bundleUrl, $bundlePath);
         }
+
         return $contentFiltered;
     }
 }

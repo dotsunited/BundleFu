@@ -155,7 +155,7 @@ class Bundle
     /**
      * Allows to pass options as array.
      *
-     * @param array $options
+     * @param  array  $options
      * @return Bundle
      */
     public function setOptions(array $options)
@@ -210,12 +210,13 @@ class Bundle
     /**
      * Set whether to bypass capturing.
      *
-     * @param boolean $bypass
+     * @param  boolean $bypass
      * @return Bundle
      */
     public function setBypass($bypass)
     {
         $this->bypass = $bypass;
+
         return $this;
     }
 
@@ -232,12 +233,13 @@ class Bundle
     /**
      * Set whether to force bundling.
      *
-     * @param boolean $force
+     * @param  boolean $force
      * @return Bundle
      */
     public function setForce($force)
     {
         $this->force = $force;
+
         return $this;
     }
 
@@ -254,12 +256,13 @@ class Bundle
     /**
      * Set directory in which to look for files.
      *
-     * @param string $docRoot
+     * @param  string $docRoot
      * @return Bundle
      */
     public function setDocRoot($docRoot)
     {
         $this->docRoot = $docRoot;
+
         return $this;
     }
 
@@ -276,12 +279,13 @@ class Bundle
     /**
      * Set the bundle name.
      *
-     * @param string $name
+     * @param  string $name
      * @return Bundle
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -298,12 +302,13 @@ class Bundle
     /**
      * Set directory in which to write bundled css files.
      *
-     * @param string $cssCachePath
+     * @param  string $cssCachePath
      * @return Bundle
      */
     public function setCssCachePath($cssCachePath)
     {
         $this->cssCachePath = $cssCachePath;
+
         return $this;
     }
 
@@ -320,12 +325,13 @@ class Bundle
     /**
      * Set directory in which to write bundled javascript files.
      *
-     * @param string $jsCachePath
+     * @param  string $jsCachePath
      * @return Bundle
      */
     public function setJsCachePath($jsCachePath)
     {
         $this->jsCachePath = $jsCachePath;
+
         return $this;
     }
 
@@ -342,12 +348,13 @@ class Bundle
     /**
      * Set path the generated css bundles are publicly accessible under.
      *
-     * @param string $cssCacheUrl
+     * @param  string $cssCacheUrl
      * @return Bundle
      */
     public function setCssCacheUrl($cssCacheUrl)
     {
         $this->cssCacheUrl = $cssCacheUrl;
+
         return $this;
     }
 
@@ -364,12 +371,13 @@ class Bundle
     /**
      * Set path the generated javascript bundles are publicly accessible under.
      *
-     * @param string $jsCacheUrl
+     * @param  string $jsCacheUrl
      * @return Bundle
      */
     public function setJsCacheUrl($jsCacheUrl)
     {
         $this->jsCacheUrl = $jsCacheUrl;
+
         return $this;
     }
 
@@ -392,6 +400,7 @@ class Bundle
     public function setRenderAsXhtml($renderAsXhtml)
     {
         $this->renderAsXhtml = $renderAsXhtml;
+
         return $this;
     }
 
@@ -408,12 +417,13 @@ class Bundle
     /**
      * Set the template used for rendering the css <link> tag (can be a callable).
      *
-     * @param string|callable $cssTemplate
+     * @param  string|callable $cssTemplate
      * @return Bundle
      */
     public function setCssTemplate($cssTemplate)
     {
         $this->cssTemplate = $cssTemplate;
+
         return $this;
     }
 
@@ -430,12 +440,13 @@ class Bundle
     /**
      * Set the template used for rendering the js <script> tag (can be a callable).
      *
-     * @param string|callable $jsTemplate
+     * @param  string|callable $jsTemplate
      * @return Bundle
      */
     public function setJsTemplate($jsTemplate)
     {
         $this->jsTemplate = $jsTemplate;
+
         return $this;
     }
 
@@ -486,6 +497,7 @@ class Bundle
     public function setCssFilter(FilterInterface $filter = null)
     {
         $this->cssFilter = $filter;
+
         return $this;
     }
 
@@ -508,6 +520,7 @@ class Bundle
     public function setJsFilter(FilterInterface $filter = null)
     {
         $this->jsFilter = $filter;
+
         return $this;
     }
 
@@ -642,8 +655,8 @@ class Bundle
     /**
      * Add a CSS file.
      *
-     * @param string $file
-     * @param string $docRoot
+     * @param  string $file
+     * @param  string $docRoot
      * @return Bundle
      */
     public function addCssFile($file, $docRoot = null)
@@ -669,8 +682,8 @@ class Bundle
     /**
      * Add a javascript file.
      *
-     * @param string $file
-     * @param string $docRoot
+     * @param  string $file
+     * @param  string $docRoot
      * @return Bundle
      */
     public function addJsFile($file, $docRoot = null)
@@ -696,7 +709,7 @@ class Bundle
     /**
      * Start capturing and bundling current output.
      *
-     * @param array $options
+     * @param  array  $options
      * @return Bundle
      */
     public function start(array $options = array())
@@ -715,7 +728,7 @@ class Bundle
     /**
      * End capturing and bundling current output.
      *
-     * @param array $options
+     * @param  array  $options
      * @return Bundle
      */
     public function end(array $options = array())
@@ -742,8 +755,8 @@ class Bundle
     /**
      * Extract files from HTML.
      *
-     * @param string $html
-     * @param string $docRoot
+     * @param  string $html
+     * @param  string $docRoot
      * @return Bundle
      */
     public function extractFiles($html, $docRoot = null)
@@ -774,6 +787,7 @@ class Bundle
     {
         $this->getCssFileList()->reset();
         $this->getJsFileList()->reset();
+
         return $this;
     }
 
@@ -785,10 +799,10 @@ class Bundle
     public function __toString()
     {
         try {
-            $return = $this->render();
-            return $return;
+            return $this->render();
         } catch (\Exception $e) {
             trigger_error($e->getMessage(), E_USER_WARNING);
+
             return '';
         }
     }
@@ -935,7 +949,7 @@ class Bundle
     /**
      * Check whether $path is a local relative path.
      *
-     * @param string $path
+     * @param  string  $path
      * @return boolean
      */
     public function isRelativePath($path)
@@ -946,8 +960,8 @@ class Bundle
     /**
      * Write a bundle file to disk.
      *
-     * @param string $bundlePath
-     * @param string $data
+     * @param  string  $bundlePath
+     * @param  string  $data
      * @return integer
      */
     protected function writeBundleFile($bundlePath, $data)

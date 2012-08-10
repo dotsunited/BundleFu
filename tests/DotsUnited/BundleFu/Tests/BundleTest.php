@@ -229,7 +229,7 @@ class BundleTest extends TestCase
 
         $this->assertRegExp('/<script src="http:\/\/mycdn.org[^"]+" type="text\/javascript"><\/script>/', $rendered);
     }
-    
+
     public function testSetCssTemlateShouldBeUsedInOutput()
     {
         $this->bundle->setCssTemplate('<link href="%s?%s">');
@@ -242,7 +242,7 @@ class BundleTest extends TestCase
 
         $this->assertRegExp('/<link href="[^"]+">/', $rendered);
     }
-    
+
     public function testSetJsTemlateShouldBeUsedInOutput()
     {
         $this->bundle->setJsTemplate('<script src="%s?%s">');
@@ -255,7 +255,7 @@ class BundleTest extends TestCase
 
         $this->assertRegExp('/<script src="[^"]+">/', $rendered);
     }
-    
+
     public function testSetCssTemlateAsCallableShouldBeUsedInOutput()
     {
         $this->bundle->setCssTemplate(function() {
@@ -270,7 +270,7 @@ class BundleTest extends TestCase
 
         $this->assertRegExp('/<link>/', $rendered);
     }
-    
+
     public function testSetJsTemlateAsCallableShouldBeUsedInOutput()
     {
         $this->bundle->setJsTemplate(function() {

@@ -22,8 +22,9 @@ class CallbackFilterTest extends \PHPUnit_Framework_TestCase
     public function testCallbackFilter()
     {
         $called = false;
-        $callback = function() use(&$called) {
+        $callback = function() use (&$called) {
             $called = true;
+
             return 'bar';
         };
 
@@ -37,8 +38,9 @@ class CallbackFilterTest extends \PHPUnit_Framework_TestCase
     public function testFileCallbackFilter()
     {
         $called = false;
-        $callbackFile = function() use(&$called) {
+        $callbackFile = function() use (&$called) {
             $called = true;
+
             return 'bar';
         };
 

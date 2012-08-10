@@ -55,8 +55,8 @@ class Factory
     /**
      * Set an option.
      *
-     * @param string $name
-     * @param mixed $value
+     * @param  string                       $name
+     * @param  mixed                        $value
      * @return \DotsUnited\BundleFu\Factory
      */
     public function setOption($name, $value)
@@ -69,8 +69,8 @@ class Factory
     /**
      * Set a filter.
      *
-     * @param string $name
-     * @param \DotsUnited\BundleFu\Filter\FilterInterface $filter
+     * @param  string                                      $name
+     * @param  \DotsUnited\BundleFu\Filter\FilterInterface $filter
      * @return \DotsUnited\BundleFu\Factory
      */
     public function setFilter($name, FilterInterface $filter = null)
@@ -83,7 +83,7 @@ class Factory
     /**
      * Get a filter.
      *
-     * @param string $name
+     * @param  string                                      $name
      * @return \DotsUnited\BundleFu\Filter\FilterInterface $filter
      */
     public function getFilter($name)
@@ -98,7 +98,7 @@ class Factory
     /**
      * Create a Bundle instance.
      *
-     * @param string|array $options An array of options or a bundle name as string
+     * @param  string|array                $options An array of options or a bundle name as string
      * @return \DotsUnited\BundleFu\Bundle
      * @throws \RuntimeException
      */

@@ -81,7 +81,6 @@ class FilterChainTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-
 class LowerCase implements FilterInterface
 {
     public function filter($content)
@@ -94,7 +93,6 @@ class LowerCase implements FilterInterface
         return strtolower($content);
     }
 }
-
 
 class StripUpperCase implements FilterInterface
 {
