@@ -22,7 +22,7 @@
   <release>beta</release>
   <api>beta</api>
  </stability>
- <license uri="https://github.com/dotsunited/BundleFu/blob/master/LICENSE">New BSD License</license>
+ <license uri="https://github.com/dotsunited/BundleFu/blob/master/LICENSE">MIT License</license>
  <notes>https://github.com/dotsunited/BundleFu#readme</notes>
  <contents>
   <dir name="/">

@@ -5,7 +5,7 @@
     "keywords": ["css", "javascript", "bundling", "asset"],
     "homepage": "https://github.com/dotsunited/BundleFu",
     "version": "0.9.4",
-    "license": "New BSD",
+    "license": "MIT",
     "authors": [
         {
             "name": "Jan Sorgalla",

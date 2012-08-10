@@ -280,4 +280,4 @@ Notes
 License
 -------
 
-BundleFu is released under the [New BSD License](https://github.com/dotsunited/BundleFu/blob/master/LICENSE).
+BundleFu is released under the [MIT](https://github.com/dotsunited/BundleFu/blob/master/LICENSE).
