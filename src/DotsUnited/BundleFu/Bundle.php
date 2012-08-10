@@ -12,7 +12,6 @@
 namespace DotsUnited\BundleFu;
 
 use DotsUnited\BundleFu\Filter\FilterInterface;
-use DotsUnited\BundleFu\Filter\CssUrlRewriteFilter;
 
 /**
  * DotsUnited\BundleFu\Bundle
@@ -145,10 +144,6 @@ class Bundle
      */
     public function __construct(array $options = array())
     {
-        if (!array_key_exists('css_filter', $options)) {
-            $options['css_filter'] = new CssUrlRewriteFilter();
-        }
-
         $this->setOptions($options);
     }
 

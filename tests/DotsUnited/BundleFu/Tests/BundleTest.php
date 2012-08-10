@@ -487,16 +487,4 @@ class BundleTest extends TestCase
 
         $this->assertNotEquals($first, $second);
     }
-
-    public function testBundleCssFileShouldRewriteRelativePath()
-    {
-        $this->bundle->start();
-        echo $this->includeAll();
-        $this->bundle->end();
-
-        $this->bundle->render();
-
-        $this->assertFileMatch($this->bundle->getCssBundlePath(), "background-image: url(../../images/background.gif)");
-        $this->assertFileMatch($this->bundle->getCssBundlePath(), "background-image: url(\"../../images/groovy/background_2.gif\")");
-    }
 }
