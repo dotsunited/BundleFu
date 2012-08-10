@@ -276,4 +276,4 @@ Notes
 License
 -------
 
-BundleFu is released under the [MIT](https://github.com/dotsunited/BundleFu/blob/master/LICENSE).
+BundleFu is released under the [MIT License](https://github.com/dotsunited/BundleFu/blob/master/LICENSE).
