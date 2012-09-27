@@ -32,10 +32,13 @@
     <dir name="DotsUnited">
      <dir name="BundleFu">
       <dir name="Filter">
-       <file install-as="DotsUnited/BundleFu/Filter/Callback.php" name="Callback.php" role="php">
+       <file install-as="DotsUnited/BundleFu/Filter/CallbackFilter.php" name="CallbackFilter.php" role="php">
         <tasks:replace from="@package_version@" to="version" type="package-info" />
        </file>
-       <file install-as="DotsUnited/BundleFu/Filter/ClosureCompilerService.php" name="ClosureCompilerService.php" role="php">
+       <file install-as="DotsUnited/BundleFu/Filter/ClosureCompilerServiceFilter.php" name="ClosureCompilerServiceFilter.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+       <file install-as="DotsUnited/BundleFu/Filter/CssUrlRewriteFilter.php" name="CssUrlRewriteFilter.php" role="php">
         <tasks:replace from="@package_version@" to="version" type="package-info" />
        </file>
        <file install-as="DotsUnited/BundleFu/Filter/FilterChain.php" name="FilterChain.php" role="php">
@@ -46,9 +49,6 @@
        </file>
       </dir>
       <file install-as="DotsUnited/BundleFu/Bundle.php" name="Bundle.php" role="php">
-       <tasks:replace from="@package_version@" to="version" type="package-info" />
-      </file>
-      <file install-as="DotsUnited/BundleFu/CssUrlRewriter.php" name="CssUrlRewriter.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
       <file install-as="DotsUnited/BundleFu/Factory.php" name="Factory.php" role="php">
