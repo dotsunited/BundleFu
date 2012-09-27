@@ -13,14 +13,14 @@
   <email>jan.sorgalla@dotsunited.de</email>
   <active>yes</active>
  </lead>
- <date>2012-03-06</date>
+ <date>2012-10-08</date>
  <version>
-  <release>0.9.3</release>
-  <api>0.9.3</api>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license uri="https://github.com/dotsunited/BundleFu/blob/master/LICENSE">MIT License</license>
  <notes>https://github.com/dotsunited/BundleFu#readme</notes>
