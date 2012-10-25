@@ -1,15 +1,15 @@
 language: php
 
 php: 
+  - 5.3.3
   - 5.3
   - 5.4
 
 before_script:
-  - wget -nc http://getcomposer.org/composer.phar
-  - php composer.phar install
+  - composer install
 
 script: phpunit --coverage-text --configuration phpunit.travis.xml
 
 notifications:
   email: false
-  webhooks: http://webhooks.dotsunited.de/travisci.php
+  hipchat: b00ece55a12a4a46874554f64029c9@Allgemein
