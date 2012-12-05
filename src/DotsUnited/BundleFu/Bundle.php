@@ -546,6 +546,8 @@ class Bundle
 
         if (null === $name) {
             $name = sprintf('bundle_%s', $this->getCssFileList()->getHash());
+        } elseif (strpos($name, '%s') !== false) {
+            $name = sprintf($name, $this->getCssFileList()->getHash());
         }
 
         return sprintf(
@@ -573,6 +575,8 @@ class Bundle
 
         if (null === $name) {
             $name = sprintf('bundle_%s', $this->getJsFileList()->getHash());
+        } elseif (strpos($name, '%s') !== false) {
+            $name = sprintf($name, $this->getJsFileList()->getHash());
         }
 
         return sprintf(
@@ -606,6 +610,8 @@ class Bundle
 
         if (null === $name) {
             $name = sprintf('bundle_%s', $this->getCssFileList()->getHash());
+        } elseif (strpos($name, '%s') !== false) {
+            $name = sprintf($name, $this->getCssFileList()->getHash());
         }
 
         return sprintf(
@@ -638,6 +644,8 @@ class Bundle
 
         if (null === $name) {
             $name = sprintf('bundle_%s', $this->getJsFileList()->getHash());
+        } elseif (strpos($name, '%s') !== false) {
+            $name = sprintf($name, $this->getJsFileList()->getHash());
         }
 
         return sprintf(
