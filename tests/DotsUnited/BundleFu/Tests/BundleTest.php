@@ -99,6 +99,14 @@ class BundleTest extends TestCase
         $this->assertEquals('custom_bundle.js', basename($this->bundle->getJsBundlePath()));
     }
 
+    public function testPlaceholderInCustomNameShouldBeReplaced()
+    {
+        $this->bundle->setName('custom_bundle_%s');
+
+        $this->assertNotEquals('custom_bundle_%s.css', basename($this->bundle->getCssBundlePath()));
+        $this->assertNotEquals('custom_bundle_%s.js', basename($this->bundle->getJsBundlePath()));
+    }
+
     /**
      * @todo Check why setExpectedException() is not working
      */
