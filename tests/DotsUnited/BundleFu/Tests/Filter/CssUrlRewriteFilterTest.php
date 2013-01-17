@@ -83,6 +83,10 @@ class CssUrlRewriteFilterTest extends \PHPUnit_Framework_TestCase
             array('body { background: url(%s); }', '/css/body.css', '/css/build/main.css', '/images/foo.gif', '/images/foo.gif'),
             array('body { background: url(%s); }', '/css/body.css', '/css/build/main.css', 'http://foo.com/images/foo.gif', 'http://foo.com/images/foo.gif'),
             array('body { background: url(%s); }', '/css/body.css', '/css/build/main.css', '//foo.com/images/bg.gif', '//foo.com/images/bg.gif'),
+
+            // AlphaImageLoader
+            array('body { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="%s", sizingMethod="scale") }', '/css/body.css', '/css/build/main.css', '../images/bg.gif', '../../images/bg.gif'),
+            array('body { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod = "scale", src = "%s") }', '/css/body.css', '/css/build/main.css', '../images/bg.gif', '../../images/bg.gif'),
         );
     }
 
