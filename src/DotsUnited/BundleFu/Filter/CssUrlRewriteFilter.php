@@ -40,6 +40,8 @@ class CssUrlRewriteFilter implements FilterInterface
 
         $content = preg_replace_callback('/url\((["\']?)(?<url>.*?)(\\1)\)/', array($this, 'rewriteUrl'), $content);
         $content = preg_replace_callback('/@import (?!url\()(\'|"|)(?<url>[^\'"\)\n\r]*)\1;?/', array($this, 'rewriteUrl'), $content);
+        // Handle 'src' values (used in e.g. calls to AlphaImageLoader, which is a proprietary IE filter)
+        $content = preg_replace_callback('/\bsrc\s*=\s*(["\']?)(?<url>.*?)(\\1)/i', array($this, 'rewriteUrl'), $content);
 
         return $content;
     }
