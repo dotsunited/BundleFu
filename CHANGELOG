@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.2 (2013-01-18)
+------------------
+
+  * Handle 'src' values in AlphaImageLoader calls (proprietary IE filter) (@blueyed)
+
 1.0.1 (2012-12-05)
 ------------------
 
