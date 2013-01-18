@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-if( file_exists(__DIR__.'/../vendor/autoload.php') ) {
-	$loader = require __DIR__.'/../vendor/autoload.php';
+if (file_exists(__DIR__.'/../../../autoload.php')) {
+    $loader = require __DIR__.'/../../../autoload.php';
 } else {
-	$loader = require __DIR__.'/../../../autoload.php';
+    $loader = require __DIR__.'/../vendor/autoload.php';
 }
 $loader->add('DotsUnited\\BundleFu\\Tests', __DIR__);
