@@ -29,9 +29,7 @@ class CssUrlRewriteFilterTest extends \PHPUnit_Framework_TestCase
     {
         $content = sprintf($format, $inputUrl);
 
-        $fileInfo = $this->getMockBuilder('\SplFileInfo')
-                         ->disableOriginalConstructor()
-                         ->getMock();
+        $fileInfo = new \SplFileInfo($file);
 
         $filter = new CssUrlRewriteFilter();
         $filtered = $filter->filterFile($content, $file, $fileInfo, $bundleUrl, null);
@@ -97,9 +95,7 @@ class CssUrlRewriteFilterTest extends \PHPUnit_Framework_TestCase
     {
         $content = sprintf($format, $inputUrl1, $inputUrl2);
 
-        $fileInfo = $this->getMockBuilder('\SplFileInfo')
-                         ->disableOriginalConstructor()
-                         ->getMock();
+        $fileInfo = new \SplFileInfo($file);
 
         $filter = new CssUrlRewriteFilter();
         $filtered = $filter->filterFile($content, $file, $fileInfo, $bundleUrl, null);
