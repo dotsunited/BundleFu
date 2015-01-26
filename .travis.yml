@@ -16,4 +16,3 @@ script:
 
 notifications:
   email: false
-  hipchat: b00ece55a12a4a46874554f64029c9@Allgemein
