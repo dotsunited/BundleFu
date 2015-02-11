@@ -15,7 +15,7 @@ install:
   - composer install --dev --prefer-source
 
 script:
-  - phpunit --coverage-text --configuration phpunit.travis.xml
+  - phpunit --coverage-text
 
 notifications:
   email: false
