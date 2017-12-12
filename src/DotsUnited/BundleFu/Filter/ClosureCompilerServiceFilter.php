@@ -65,7 +65,7 @@ class ClosureCompilerServiceFilter implements FilterInterface
 
         $context = stream_context_create($opts);
 
-        $result = file_get_contents('http://closure-compiler.appspot.com/compile', false, $context);
+        $result = file_get_contents('https://closure-compiler.appspot.com/compile', false, $context);
 
         if (false !== $result && trim($result) !== '') {
             return $result;
