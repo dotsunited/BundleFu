@@ -12,6 +12,7 @@
 namespace DotsUnited\BundleFu\Tests\Filter;
 
 use DotsUnited\BundleFu\Filter\ClosureCompilerServiceFilter;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
@@ -19,7 +20,7 @@ use DotsUnited\BundleFu\Filter\ClosureCompilerServiceFilter;
  *
  * @group online
  */
-class ClosureCompilerServiceFilterTest extends \PHPUnit_Framework_TestCase
+class ClosureCompilerServiceFilterTest extends BaseTestCase
 {
     public function testFilterShouldCompileContents()
     {

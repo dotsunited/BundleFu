@@ -12,6 +12,7 @@
 namespace DotsUnited\BundleFu\Tests;
 
 use DotsUnited\BundleFu\Filter\CssUrlRewriteFilter;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
  * Some parts taken from https://github.com/kriswallsmith/assetic/blob/master/tests/Assetic/Test/Filter/CssUrlRewriteFilterTest.php
@@ -20,7 +21,7 @@ use DotsUnited\BundleFu\Filter\CssUrlRewriteFilter;
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
  * @version @package_version@
  */
-class CssUrlRewriteFilterTest extends \PHPUnit_Framework_TestCase
+class CssUrlRewriteFilterTest extends BaseTestCase
 {
     /**
      * @dataProvider provideUrls

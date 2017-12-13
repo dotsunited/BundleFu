@@ -15,14 +15,17 @@
     "require": {
         "php": ">=5.3.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4"
+    },
     "autoload": {
         "psr-0": {
             "DotsUnited\\BundleFu": "src/"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
+    "autoload-dev": {
+        "psr-0": {
+            "DotsUnited\\BundleFu\\Tests": "tests/"
         }
     }
 }

@@ -13,12 +13,13 @@ namespace DotsUnited\BundleFu\Tests\Filter;
 
 use DotsUnited\BundleFu\Filter\FilterChain;
 use DotsUnited\BundleFu\Filter\FilterInterface;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
  * @version @package_version@
  */
-class FilterChainTest extends \PHPUnit_Framework_TestCase
+class FilterChainTest extends BaseTestCase
 {
     public function testEmpty()
     {

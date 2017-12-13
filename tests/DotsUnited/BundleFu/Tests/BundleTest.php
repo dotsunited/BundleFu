@@ -28,8 +28,8 @@ class BundleTest extends TestCase
             'bypass'          => true,
             'force'           => true,
             'render_as_xhtml' => true,
-            'css_filter'      => $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface'),
-            'js_filter'       => $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface'),
+            'css_filter'      => $this->getMockBuilder('DotsUnited\BundleFu\Filter\FilterInterface')->getMock(),
+            'js_filter'       => $this->getMockBuilder('DotsUnited\BundleFu\Filter\FilterInterface')->getMock(),
             'css_cache_path'  => 'css/cache/path',
             'js_cache_path'   => 'js/cache/path',
             'css_cache_url'   => 'css/cache/url',
@@ -47,23 +47,32 @@ class BundleTest extends TestCase
         }
     }
 
+    /**
+     * @expectedException \RuntimeException
+     * @expectedExceptionMessage If you do not provide a css cache url, css cache path must be a relative local path...
+     */
     public function testGetCssBundleUrlWithAbsoluteCssCachePathAndNoCssCacheUrlSetShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'If you do not provide a css cache url, css cache path must be a relative local path...');
         $this->bundle->setCssCachePath('/absolute/path');
         $this->bundle->getCssBundleUrl();
     }
 
+    /**
+     * @expectedException \RuntimeException
+     * @expectedExceptionMessage If you do not provide a js cache url, js cache path must be a relative local path...
+     */
     public function testGetJsBundleUrlWithAbsoluteJsCachePathAndNoJsCacheUrlSetShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'If you do not provide a js cache url, js cache path must be a relative local path...');
         $this->bundle->setJsCachePath('/absolute/path');
         $this->bundle->getJsBundleUrl();
     }
 
+    /**
+     * @expectedException \RuntimeException
+     * @expectedExceptionMessage end() is called without a start() call.
+     */
     public function testEndWithoutPriorBundleCallShouldThrowException()
     {
-        $this->setExpectedException('\RuntimeException', 'end() is called without a start() call.');
         $this->bundle->end();
     }
 
@@ -164,7 +173,7 @@ class BundleTest extends TestCase
 
     public function testBundleShouldUseCssFilters()
     {
-        $filter = $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface');
+        $filter = $this->getMockBuilder('DotsUnited\BundleFu\Filter\FilterInterface')->getMock();
 
         $filter
             ->expects($this->at(0))
@@ -189,7 +198,7 @@ class BundleTest extends TestCase
 
     public function testBundleShouldUseJsFilters()
     {
-        $filter = $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface');
+        $filter = $this->getMockBuilder('DotsUnited\BundleFu\Filter\FilterInterface')->getMock();
 
         $filter
             ->expects($this->at(0))

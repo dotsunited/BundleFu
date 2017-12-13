@@ -12,12 +12,13 @@
 namespace DotsUnited\BundleFu\Tests;
 
 use DotsUnited\BundleFu\Factory;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
  * @author  Jan Sorgalla <jan.sorgalla@dotsunited.de>
  * @version @package_version@
  */
-class FactoryTest extends \PHPUnit_Framework_TestCase
+class FactoryTest extends BaseTestCase
 {
     public function testFactoryPassesOptionsToBundle()
     {
@@ -26,8 +27,8 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
             'doc_root'        => '/my/custom/docroot',
             'bypass'          => true,
             'render_as_xhtml' => true,
-            'css_filter'      => $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface'),
-            'js_filter'       => $this->getMock('\DotsUnited\BundleFu\Filter\FilterInterface'),
+            'css_filter'      => $this->getMockBuilder('DotsUnited\BundleFu\Filter\FilterInterface')->getMock(),
+            'js_filter'       => $this->getMockBuilder('DotsUnited\BundleFu\Filter\FilterInterface')->getMock(),
             'css_cache_path'  => 'css/cache/path',
             'js_cache_path'   => 'js/cache/path',
             'css_cache_url'   => 'css/cache/url',
@@ -45,8 +46,8 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testFactoryResolvesFilterNames()
     {
-        $cssFilter = $this->getMock('DotsUnited\\BundleFu\\Filter\\FilterInterface');
-        $jsFilter = $this->getMock('DotsUnited\\BundleFu\\Filter\\FilterInterface');
+        $cssFilter = $this->getMockBuilder('DotsUnited\BundleFu\Filter\FilterInterface')->getMock();
+        $jsFilter = $this->getMockBuilder('DotsUnited\BundleFu\Filter\FilterInterface')->getMock();
 
         $factory = new Factory(array(), array('css_filter' => $cssFilter, 'js_filter' => $jsFilter));
 
@@ -56,10 +57,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($jsFilter, $bundle->getJsFilter());
     }
 
+    /**
+     * @expectedException \RuntimeException
+     * @expectedExceptionMessage There is no filter for the name "css_filter" registered.
+     */
     public function testFactoryThrowExceptionForUnknowFilterName()
     {
-        $this->setExpectedException('\\RuntimeException', 'There is no filter for the name "css_filter" registered.');
-
         $factory = new Factory();
         $factory->createBundle(array('css_filter' => 'css_filter'));
     }
@@ -67,7 +70,9 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testFactoryAllowsSettingNullFilters()
     {
         $factory = new Factory(array(), array('css_filter' => null));
-        $factory->createBundle(array('css_filter' => 'css_filter'));
+        $bundle = $factory->createBundle(array('css_filter' => 'css_filter'));
+
+        $this->assertNull($bundle->getCssFilter());
     }
 
     public function testCreateBundleAcceptsArrayArgument()
